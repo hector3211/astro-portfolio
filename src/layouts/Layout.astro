@@ -1,0 +1,39 @@
+---
+export interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+import NavBar from "../components/Nav.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <script is:inline>
+            // ☝️ This script prevent the FART effect.
+            if (localStorage.getItem("theme") === null) {
+                document.documentElement.setAttribute("data-theme", "light");
+            } else
+                document.documentElement.setAttribute(
+                    "data-theme",
+                    localStorage.getItem("theme")
+                );
+        </script>
+        <script>
+            import { themeChange } from "theme-change";
+            themeChange();
+        </script>
+        <title>{title}</title>
+    </head>
+    <body class="container">
+        <NavBar />
+        <div class="mt-20">
+            <slot />
+        </div>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import ToggleThemeButton from "../components/ToggleTheme";
+---
+
+<div class="navbar bg-base-100 flex justify-end fixed top-0">
+    <ul class="flex justify-between items-center">
+        <li class="px-2">
+            <a href="/">Home</a>
+        </li>
+        <li class="px-2">
+            <a href="/projects">Projects</a>
+        </li>
+        <li class="px-2">
+            <a href="https://github.com/hector3211" target="_blank">Github</a>
+        </li>
+        <li class="px-2">
+            <ToggleThemeButton client:load />
+        </li>
+    </ul>
+</div>
