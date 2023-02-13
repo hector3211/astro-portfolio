@@ -1,17 +1,24 @@
 ---
 import ToggleThemeButton from "../components/ToggleTheme";
+import { BsHouseFill, BsFolderFill, BsGithub } from "react-icons/bs";
 ---
 
 <div class="navbar bg-base-100 flex justify-end fixed top-0">
-    <ul class="flex justify-between items-center">
+    <ul class="flex justify-between items-center text-xl">
         <li class="px-2">
-            <a href="/">Home</a>
+            <a href="/">
+                <BsHouseFill />
+            </a>
         </li>
         <li class="px-2">
-            <a href="/projects">Projects</a>
+            <a href="/projects">
+                <BsFolderFill />
+            </a>
         </li>
         <li class="px-2">
-            <a href="https://github.com/hector3211" target="_blank">Github</a>
+            <a href="https://github.com/hector3211" target="_blank">
+                <BsGithub />
+            </a>
         </li>
         <li class="px-2">
             <ToggleThemeButton client:load />
