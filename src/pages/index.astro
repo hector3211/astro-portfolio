@@ -1,9 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import Footer from "../components/Footer.astro";
+import Rocket from "../components/Rocket";
 ---
 
 <Layout title="Welcome to Astro.">
     <main>
-        <div></div>
+        <Rocket client:load />
+        <Hero />
+        <Features />
+        <Footer />
     </main>
 </Layout>

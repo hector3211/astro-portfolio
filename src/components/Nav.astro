@@ -3,20 +3,31 @@ import ToggleThemeButton from "../components/ToggleTheme";
 import { BsHouseFill, BsFolderFill, BsGithub } from "react-icons/bs";
 ---
 
-<div class="navbar bg-base-100 flex justify-end fixed top-0">
+<div
+    class="navbar container bg-base-100 bg-opacity-60 backdrop-blur-md flex justify-end fixed top-0"
+>
     <ul class="flex justify-between items-center text-xl">
         <li class="px-2">
-            <a href="/">
+            <a href="/" class="tooltip tooltip-bottom" data-tip="Home">
                 <BsHouseFill />
             </a>
         </li>
         <li class="px-2">
-            <a href="/projects">
+            <a
+                href="/projects"
+                class="tooltip tooltip-bottom"
+                data-tip="Projects"
+            >
                 <BsFolderFill />
             </a>
         </li>
         <li class="px-2">
-            <a href="https://github.com/hector3211" target="_blank">
+            <a
+                href="https://github.com/hector3211"
+                target="_blank"
+                class="tooltip tooltip-bottom"
+                data-tip="Github"
+            >
                 <BsGithub />
             </a>
         </li>
