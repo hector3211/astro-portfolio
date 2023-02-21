@@ -9,7 +9,7 @@ export default function Rocket() {
     spline.current.setZoom(1.8);
   }
   return (
-    <div className="h-72">
+    <div className="h-full px-2 md:h-72 md:px-0">
       <Spline
         style={{ borderRadius: 10, boxShadow: "0px 0px 20px 1px black" }}
         scene="https://prod.spline.design/mfK65j4zF0rnj1tW/scene.splinecode"

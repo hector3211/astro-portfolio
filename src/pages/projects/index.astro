@@ -3,5 +3,46 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="welcome to astro projects">
-    <div>projects page</div>
+    <div class="container mx-auto">
+        <div class="flex flex-col drop-shadow-2xl pb-5">
+            <a href="https://rust-fullstack.vercel.app/" target="_blank">
+                <img
+                    class="hover:scale-95 object-cover h-3/4 rounded-lg border border-gray-600"
+                    src="/rustflix.png"
+                />
+            </a>
+            <div>
+                Welcome to Rustflix, the latest platform for streaming all your
+                favorite shows and movies! We use the latest technology to bring
+                you the best experience possible. Our site is built with the
+                newest Next.js update, version 13, which provides unparalleled
+                performance and user interface. On the backend, we rely on Rust
+                Actix to handle all requests with lightning-fast speed, while
+                Diesel ensures efficient querying with our Postgres database.
+                And to make sure everything runs smoothly, our platform is
+                deployed using Docker. Come and enjoy a seamless streaming
+                experience with Rustflix!
+            </div>
+        </div>
+        <div class="flex flex-col drop-shadow-2xl py-5">
+            <a href="https://travel-hector3211.vercel.app/" target="_blank">
+                <img
+                    class="hover:scale-95 object-cover h-3/4 rounded-lg border border-gray-600"
+                    src="/travel.png"
+                />
+            </a>
+            <div>
+                Ready for your next adventure? Look no further than our travel
+                website, where we've combined the latest web technology with
+                trending design patterns to provide you with the ultimate
+                experience. Our website is built with Next.js, ensuring fast
+                loading times and a seamless user interface. We've also
+                incorporated popular design trends to make your browsing
+                experience both stunning and intuitive. And, to ensure that you
+                have all the information you need before setting off on your
+                travels, we offer real-time weather updates for all of our
+                destinations. Come and explore the world with us!
+            </div>
+        </div>
+    </div>
 </Layout>

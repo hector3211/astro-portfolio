@@ -27,7 +27,11 @@ export default function Toggle() {
   return (
     <div>
       <button
-        className="btn btn-accent text-xl"
+        className={`text-lg text-gray-50 ${
+          current === "light"
+            ? "btn btn-primary"
+            : "btn bg-orange-500 hover:bg-orange-600"
+        }`}
         data-toggle-theme="dark,light"
         data-act-class="ACTIVECLASS"
         onClick={changeTheme}
