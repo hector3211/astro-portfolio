@@ -4,44 +4,177 @@ import Layout from "../../layouts/Layout.astro";
 
 <Layout title="welcome to astro projects">
     <div class="container mx-auto">
-        <div class="flex flex-col drop-shadow-2xl pb-5">
-            <a href="https://rust-fullstack.vercel.app/" target="_blank">
-                <img
-                    class="hover:scale-95 object-cover h-3/4 rounded-lg border border-gray-600"
-                    src="/rustflix.png"
-                />
-            </a>
-            <div>
-                Welcome to Rustflix, the latest platform for streaming all your
-                favorite shows and movies! We use the latest technology to bring
-                you the best experience possible. Our site is built with the
-                newest Next.js update, version 13, which provides unparalleled
-                performance and user interface. On the backend, we rely on Rust
-                Actix to handle all requests with lightning-fast speed, while
-                Diesel ensures efficient querying with our Postgres database.
-                And to make sure everything runs smoothly, our platform is
-                deployed using Docker. Come and enjoy a seamless streaming
-                experience with Rustflix!
+        <h1
+            class="py-5 lg:py-7 pb-5 text-3xl lg:text-4xl text-center font-bold underline underline-offset-4"
+        >
+            Deployed Apps
+        </h1>
+        <div class="flex flex-col justify-evenly items-center md:flex-row">
+            <div
+                class="card card-compact border border-gray-500 w-80 lg:w-96 bg-base-100 shadow-xl"
+            >
+                <figure>
+                    <img
+                        class="object-fill h-44"
+                        src="/rustflix.png"
+                        alt="rustflix"
+                    />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">RustFlix</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">
+                            <a
+                                href="https://rust-fullstack.vercel.app/"
+                                target="_blank">Visite</a
+                            >
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mt-5 md:mt-0 card card-compact border border-gray-500 w-80 lg:w-96 bg-base-100 shadow-xl"
+            >
+                <figure>
+                    <img
+                        class="object-fill h-44"
+                        src="/travel.png"
+                        alt="travel"
+                    />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Travel</h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">
+                            <a
+                                href="https://travel-hector3211.vercel.app/"
+                                target="_blank">Visite</a
+                            >
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex flex-col drop-shadow-2xl py-5">
-            <a href="https://travel-hector3211.vercel.app/" target="_blank">
-                <img
-                    class="hover:scale-95 object-cover h-3/4 rounded-lg border border-gray-600"
-                    src="/travel.png"
-                />
-            </a>
-            <div>
-                Ready for your next adventure? Look no further than our travel
-                website, where we've combined the latest web technology with
-                trending design patterns to provide you with the ultimate
-                experience. Our website is built with Next.js, ensuring fast
-                loading times and a seamless user interface. We've also
-                incorporated popular design trends to make your browsing
-                experience both stunning and intuitive. And, to ensure that you
-                have all the information you need before setting off on your
-                travels, we offer real-time weather updates for all of our
-                destinations. Come and explore the world with us!
+        <h1
+            class="py-5 lg:py-7 mt-5 text-3xl lg:text-4xl text-center font-bold underline underline-offset-4"
+        >
+            Undeployed Apps
+        </h1>
+
+        <div
+            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
+        >
+            <div
+                class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            >
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium">
+                    <h2 class="text-xl">Rust Axum/Diesel Api</h2>
+                </div>
+                <div class="collapse-content flex flex-col items-center">
+                    <p class="text-lg">
+                        This Rust Axum API project utilizes Diesel queries to
+                        make changes and fetch data from a database containing
+                        tables for users and todos. The queries are executed
+                        within a Tokio spawn block async function, allowing for
+                        concurrent execution and efficient I/O operations. This
+                        allows for increased performance and scalability when
+                        handling large numbers of requests and updates to the
+                        database.
+                    </p>
+                    <button class="btn btn-primary w-full">
+                        <a>Visite</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
+        >
+            <div
+                class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            >
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium">
+                    <h2 class="text-xl">RustFlix Actix/Diesel Api</h2>
+                </div>
+                <div class="collapse-content flex flex-col items-center">
+                    <p class="text-lg">
+                        This Rust Actix API project uses Diesel queries to
+                        perform CRUD operations on a database containing movie
+                        data. The queries are executed within Actix web blocks,
+                        which provide a convenient and ergonomic way to work
+                        with Diesel's async API. This enables efficient and
+                        non-blocking I/O operations, making it possible to
+                        handle a large number of requests and updates to the
+                        database.
+                    </p>
+                    <button class="btn btn-primary w-full">
+                        <a>Visite</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
+        >
+            <div
+                class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            >
+                <input type="checkbox" />
+                <div class="collapse-title font-medium">
+                    <h2 class="text-xl">Rust TypeTester</h2>
+                </div>
+                <div class="collapse-content flex flex-col items-center">
+                    <p class="text-lg">
+                        This Rust-based project is a keyboard typing test, which
+                        allows users to test their typing speed and accuracy.
+                        The program prompts the user to type a given set of
+                        words or phrases as quickly and accurately as possible,
+                        and records the time taken and errors made.This project
+                        is designed to be simple and easy to use, making it
+                        ideal for individuals who want to improve their typing
+                        skills.
+                    </p>
+                    <button class="btn btn-primary w-full">
+                        <a>Visite</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
+        >
+            <div
+                class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            >
+                <input type="checkbox" />
+                <div class="collapse-title font-medium">
+                    <h2 class="text-xl">Rust Clap DataLogger</h2>
+                </div>
+                <div class="collapse-content flex flex-col items-center">
+                    <p class="text-lg">
+                        This Rust-based project uses the Clap library for
+                        command-line argument parsing and Diesel for data
+                        management, specifically data logging. The program is
+                        designed to take in information about a job, including
+                        its name, invoice number, salesperson, and payment
+                        status, through command-line arguments. The information
+                        is then saved to a database using Diesel's ORM
+                        functionality. This project is ideal for small
+                        businesses or individuals who need a simple and
+                        efficient way to track job information and payment
+                        status
+                    </p>
+                    <button class="btn btn-primary w-full">
+                        <a>Visite</a>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
