@@ -1,5 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "@astrojs/image/components";
+import RustFlixImage from "../../../public/rustflix.png";
+import TravelImage from "../../../public/travel.png";
 ---
 
 <Layout title="welcome to astro projects">
@@ -14,15 +17,24 @@ import Layout from "../../layouts/Layout.astro";
                 class="card card-compact border border-gray-500 w-80 lg:w-96 bg-base-100 shadow-xl"
             >
                 <figure>
-                    <img
-                        class="object-fill h-44"
-                        src="/rustflix.png"
+                    <Image
+                        width={600}
+                        height={400}
+                        aspectRatio={16 / 9}
+                        src={RustFlixImage}
                         alt="rustflix"
                     />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">RustFlix</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <p class="lg:text-lg">
+                        Rustflix is a modern video streaming web app using
+                        Next.js 13 server components for fast frontend
+                        rendering. Its backend is built on Rust Actix framework
+                        with Diesel ORM for efficient data manipulation and
+                        efficient performance, it provides seamless video
+                        streaming experience.
+                    </p>
                     <div class="card-actions justify-end">
                         <button class="btn btn-primary">
                             <a
@@ -37,15 +49,24 @@ import Layout from "../../layouts/Layout.astro";
                 class="mt-5 md:mt-0 card card-compact border border-gray-500 w-80 lg:w-96 bg-base-100 shadow-xl"
             >
                 <figure>
-                    <img
-                        class="object-fill h-44"
-                        src="/travel.png"
+                    <Image
+                        width={600}
+                        height={400}
+                        aspectRatio={16 / 9}
+                        src={TravelImage}
                         alt="travel"
                     />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">Travel</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <p class="lg:text-lg">
+                        This travel app built with Next.js offers real-time
+                        weather updates and the latest website design trends.
+                        The app uses modern design techniques such as responsive
+                        design and animations to create an engaging user
+                        experience. The app is fast, efficient, and easily
+                        scalable for future growth
+                    </p>
                     <div class="card-actions justify-end">
                         <button class="btn btn-primary">
                             <a
@@ -63,9 +84,7 @@ import Layout from "../../layouts/Layout.astro";
             Undeployed Apps
         </h1>
 
-        <div
-            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
-        >
+        <div class="container flex flex-col justify-between px-5 mx-auto">
             <div
                 class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
             >
@@ -74,7 +93,7 @@ import Layout from "../../layouts/Layout.astro";
                     <h2 class="text-xl">Rust Axum/Diesel Api</h2>
                 </div>
                 <div class="collapse-content flex flex-col items-center">
-                    <p class="text-lg">
+                    <p class="lg:text-lg py-3">
                         This Rust Axum API project utilizes Diesel queries to
                         make changes and fetch data from a database containing
                         tables for users and todos. The queries are executed
@@ -85,15 +104,16 @@ import Layout from "../../layouts/Layout.astro";
                         database.
                     </p>
                     <button class="btn btn-primary w-full">
-                        <a>Visite</a>
+                        <a
+                            href="https://github.com/hector3211/axum-server"
+                            target="_blank">Visite</a
+                        >
                     </button>
                 </div>
             </div>
         </div>
 
-        <div
-            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
-        >
+        <div class="container flex flex-col justify-between px-5 mx-auto">
             <div
                 class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
             >
@@ -102,7 +122,7 @@ import Layout from "../../layouts/Layout.astro";
                     <h2 class="text-xl">RustFlix Actix/Diesel Api</h2>
                 </div>
                 <div class="collapse-content flex flex-col items-center">
-                    <p class="text-lg">
+                    <p class="lg:text-lg py-3">
                         This Rust Actix API project uses Diesel queries to
                         perform CRUD operations on a database containing movie
                         data. The queries are executed within Actix web blocks,
@@ -113,24 +133,25 @@ import Layout from "../../layouts/Layout.astro";
                         database.
                     </p>
                     <button class="btn btn-primary w-full">
-                        <a>Visite</a>
+                        <a
+                            href="https://github.com/hector3211/rust-fullstack/tree/main/server"
+                            target="_blank">Visite</a
+                        >
                     </button>
                 </div>
             </div>
         </div>
 
-        <div
-            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
-        >
+        <div class="container flex flex-col justify-between px-5 mx-auto">
             <div
                 class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
             >
                 <input type="checkbox" />
-                <div class="collapse-title font-medium">
+                <div class="collapse-title text-xl font-medium">
                     <h2 class="text-xl">Rust TypeTester</h2>
                 </div>
                 <div class="collapse-content flex flex-col items-center">
-                    <p class="text-lg">
+                    <p class="lg:text-lg py-3">
                         This Rust-based project is a keyboard typing test, which
                         allows users to test their typing speed and accuracy.
                         The program prompts the user to type a given set of
@@ -141,24 +162,25 @@ import Layout from "../../layouts/Layout.astro";
                         skills.
                     </p>
                     <button class="btn btn-primary w-full">
-                        <a>Visite</a>
+                        <a
+                            href="https://github.com/hector3211/rust_typetester"
+                            target="_blank">Visite</a
+                        >
                     </button>
                 </div>
             </div>
         </div>
 
-        <div
-            class="container flex flex-col justify-between px-5 mx-auto text-2xl"
-        >
+        <div class="container flex flex-col justify-between px-5 mx-auto">
             <div
                 class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
             >
                 <input type="checkbox" />
-                <div class="collapse-title font-medium">
+                <div class="collapse-title text-xl font-medium">
                     <h2 class="text-xl">Rust Clap DataLogger</h2>
                 </div>
                 <div class="collapse-content flex flex-col items-center">
-                    <p class="text-lg">
+                    <p class="lg:text-lg py-3">
                         This Rust-based project uses the Clap library for
                         command-line argument parsing and Diesel for data
                         management, specifically data logging. The program is
@@ -172,7 +194,71 @@ import Layout from "../../layouts/Layout.astro";
                         status
                     </p>
                     <button class="btn btn-primary w-full">
-                        <a>Visite</a>
+                        <a
+                            href="https://github.com/hector3211/rust_introduction/tree/main/clap_intro"
+                            target="_blank">Visite</a
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider w-1/2 mx-auto"></div>
+
+        <div class="container flex flex-col justify-between px-5 mx-auto">
+            <div
+                class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            >
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium">
+                    <h2 class="text-xl">Golang Fiber</h2>
+                </div>
+                <div class="collapse-content flex flex-col items-center">
+                    <p class="lg:text-lg py-3">
+                        I'm excited to tell you about an app I built using
+                        Golang's Fiber framework to retrieve and serve data from
+                        the Pokemon API. With the help of Golang's built-in HTTP
+                        client, I was able to easily fetch data and set up
+                        routes to serve it back to users. Giving users access to
+                        a wealth of Pokemon data. Giving reliable access to
+                        information about users' favorite Pokemon
+                    </p>
+                    <button class="btn btn-primary w-full">
+                        <a
+                            href="https://github.com/hector3211/golang_intro/tree/main/fiber"
+                            target="_blank">Visite</a
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container flex flex-col justify-between px-5 mx-auto">
+            <div
+                class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            >
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium">
+                    <h2 class="text-xl">Golang Gorm Postgres</h2>
+                </div>
+                <div class="collapse-content flex flex-col items-center">
+                    <p class="lg:text-lg py-3">
+                        building a Golang Fiber and Gorm app that uses a
+                        Postgres database to serve up videos. I used Gorm to
+                        connect to the database and set up a video table, and
+                        then defined API routes with the Fiber framework. I used
+                        Gorm's querying capabilities to filter, sort, and
+                        paginate the video data to ensure a smooth and organized
+                        experience for the user. With Golang's efficient and
+                        powerful features, I'm confident in the app's ability to
+                        handle large amounts of data and deliver it quickly to
+                        users.
+                    </p>
+                    <button class="btn btn-primary w-full">
+                        <a
+                            href="https://github.com/hector3211/golang_intro/tree/main/go_postgres"
+                            target="_blank">Visite</a
+                        >
                     </button>
                 </div>
             </div>
