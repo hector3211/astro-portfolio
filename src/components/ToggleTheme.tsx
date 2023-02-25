@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
 export default function Toggle() {
   const [themeToggle, setThemeToggle] = useState<true | false>(true);
@@ -36,7 +35,7 @@ export default function Toggle() {
         data-act-class="ACTIVECLASS"
         onClick={changeTheme}
       >
-        {current === "light" ? <BsMoonFill /> : <BsSunFill />}
+        {current === "light" ? <p>Dark</p> : <p>Light</p>}
       </button>
     </div>
   );

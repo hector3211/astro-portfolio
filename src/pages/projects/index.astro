@@ -3,18 +3,19 @@ import Layout from "../../layouts/Layout.astro";
 import { Image } from "@astrojs/image/components";
 import RustFlixImage from "../../../public/rustflix.png";
 import TravelImage from "../../../public/travel.png";
+import Footer from "../../components/Footer.astro";
 ---
 
 <Layout title="welcome to astro projects">
     <div class="container mx-auto">
         <h1
-            class="py-5 lg:py-7 pb-5 text-3xl lg:text-4xl text-center font-bold underline underline-offset-4"
+            class="lg:py-7 pb-5 text-3xl lg:text-4xl text-center font-bold underline underline-offset-4"
         >
             Deployed Apps
         </h1>
         <div class="flex flex-col justify-evenly items-center md:flex-row">
             <div
-                class="card card-compact border border-gray-500 w-80 lg:w-96 bg-base-100 shadow-xl"
+                class="card card-compact border border-gray-500 w-80 bg-base-100 shadow-xl"
             >
                 <figure>
                     <Image
@@ -46,7 +47,7 @@ import TravelImage from "../../../public/travel.png";
                 </div>
             </div>
             <div
-                class="mt-5 md:mt-0 card card-compact border border-gray-500 w-80 lg:w-96 bg-base-100 shadow-xl"
+                class="mt-5 md:mt-0 card card-compact border border-gray-500 w-80 bg-base-100 shadow-xl"
             >
                 <figure>
                     <Image
@@ -64,8 +65,7 @@ import TravelImage from "../../../public/travel.png";
                         weather updates and the latest website design trends.
                         The app uses modern design techniques such as responsive
                         design and animations to create an engaging user
-                        experience. The app is fast, efficient, and easily
-                        scalable for future growth
+                        experience. The app is fast and efficient.
                     </p>
                     <div class="card-actions justify-end">
                         <button class="btn btn-primary">
@@ -233,7 +233,7 @@ import TravelImage from "../../../public/travel.png";
             </div>
         </div>
 
-        <div class="container flex flex-col justify-between px-5 mx-auto">
+        <div class="container flex flex-col justify-between mb-10 px-5 mx-auto">
             <div
                 class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
             >
@@ -263,5 +263,6 @@ import TravelImage from "../../../public/travel.png";
                 </div>
             </div>
         </div>
+        <Footer />
     </div>
 </Layout>

@@ -1,42 +1,36 @@
 ---
 import ToggleThemeButton from "../components/ToggleTheme";
-import { BsHouseFill, BsFolderFill, BsGithub } from "react-icons/bs";
+import { Icon } from "astro-icon";
 ---
 
 <div
-    class="navbar z-50 container lg:max-w-screen-lg bg-base-100 bg-opacity-60 backdrop-blur-md flex justify-end fixed top-0"
+    class="z-50 container items-center lg:max-w-screen-md bg-base-100 bg-opacity-60 backdrop-blur-md fixed top-0"
 >
-    <ul class="flex justify-between items-center text-xl">
-        <li class="px-2">
-            <a
-                href="/"
-                class="tooltip tooltip-bottom hover:scale-95"
-                data-tip="Home"
-            >
-                <BsHouseFill />
-            </a>
-        </li>
-        <li class="px-2">
-            <a
-                href="/projects"
-                class="tooltip tooltip-bottom hover:scale-95"
-                data-tip="Projects"
-            >
-                <BsFolderFill />
-            </a>
-        </li>
-        <li class="px-2">
-            <a
-                href="https://github.com/hector3211"
-                target="_blank"
-                class="tooltip tooltip-bottom hover:scale-95"
-                data-tip="Github"
-            >
-                <BsGithub />
-            </a>
-        </li>
-        <li class="px-2">
-            <ToggleThemeButton client:load />
-        </li>
-    </ul>
+    <div class="flex justify-end items-center">
+        <a href="/" class="tooltip tooltip-bottom px-1" data-tip="Home">
+            <Icon
+                name="clarity:home-solid"
+                class="max-h-7 w-7 pointer-events-none hover:scale-95"
+            />
+        </a>
+        <a
+            href="/projects"
+            class="w-ful h-full tooltip tooltip-bottom px-1"
+            data-tip="Projects"
+        >
+            <Icon
+                name="ph:folder-fill"
+                class="max-h-7 w-7 pointer-events-none hover:scale-95"
+            />
+        </a>
+        <a
+            href="https://github.com/hector3211"
+            target="_blank"
+            class="tooltip tooltip-bottom hover:scale-95"
+            data-tip="Projects"
+        >
+            <Icon name="mdi:github" class="max-h-7 w-7" />
+        </a>
+        <ToggleThemeButton client:load />
+    </div>
 </div>
