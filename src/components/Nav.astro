@@ -4,29 +4,33 @@ import { Icon } from "astro-icon";
 ---
 
 <div
-    class="z-50 container items-center lg:max-w-screen-md bg-base-100 bg-opacity-60 backdrop-blur-md fixed top-0"
+    class="z-50 py-1 container items-center lg:max-w-screen-md bg-base-100 bg-opacity-60 backdrop-blur-md fixed top-0"
 >
     <div class="flex justify-end items-center">
-        <a href="/" class="tooltip tooltip-bottom px-1" data-tip="Home">
+        <a
+            href="/"
+            class="tooltip tooltip-bottom hover:scale-95 px-1"
+            data-tip="Home"
+        >
             <Icon
                 name="clarity:home-solid"
-                class="max-h-7 w-7 pointer-events-none hover:scale-95"
+                class="max-h-7 w-7 pointer-events-none"
             />
         </a>
         <a
             href="/projects"
-            class="w-ful h-full tooltip tooltip-bottom px-1"
+            class="w-ful h-full tooltip tooltip-bottom hover:scale-95 px-1"
             data-tip="Projects"
         >
             <Icon
                 name="ph:folder-fill"
-                class="max-h-7 w-7 pointer-events-none hover:scale-95"
+                class="max-h-7 w-7 pointer-events-none"
             />
         </a>
         <a
             href="https://github.com/hector3211"
             target="_blank"
-            class="tooltip tooltip-bottom hover:scale-95"
+            class="tooltip tooltip-bottom hover:scale-95 px-1"
             data-tip="Projects"
         >
             <Icon name="mdi:github" class="max-h-7 w-7" />
