@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TbMenu2 } from "react-icons/tb";
+import { TbMenu2 } from "react-icons/tb/index.js";
 
 export default function Menu() {
   const [show, setShow] = useState<true | false>(true);
