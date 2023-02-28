@@ -7,7 +7,7 @@ export default function Rocket() {
     splineApp.setZoom(1.9);
   }
   return (
-    <div className="h-full px-2 md:h-72 md:px-0">
+    <div className="h-60 px-2 md:h-72 md:px-0">
       <Suspense fallback={<div>Loadding...</div>}>
         <Spline
           style={{ borderRadius: 10, boxShadow: "0px 0px 20px 1px black" }}

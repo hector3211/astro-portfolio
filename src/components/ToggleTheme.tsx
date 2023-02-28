@@ -1,20 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsMoonFill, BsSunFill } from "react-icons/bs/index.js";
 
 export default function Toggle() {
-  const [themeToggle, setThemeToggle] = useState<true | false>(true);
   const [current, setCurrent] = useState<string>("");
-
-  useEffect(() => {
-    function toggle() {
-      if (localStorage.getItem("theme") === "dark") {
-        setThemeToggle(false);
-      } else if (localStorage.getItem("theme") === "light") {
-        setThemeToggle(true);
-      }
-    }
-    toggle();
-  }, [themeToggle]);
 
   function changeTheme() {
     if (localStorage.getItem("theme") === "dark") {
