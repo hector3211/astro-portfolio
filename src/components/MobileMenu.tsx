@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { TbMenu2 } from "react-icons/tb";
 
 export default function Menu() {
-  const [clicked, setClicked] = useState<true | false>(false);
   const [show, setShow] = useState<true | false>(true);
 
   useEffect(() => {
