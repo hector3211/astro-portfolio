@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import ProfileImage from "../../public/profile.png";
+import ProfileImage from "../assets/profile.png";
 ---
 
 <section class="body-font">
@@ -31,14 +31,12 @@ import ProfileImage from "../../public/profile.png";
             </div>
         </div>
         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <figure>
                     <Image
-                        width={900}
-                        height={600}
+                        width="900"
+                        height="600"
                         src={ProfileImage}
                         alt="Hero Profile Picture"
                     />
-                </figure>
         </div>
     </div>
 </section>
