@@ -5,6 +5,8 @@ export interface Props {
 
 const { title } = Astro.props;
 import NavBar from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <!DOCTYPE html>
@@ -29,11 +31,13 @@ import NavBar from "../components/Nav.astro";
             themeChange();
         </script>
         <title>{title}</title>
+          <ViewTransitions />
     </head>
-    <body class="container lg:max-w-screen-md mx-auto">
+    <body class="container relative min-h-screen max-w-screen-md mx-auto">
         <NavBar />
-        <div class="mt-20">
+        <main class="py-20">
             <slot />
-        </div>
+        </main>
+        <Footer/>
     </body>
 </html>

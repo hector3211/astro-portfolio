@@ -6,11 +6,9 @@ import Footer from "../components/Footer.astro";
 import SplineModal from '../components/SplineModal';
 ---
 
-<Layout title="Hector's Portfolio">
-    <main>
-        <SplineModal client:load />
-        <Hero />
-        <Features />
-        <Footer />
-    </main>
+<Layout transition:name='homepage' title="Hector's Portfolio" transition:persist>
+    <SplineModal client:idle />
+    <Hero />
+    <Features />
+    <Footer />
 </Layout>

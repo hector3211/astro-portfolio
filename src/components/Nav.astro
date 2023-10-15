@@ -5,7 +5,7 @@ import { Icon } from "astro-icon";
 ---
 
 <div
-    class="z-50 py-1 pr-2 container items-center lg:max-w-screen-md bg-base-100 bg-opacity-60 backdrop-blur-md fixed top-0"
+    class="z-50 py-4 pr-2 container items-center lg:max-w-screen-md bg-base-100 bg-opacity-60 backdrop-blur-md fixed top-0"
 >
     <div class="flex justify-end items-center">
         <div class="hidden md:flex md:justify-end md:items-center">
@@ -33,12 +33,22 @@ import { Icon } from "astro-icon";
                 href="https://github.com/hector3211"
                 target="_blank"
                 class="tooltip tooltip-bottom hover:scale-95 px-1"
-                data-tip="Projects"
+                data-tip="Github"
             >
                 <Icon name="mdi:github" class="max-h-7 w-7" />
             </a>
+        <a
+                target="_blank"
+            href="https://twitter.com/HectorOropesa1"
+                class="tooltip tooltip-bottom hover:scale-95 px-1"
+                data-tip="Twitter"
+        >
+            <Icon
+                name="mdi:twitter"
+                class="max-h-7 w-7 pointer-events-none hover:scale-95"
+            />
+        </a>
         </div>
         <MobileMenu client:load />
-        <ToggleThemeButton client:load />
     </div>
 </div>
