@@ -15,14 +15,14 @@ export default function Rocket() {
   }
 
   return (
-    <Suspense fallback={<Spinner />}>
-      <div className="h-60 px-2 md:h-80 md:px-0">
+    <div className="h-60 pt-5 px-2 md:h-80 md:px-0">
+      <Suspense fallback={<Spinner />}>
         <Spline
           style={{ borderRadius: 10, boxShadow: "0px 0px 20px 2px black" }}
           scene="https://prod.spline.design/kAJ4mFZRWfP2LZuM/scene.splinecode"
           onLoad={onLoad}
         />
-      </div>
-    </Suspense>
+      </Suspense>
+    </div>
   );
 }
