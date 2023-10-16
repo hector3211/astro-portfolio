@@ -1,13 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { Image } from 'astro:assets';
 import RustFlixImage from "../../assets/rustflix.png";
 import TravelImage from "../../assets/travel.png";
 import GraniteImage from "../../assets/granite.png";
 import WorkerImage from "../../assets/worker.png";
 ---
 
-<Layout  title="Hector's projects">
+<Layout transition:name="projectpage" title="Hector's projects">
     <div class="container mx-auto">
         <h1
             class="lg:py-7 pb-5 text-3xl lg:text-4xl text-center font-bold underline underline-offset-4"
