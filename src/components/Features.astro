@@ -1,51 +1,51 @@
 ---
+const javascriptSkills = ["TypeScript","React","NextJs","SolidJs","Express","NestJs","Drizzle","Prisma"];
+const rustSkills = ["Axum","Actix","Clap","Diesel"];
 ---
 
 <section class="body-font">
     <div
         class="container flex flex-col justify-between px-2 pb-20 md:py-24 mx-auto"
     >
+            <h1
+                class="text-center pb-3 text-transparent bg-gradient-to-tr from-slate-400 to-slate-700 bg-clip-text title-font sm:text-4xl text-3xl mb-4 font-medium"
+            >
+                Programming Skills
+            </h1>
         <div
             class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
         >
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">
-                <p class="py-2 text-xl">Typescript</p>
-                <progress
-                    class="animate-pulse  progress progress-info w-3/4"
-                    value="80"
-                    max="100"></progress>
+                <div class="py-2 text-xl flex">
+                    <p class="text-yellow-500">Javascript</p>
+                </div>
             </div>
             <div class="collapse-content">
-                <p>
-                    Based on my current skill level, I would say that I have
-                    intermediate knowledge of TypeScript, and I feel
-                    very comfortable using tsx as well. With TypeScript, I have
-                    a good grasp of the basics and can write and maintain complex
-                    programs. I have experience working with type definitions,
-                    interfaces, generics, and other core features of the
-                    language. In terms of tsx, I am confident in my ability to
-                    work with React and create type-safe components. Of course,
-                    I know there is always room for improvement, but with more
-                    practice and study, I believe I can continue to develop my
-                    TypeScript skills and become even more proficient in the
-                    language.
+                <div class="bg-zinc-900 rounded-lg flex justify-evenly items-center">
+                    {javascriptSkills.map((skill) => (
+                    <p class="font-light">{skill}</p>
+                    ))}
+                </div>
+                <p class="py-3">
+                    My confidence in JavaScript extends to TypeScript, React, TSX, Next.js, and their seamless integration into the backend with Express and database systems. This proficiency allows me to build end-to-end solutions efficiently, enabling me to create dynamic, interactive web applications with ease.
                 </p>
             </div>
         </div>
         <div
-            class="animate-pulse hover:animate-none collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
         >
             <input type="checkbox" />
             <div class="collapse-title text-xl font-medium">
-                <p class="py-2 text-xl">Rust</p>
-                <progress
-                    class="progress progress-error w-3/4"
-                    value="50"
-                    max="100"></progress>
+                <p class="py-2 text-xl text-orange-600">Rust</p>
             </div>
             <div class="collapse-content">
-                <p>
+                <div class="bg-zinc-900 rounded-lg flex justify-evenly items-center">
+                    {rustSkills.map((skill) => (
+                    <p class="font-light">{skill}</p>
+                    ))}
+                </div>
+                <p class="py-3">
                     I've gained a good understanding of the borrow checker,
                     Results, Enums, and traits. The borrow checker has been a
                     challenging but essential aspect to understand for safe and

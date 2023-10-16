@@ -13,13 +13,16 @@ export default function Menu() {
   }
 
   return (
-    <div className="relative z-50 pr-1 md:hidden">
-      <button className="btn btn-primary" onClick={handleShow}>
-        <TbMenu2 className="text-xl" />
+    <div className="relative z-50 md:hidden">
+      <button
+        className="btn bg-gray-600 hover:bg-gray-700 active:bg-gray-700"
+        onClick={handleShow}
+      >
+        <TbMenu2 className="text-lg" />
       </button>
       {show && (
         <div
-          className={`absolute border border-gray-300 top-14 right-1 w-32 bg-base-100 bg-opacity-90 backdrop-blur-lg rounded-md text-xl drop-shadow-2xl`}
+          className={`absolute border border-gray-300 top-14 right-1 w-32 bg-base-100 bg-opacity-90 backdrop-blur-lg rounded-md text-lg drop-shadow-2xl`}
         >
           <ul className="flex flex-col justify-center items-start p-2">
             <li>
