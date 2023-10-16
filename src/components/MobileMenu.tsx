@@ -21,7 +21,7 @@ export default function Menu() {
         <div
           className={`absolute border border-gray-300 top-14 right-1 w-32 bg-base-100 bg-opacity-90 backdrop-blur-lg rounded-md text-xl drop-shadow-2xl`}
         >
-          <ul className="flex flex-col justify-center items-center p-2">
+          <ul className="flex flex-col justify-center items-start p-2">
             <li>
               <a href="/">Home</a>
             </li>
