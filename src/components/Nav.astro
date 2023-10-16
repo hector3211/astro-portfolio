@@ -2,43 +2,39 @@
 import ToggleThemeButton from "../components/ToggleTheme";
 import MobileMenu from "../components/MobileMenu";
 import { Icon } from "astro-icon";
+import ToggleThemer from "./ToggleThemer.astro";
 ---
 
-<div
+<nav
     class="z-50 py-4 pr-2 container items-center lg:max-w-screen-md bg-base-100 bg-opacity-60 backdrop-blur-md fixed top-0"
+    transition:persist
 >
-    <div class="flex justify-end items-center ">
-        <ToggleThemeButton client:load/>
-        <div class="hidden md:flex md:justify-end md:items-center">
+    <div class="flex justify-end items-center">
+        <div class="hidden md:flex md:justify-end md:items-center md:space-x-3 md:font-medium">
             <a
                 href="/"
-                class="tooltip tooltip-bottom hover:scale-95 px-1"
+                class="hover:link hover:scale-95 active:scale-105"
                 data-tip="Home"
             >
-                <Icon
-                    name="clarity:home-solid"
-                    class="max-h-7 w-7 pointer-events-none"
-                />
+                Home
             </a>
             <a
                 href="/projects"
-                class="w-ful h-full tooltip tooltip-bottom hover:scale-95 px-1"
+                class="hover:link hover:scale-95 active:scale-105"
                 data-tip="Projects"
             >
-                <Icon
-                    name="ph:folder-fill"
-                    class="max-h-7 w-7 pointer-events-none"
-                />
+                Projects
             </a>
             <a
                 href="https://github.com/hector3211"
                 target="_blank"
-                class="tooltip tooltip-bottom hover:scale-95 px-1"
+                class="hover:link hover:scale-95 active:scale-105 px-1"
                 data-tip="Github"
             >
-                <Icon name="mdi:github" class="max-h-7 w-7" />
+                Github
             </a>
         </div>
+        <ToggleThemeButton client:load/>
         <MobileMenu client:load />
     </div>
-</div>
+</nav>
