@@ -1,8 +1,5 @@
 ---
-import { TbSql,TbBrandNextjs,TbBrandHtml5,TbBrandCss3,TbBrandTypescript } from "react-icons/tb";
-import {FaReact,FaRust} from "react-icons/fa";
-import {SiVercel,SiNodedotjs,SiPostman,SiGithub,SiDocker,SiNestjs, SiPostgresql,SiPrisma,SiTailwindcss} from "react-icons/si";
-import {RiJavascriptLine} from "react-icons/ri";
+import { Icon } from 'astro-icon'
 ---
 
 <section class="body-font">
@@ -19,43 +16,55 @@ import {RiJavascriptLine} from "react-icons/ri";
                 <h1 class="text-lg underline underline-offset-2 font-medium">Frontend</h1>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
-                        <TbBrandHtml5/>
+                        <Icon name="icon-park-outline:html-five" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">HTML</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">
-                        <TbBrandCss3/>
+                        <Icon name="tabler:brand-css3" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">CSS</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-                        <RiJavascriptLine />
+                        <Icon name="fluent:javascript-16-regular" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Javascript</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://www.typescriptlang.org/" target="_blank">
-                        <TbBrandTypescript/>
+                    <p class="text-4xl font-bold">TS</p>
                     </a>
                     <p class="text-sm">Typescript</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://react.dev/" target="_blank">
-                        <FaReact/>
+                        <Icon name="mdi:react" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">React</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://vercel.com/" target="_blank">
-                        <TbBrandNextjs/>
+                        <Icon name="file-icons:nextjs" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">NextJs</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://tailwindcss.com/" target="_blank">
-                        <SiTailwindcss/>
+                        <Icon name="mdi:tailwind" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Tailwind</p>
                 </div>
@@ -64,37 +73,47 @@ import {RiJavascriptLine} from "react-icons/ri";
                 <h1 class="text-lg underline underline-offset-2 font-medium">Backend</h1>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://nodejs.org/en" target="_blank">
-                        <SiNodedotjs/>
+                        <Icon name="mdi:nodejs" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">NodeJs</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://nestjs.com/" target="_blank">
-                        <SiNestjs/>
+                        <Icon name="simple-icons:nestjs" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">NestJs</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://developer.mozilla.org/en-US/docs/Glossary/SQL" target="_blank">
-                        <TbSql/>
+                    <p class="text-4xl font-bold">SQL</p>
                     </a>
                     <p class="text-sm">SQL</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://www.postgresql.org/" target="_blank">
-                        <SiPostgresql/>
+                        <Icon name="simple-icons:postgresql" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Postgesql</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://www.prisma.io/" target="_blank">
-                        <SiPrisma />
+                        <Icon name="simple-icons:prisma" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Prisma ORM</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://www.rust-lang.org/" target="_blank">
-                        <FaRust />
+                        <Icon name="cib:rust" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Rust</p>
                 </div>
@@ -103,25 +122,33 @@ import {RiJavascriptLine} from "react-icons/ri";
                 <h1 class="text-lg underline underline-offset-2 font-medium">Tools</h1>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://git-scm.com/" target="_blank">
-                        <SiGithub/>
+                        <Icon name="mdi:git" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Git</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://www.docker.com/" target="_blank">
-                        <SiDocker/>
+                        <Icon name="mdi:docker" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Docker</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://www.postman.com/" target="_blank">
-                        <SiPostman/>
+                        <Icon name="cib:postman" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Postman</p>
                 </div>
                 <div class="flex flex-col items-center">
                     <a class="hover:scale-95 active:scale-105" href="https://vercel.com/" target="_blank">
-                        <SiVercel/>
+                        <Icon name="simple-icons:vercel" 
+                        class="h-14 w-14 pointer-events-none hover:scale-95"
+                        />
                     </a>
                     <p class="text-sm">Vercel</p>
                 </div>
