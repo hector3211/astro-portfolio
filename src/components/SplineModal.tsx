@@ -15,7 +15,7 @@ export default function Rocket() {
     }
 
     return (
-        <div className="h-60 py-5 px-2 md:h-80 md:px-0">
+        <div className="h-80 py-5 px-2 md:h-96 md:px-0">
             <Suspense fallback={<Spinner />}>
                 <Spline
                     style={{ borderRadius: 10, boxShadow: "0px 0px 20px 2px black" }}

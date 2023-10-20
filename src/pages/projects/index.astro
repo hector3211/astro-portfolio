@@ -5,6 +5,7 @@ import TravelImage from "../../assets/travel.png";
 import GraniteImage from "../../assets/granite.png";
 import WorkerImage from "../../assets/worker.png";
 import { Icon } from 'astro-icon'
+import { Image } from 'astro:assets';
 ---
 
 <Layout transition:name="projectpage" title="Hector's projects">
@@ -19,10 +20,10 @@ import { Icon } from 'astro-icon'
                 class="card card-compact border border-gray-500 w-80 h-[480px] bg-base-100 shadow-xl"
             >
                 <figure>
-                    <img
+                    <Image
                         width="600"
                         height="400"
-                        src={RustFlixImage.src}
+                        src={RustFlixImage}
                         alt="Rustlix project card"
                     />
                 </figure>
@@ -53,10 +54,10 @@ import { Icon } from 'astro-icon'
                 class="card card-compact border border-gray-500 w-80 h-[480px] bg-base-100 shadow-xl"
             >
                 <figure>
-                    <img
+                    <Image
                         width="600"
                         height="400"
-                        src={TravelImage.src}
+                        src={TravelImage}
                         alt="travel project card"
                     />
                 </figure>
@@ -90,10 +91,10 @@ import { Icon } from 'astro-icon'
                 class="card card-compact border border-gray-500 w-80 h-[480px] bg-base-100 shadow-xl"
             >
                 <figure>
-                    <img
+                    <Image
                         width="600"
                         height="400"
-                        src={GraniteImage.src}
+                        src={GraniteImage}
                         alt="Granite shop project Card"
                     />
                 </figure>
@@ -127,10 +128,10 @@ import { Icon } from 'astro-icon'
                 class="card card-compact border border-gray-500 w-80 h-[480px] bg-base-100 shadow-xl"
             >
                 <figure>
-                    <img
+                    <Image
                         width="600"
                         height="400"
-                        src={WorkerImage.src}
+                        src={WorkerImage}
                         alt="Worker shop project Card"
                     />
                 </figure>
