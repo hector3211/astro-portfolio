@@ -1,14 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SplineModal from "../components/SplineModal.tsx";
 import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro"
 import Features from "../components/Features.astro";
 import Footer from "../components/Footer.astro";
-import SplineModal from "../components/SplineModal.tsx";
 ---
 
 <Layout transition:name="homepage" title="Hector's Portfolio">
     <SplineModal client:load/>
     <Hero />
+    <Projects />
     <Features />
     <Footer />
 </Layout>
