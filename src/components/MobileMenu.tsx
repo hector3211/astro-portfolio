@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { TbMenu2 } from "react-icons/tb/index.js";
-import { BiLinkExternal } from "react-icons/bi"
+import { BiLinkExternal } from "react-icons/bi/index.js"
 
 export default function Menu() {
     const [show, setShow] = useState<true | false>(true);
