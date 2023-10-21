@@ -23,7 +23,7 @@ export default function Toggle() {
     return (
         <div className="pr-1">
             <button
-                className={`text-lg text-gray-50 ${current === "light"
+                className={`text-lg text-gray-300 ${current === "light"
                     ? "btn btn-primary"
                     : "btn bg-orange-500 hover:bg-orange-600"
                     }`}
