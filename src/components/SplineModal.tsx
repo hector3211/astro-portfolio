@@ -1,6 +1,7 @@
-import Spline from "@splinetool/react-spline";
 import type { Application } from "@splinetool/runtime";
+import React from "react";
 import { Suspense } from "react";
+const Spline = React.lazy(() => import("@splinetool/react-spline"))
 
 function Spinner() {
     return (
@@ -18,8 +19,8 @@ export default function Rocket() {
         <div className="h-80 py-5 px-2 md:h-96 md:px-0">
             <Suspense fallback={<Spinner />}>
                 <Spline
-                    style={{}}
-                    scene="https://prod.spline.design/kAJ4mFZRWfP2LZuM/scene.splinecode"
+                    style={{ borderRadius: 10 }}
+                    scene="https://prod.spline.design/jNzC38qWlP4eDXCX/scene.splinecode"
                     onLoad={onLoad}
                 />
             </Suspense>
