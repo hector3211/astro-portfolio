@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { TbMenu2 } from "react-icons/tb/index.js";
+import { BiLinkExternal } from "react-icons/bi"
 
 export default function Menu() {
     const [show, setShow] = useState<true | false>(true);
@@ -22,20 +23,21 @@ export default function Menu() {
             </button>
             {show && (
                 <div
-                    className={`absolute border border-gray-300 top-14 right-1 w-32 bg-base-100 bg-opacity-90 backdrop-blur-lg rounded-md text-lg drop-shadow-2xl`}
+                    className={`absolute border border-black top-14 right-1 w-32 bg-base-100 bg-opacity-90 backdrop-blur-lg rounded-md text-lg drop-shadow-2xl`}
                 >
-                    <ul className="flex flex-col justify-center items-start p-2">
-                        <li>
-                            <a href="/" onClick={handleShow}>Home</a>
+                    <ul className="flex flex-col space-y-3 justify-center items-start">
+                        <li className="w-full p-1 rounded-t-lg hover:bg-base-300">
+                            <a className="w-full" href="/" onClick={handleShow}>Home</a>
                         </li>
-                        <div className="divider p-0 m-0 text-black"></div>
-                        <li>
-                            <a href="/projects" onClick={handleShow}>Projects</a>
-                        </li>
-                        <div className="divider p-0 m-0 text-black"></div>
-                        <li>
-                            <a href="https://github.com/hector3211" target="_blank">
+                        <li className="w-full p-1 hover:bg-base-300">
+                            <a className="w-full" href="https://github.com/hector3211" target="_blank" onClick={handleShow}>
                                 Github
+                            </a>
+                        </li>
+                        <li className="w-full p-1 rounded-b-lg hover:bg-base-300">
+                            <a className="w-full flex  items-center" href="https://github.com/hector3211/astro-portfolio" target="_blank" onClick={handleShow}>
+                                <p>Source</p>
+                                <BiLinkExternal className="pt-1" />
                             </a>
                         </li>
                     </ul>

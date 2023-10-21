@@ -1,6 +1,7 @@
 ---
 import ToggleThemeButton from "../components/ToggleTheme";
 import MobileMenu from "../components/MobileMenu";
+import { Icon } from 'astro-icon'
 ---
 
 <nav
@@ -24,19 +25,23 @@ import MobileMenu from "../components/MobileMenu";
                     Home
                 </a>
                 <a
-                    href="/projects"
-                    class="hover:link hover:scale-95 active:scale-105"
-                    data-tip="Projects"
-                >
-                    Projects
-                </a>
-                <a
                     href="https://github.com/hector3211"
                     target="_blank"
                     class="hover:link hover:scale-95 active:scale-105 px-1"
                     data-tip="Github"
                 >
                     Github
+                </a>
+                <a
+                    href="https://github.com/hector3211/astro-portfolio"
+                    target="_blank"
+                    class="hover:link hover:scale-95 active:scale-105 flex items-center space-x-1"
+                    data-tip="Source"
+                >
+                    <p>Source</p>
+                    <Icon name="gridicons:external" 
+                        class="h-4 w-4 pointer-events-none hover:scale-95"
+                    />
                 </a>
             </div>
         </div>
