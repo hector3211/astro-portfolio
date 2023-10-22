@@ -8,7 +8,7 @@ import { Icon } from 'astro-icon'
     class="z-50 py-4 pr-2 container items-center lg:max-w-screen-md bg-base-100 bg-opacity-60 backdrop-blur-md fixed top-0"
     transition:persist
 >
-    <div class="flex justify-end md:justify-between items-center">
+    <div class="flex justify-between items-center">
         <div class="hidden md:flex md:justify-start md:pl-3 md:items-end  md:space-x-5 md:font-medium">
             <a
                 href="/"
@@ -45,6 +45,12 @@ import { Icon } from 'astro-icon'
                 </a>
             </div>
         </div>
+        <a
+            href="/"
+            class="pl-2 text-gray-300 text-2xl font-bold hover:scale-95 active:scale-105 block sm:hidden"
+        >
+            Hector Oropesa
+        </a>
         <div class="flex">
             <ToggleThemeButton client:load/>
             <MobileMenu client:load />
