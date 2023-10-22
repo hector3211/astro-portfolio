@@ -4,7 +4,7 @@ const Spline = React.lazy(() => import("@splinetool/react-spline"))
 
 function Spinner() {
     return (
-        <div className="absolute top-1/2 left-1/2 w-10 h-10 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+        <div className="absolute top-1/2 left-[45%] sm:left-1/2 w-10 h-10 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
     );
 }
 

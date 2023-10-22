@@ -26,15 +26,15 @@ export default function Menu() {
                     className={`absolute border border-black top-14 right-1 w-32 bg-base-100 bg-opacity-90 backdrop-blur-lg rounded-md text-lg drop-shadow-2xl`}
                 >
                     <ul className="flex flex-col space-y-3 justify-center items-start">
-                        <li className="w-full p-0.5 rounded-t-lg hover:bg-base-300">
+                        <li className="w-full py-1 px-2 rounded-t-lg hover:bg-base-300 active:bg-base-300">
                             <a className="w-full" href="/" onClick={handleShow}>Home</a>
                         </li>
-                        <li className="w-full p-0.5 hover:bg-base-300">
+                        <li className="w-full py-1 px-2 hover:bg-base-300 active:bg-base-300">
                             <a className="w-full" href="https://github.com/hector3211" target="_blank" onClick={handleShow}>
                                 Github
                             </a>
                         </li>
-                        <li className="w-full p-0.5 rounded-b-lg hover:bg-base-300">
+                        <li className="w-full py-1 px-2 rounded-b-lg hover:bg-base-300 active:bg-base-300">
                             <a className="w-full flex  items-center" href="https://github.com/hector3211/astro-portfolio" target="_blank" onClick={handleShow}>
                                 <p>Source</p>
                                 <BiLinkExternal className="pt-1" />
