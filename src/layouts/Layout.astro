@@ -1,4 +1,5 @@
 ---
+import '../styles/globals.css'
 export interface Props {
     title: string;
 }
@@ -17,32 +18,14 @@ import { ViewTransitions } from "astro:transitions";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <script is:inline>
-            // ☝️ This script prevent the FART effect.
-             const getTheme = () => localStorage.getItem("theme") || "light";
-            const setTheme = (theme) =>
-                document.documentElement.setAttribute("data-theme", theme);
-            if (localStorage.getItem("theme") === null) {
-                document.documentElement.setAttribute("data-theme", "autumn");
-            } else {
-                document.documentElement.setAttribute(
-                    "data-theme",
-                    localStorage.getItem("theme")
-                );
-            }
-             document.addEventListener("astro:after-swap", () => setTheme(getTheme()))
-        </script>
-        <script>
-            import { themeChange } from "theme-change";
-            themeChange();
         </script>
         <ViewTransitions/>
         <title>{title}</title>
     </head>
-    <body class="container relative min-h-screen max-w-screen-md mx-auto">
-        <NavBar />
-        <main class="py-20">
+    <body class="bg-zinc-950 relative min-h-screen max-w-screen mx-auto">
+        <main class="py-20 container mx-auto max-w-screen-md">
+            <NavBar />
             <slot />
         </main>
-        <Footer/>
     </body>
 </html>
