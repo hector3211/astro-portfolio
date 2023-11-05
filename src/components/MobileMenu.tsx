@@ -5,9 +5,15 @@ import { Button } from "./ui/button";
 
 export default function Menu() {
   const [show, setShow] = useState<true | false>(true);
+  const [current, setCurrent] = useState<string>("");
 
   useEffect(() => {
     setShow(false);
+    if (localStorage.getItem("theme") === "dark") {
+      setCurrent("dark");
+    } else {
+      setCurrent("light");
+    }
   }, []);
 
   function handleShow() {
@@ -21,7 +27,11 @@ export default function Menu() {
       </Button>
       {show && (
         <div
-          className={`absolute border border-black top-14 right-0 w-32 bg-zinc-900 backdrop-blur-lg rounded-md text-lg drop-shadow-2xl`}
+          className={`${
+            current === "light"
+              ? "bg-zinc-950 text-white"
+              : "bg-white text-gray-800"
+          } absolute border border-black top-14 right-0 w-32 rounded-md text-lg`}
         >
           <ul className="flex flex-col space-y-3 justify-center items-start">
             <li className="w-full py-1 px-2 rounded-t-lg">

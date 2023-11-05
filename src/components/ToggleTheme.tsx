@@ -14,16 +14,20 @@ export default function Toggle() {
   }, []);
 
   function changeTheme() {
+    const element = document.documentElement;
+    element.classList.toggle("dark");
+
+    const isDark = element.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
     if (localStorage.getItem("theme") === "dark") {
       setCurrent("dark");
     } else {
       setCurrent("light");
     }
   }
-
   return (
-    <div className="pr-1">
-      <Button className={`text-lg text-gray-300`} onClick={changeTheme}>
+    <div className="pr-2">
+      <Button className={`text-lg `} onClick={changeTheme}>
         {current === "light" ? (
           <BsMoonFill className="" />
         ) : (
