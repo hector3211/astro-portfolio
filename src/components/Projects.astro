@@ -6,6 +6,14 @@ import WorkerImage from "../assets/worker.png";
 import { Icon } from 'astro-icon'
 import { Image } from 'astro:assets';
 import { Button } from "./ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 ---
 
 
@@ -16,123 +24,145 @@ import { Button } from "./ui/button";
                 Apps
             </h1>
         <div class="flex flex-col space-y-2 items-center md:flex-row md:flex-wrap md:justify-evenly md:items-end md:space-y-5">
-            <div
-                class=" rounded-md border border-gray-300 w-80 h-[480px]  shadow-xl"
-            >
-                    <Image
-                        width="600"
-                        height="400"
-                        src={RustFlixImage}
-                        alt="Rustlix project card"
-                    />
-                    <div class="py-2 ml-2  flex items-center space-x-1">
-                        <Button>
-                            <a
-                        class=" "
-                                href="https://rustflix.hectororopesa.com/"
-                                target="_blank">Demo</a>
-                        </Button>
-                        <Button>
-                            <a class="  flex items-center" href="https://github.com/hector3211/rust-fullstack" target="_blank">
-                                <p>Source Code</p>
-                        <Icon name="gridicons:external" 
-                        class="h-4 w-4 pointer-events-none hover:scale-95"
-                        />
-                            </a>
-                        </Button>
-                    </div>
-                    <p class="lg:text-md text-center px-2">
-                        Rustflix is a cutting-edge video streaming web app. It uses Next.js 13 server components for lightning-fast frontend rendering. On the backend, with Drizzle ORM ensures efficient data handling and top-notch performance, providing a seamless video streaming experience. With its sleek design and user-friendly interface, Rustflix offers an exceptional entertainment experience.
-                    </p>
-            </div>
-            <div
-                class="rounded-md border border-gray-300 w-80 h-[480px]  shadow-xl"
-            >
-                    <Image
-                        width="600"
-                        height="400"
-                        src={TravelImage}
-                        alt="travel project card"
-                    />
-                    <div class="py-2 ml-2  flex items-center space-x-1">
-                        <Button>
-                            <a
-                        class=" "
-                                href="https://travel.hectororopesa.com"
-                                target="_blank">Demo</a
-                            >
-                        </Button>
-                        <Button>
-                            <a class="  flex items-center" href="https://github.com/hector3211/Travel-website" target="_blank">
-                                <p>Source Code</p>
-                        <Icon name="gridicons:external" 
-                        class="h-4 w-4 pointer-events-none hover:scale-95"
-                        />
-                            </a>
-                        </Button>
-                    </div>
-                    <p class="lg:text-md text-center px-2 ">
-                        This travel app, built with Next.js, offers real-time weather updates and leverages the latest website design trends. It incorporates modern design techniques like responsive design and animations, creating an engaging user experience. The app is not only fast and efficient, but it also ensures that travelers are well-prepared by providing up-to-the-minute weather information.
-                    </p>
-            </div>
-            <div
-                class="rounded-md border border-gray-300 w-80 h-[480px]  shadow-xl"
-            >
-                    <Image
-                        width="600"
-                        height="400"
-                        src={GraniteImage}
-                        alt="Granite shop project Card"
-                    />
-                    <div class="py-2 ml-2  flex items-center space-x-1">
-                        <Button>
-                            <a
-                        class=" "
-                                href="https://granite.hectororopesa.com"
-                                target="_blank">Demo</a
-                            >
-                        </Button>
-                        <Button>
-                            <a class="  flex items-center" href="https://github.com/hector3211/gd-granite" target="_blank">
-                                <p>Source Code</p>
-                        <Icon name="gridicons:external" 
-                        class="h-4 w-4 pointer-events-none hover:scale-95"
-                        />
-                            </a>
-                        </Button>
-                        </div>
-                    <p class="lg:text-md text-center px-2 ">
-                        This granite shop website, created with Astro JS 3.0 and TypeScript, offers a smooth and engaging user experience. Powered by React, the site delivers enhanced interactivity and responsiveness. We've implemented a top-notch validated form for data accuracy. Moreover, it follows the trending responsive design, ensuring it looks great on all devices.
-                    </p>
-            </div>
-            <div
-                class="rounded-md border border-gray-300 w-80 h-[480px]  shadow-xl"
-            >
-                    <Image
-                        width="600"
-                        height="400"
-                        src={WorkerImage}
-                        alt="Worker shop project Card"
-                    />
-                    <div class="py-2 ml-2  flex items-center space-x-1">
-                            <Button
-                                disabled
+        <Card>
+  <CardHeader>
+    <CardTitle>RustFlix</CardTitle>
+    <CardDescription>Movie application.</CardDescription>
+  </CardHeader>
+  <CardContent>
+                <Image
+                    width="900"
+                    height="400"
+                    src={RustFlixImage}
+                    alt="Rustlix project card"
+                />
+                <p class="lg:text-md text-center px-2">
+                    Rustflix is a cutting-edge video streaming web app. It uses Next.js 13 server components for lightning-fast frontend rendering. On the backend, with Drizzle ORM ensures efficient data handling and top-notch performance, providing a seamless video streaming experience. With its sleek design and user-friendly interface, Rustflix offers an exceptional entertainment experience.
+                </p>
+  </CardContent>
+  <CardFooter>
+                <div class="py-2 ml-2  flex items-center space-x-1">
+                    <Button>
+                        <a
+                            href="https://rustflix.hectororopesa.com/"
+                            target="_blank">Demo</a>
+                    </Button>
+                    <Button>
+                        <a class="  flex items-center" href="https://github.com/hector3211/rust-fullstack" target="_blank">
+                            <p>Source Code</p>
+                            <Icon name="gridicons:external" 
+                                class="h-4 w-4 pointer-events-none hover:scale-95"
+                            />
+                        </a>
+                    </Button>
+                </div>
+  </CardFooter>
+</Card>
+        <Card>
+            <CardHeader>
+                <CardTitle>Travel</CardTitle>
+                <CardDescription>Travel aggency application.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Image
+                    width="900"
+                    height="400"
+                    src={TravelImage}
+                    alt="travel project card"
+                />
+                <p class="lg:text-md text-center px-2 ">
+                    This travel app, built with Next.js, offers real-time weather updates and leverages the latest website design trends. It incorporates modern design techniques like responsive design and animations, creating an engaging user experience. The app is not only fast and efficient, but it also ensures that travelers are well-prepared by providing up-to-the-minute weather information.
+                </p>
+            </CardContent>
+            <CardFooter>
+                <div class="py-2 ml-2  flex items-center space-x-1">
+                    <Button>
+                        <a
+                            href="https://travel.hectororopesa.com"
+                            target="_blank">Demo</a
+                        >
+                    </Button>
+                    <Button>
+                        <a class="  flex items-center" href="https://github.com/hector3211/Travel-website" target="_blank">
+                            <p>Source Code</p>
+                            <Icon name="gridicons:external" 
+                                class="h-4 w-4 pointer-events-none hover:scale-95"
+                            />
+                        </a>
+                    </Button>
+                </div>
+            </CardFooter>
+        </Card>
+        <Card>
+  <CardHeader>
+    <CardTitle>Granite</CardTitle>
+    <CardDescription>Granite shop website.</CardDescription>
+  </CardHeader>
+  <CardContent>
+                <Image
+                    width="900"
+                    height="400"
+                    src={GraniteImage}
+                    alt="Granite shop project Card"
+                />
+                <p class="lg:text-md text-center px-2 ">
+                    This granite shop website, created with Astro JS 3.0 and TypeScript, offers a smooth and engaging user experience. Powered by React, the site delivers enhanced interactivity and responsiveness. We've implemented a top-notch validated form for data accuracy. Moreover, it follows the trending responsive design, ensuring it looks great on all devices.
+                </p>
+  </CardContent>
+  <CardFooter>
+                <div class="py-2 ml-2  flex items-center space-x-1">
+                    <Button>
+                        <a
+                            href="https://granite.hectororopesa.com"
+                            target="_blank">Demo</a
+                        >
+                    </Button>
+                    <Button>
+                        <a class="  flex items-center" href="https://github.com/hector3211/gd-granite" target="_blank">
+                            <p>Source Code</p>
+                            <Icon name="gridicons:external" 
+                                class="h-4 w-4 pointer-events-none hover:scale-95"
+                            />
+                        </a>
+                    </Button>
+                </div>
+  </CardFooter>
+</Card>
+
+        <Card>
+  <CardHeader>
+    <CardTitle>Worker</CardTitle>
+    <CardDescription>CMS for granite companys</CardDescription>
+  </CardHeader>
+  <CardContent>
+                <Image
+                    width="900"
+                    height="400"
+                    src={WorkerImage}
+                    alt="Worker shop project Card"
+                />
+                <p class="lg:text-md text-center px-2">
+                    Built on Next.Js, featuring admin role-based job creation, UploadThing for project picture uploads, and individual profiles for fabricators. Notably, fabricators receive React email notifications for newly assigned jobs. With TypeScript and modern UI/UX patterns, our app offers a user-friendly solution to optimize the production process for granite companies.
+                </p>
+  </CardContent>
+  <CardFooter>
+                <div class="py-2 ml-2 w-full flex justify-between items-center ">
+                    <div class="flex space-x-1">
+                        <Button
+                            disabled
                         >
                             Demo
                         </Button>
-                            <Button className="  flex items-center" disabled>
-                                <p>Source Code</p>
-                        <Icon name="gridicons:external" 
-                        class="h-4 w-4 pointer-events-none hover:scale-95"
-                        />
-                            </Button>
-                        </div>
-                    <p class="lg:text-md text-center px-2">
-                        Built on Next.Js, featuring admin role-based job creation, UploadThing for project picture uploads, and individual profiles for fabricators. Notably, fabricators receive React email notifications for newly assigned jobs. With TypeScript and modern UI/UX patterns, our app offers a user-friendly solution to optimize the production process for granite companies.
-                    </p>
-                    <div class="flex justify-center text-center py-2">
-                        <span class="text-gray-800 bg-sky-500 px-2 rounded-full">Private</span>
+                        <Button className="  flex items-center" disabled>
+                            <p>Source Code</p>
+                            <Icon name="gridicons:external" 
+                                class="h-4 w-4 pointer-events-none hover:scale-95"
+                            />
+                        </Button>
                     </div>
-            </div>
+                        <span class="text-primary-foreground bg-primary px-2 rounded-full">Private</span>
+                </div>
+  </CardFooter>
+</Card>
         </div>
 </section>
