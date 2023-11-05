@@ -6,7 +6,6 @@ export interface Props {
 
 const { title } = Astro.props;
 import NavBar from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
 ---
 
@@ -22,7 +21,7 @@ import { ViewTransitions } from "astro:transitions";
         <ViewTransitions/>
         <title>{title}</title>
     </head>
-    <body class="bg-zinc-950 relative min-h-screen max-w-screen mx-auto">
+    <body class="relative min-h-screen max-w-screen mx-auto">
         <main class="py-20 container mx-auto max-w-screen-md">
             <NavBar />
             <slot />
