@@ -1,60 +1,64 @@
 ---
 import ToggleThemeButton from "../components/ToggleTheme";
 import MobileMenu from "../components/MobileMenu";
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon";
 ---
 
 <nav
-    transition:persist
-    class="z-50 py-4 w-full container lg:max-w-screen-md items-center bg-opacity-60 backdrop-blur-md fixed top-0"
+  transition:persist
+  class="container fixed top-0 z-50 w-full items-center bg-opacity-60 py-4 backdrop-blur-md lg:max-w-screen-md"
 >
-    <div class="flex justify-between items-center">
-        <div class="hidden md:flex md:justify-start md:pl-3 md:items-end  md:space-x-5 md:font-medium">
-            <a
-                href="/"
-                class="text-gray-300 text-2xl font-bold hover:scale-95 active:scale-105"
-                class="text-2xl font-bold hover:scale-95 active:scale-105"
-            >
-                Hector Oropesa
-            </a>
-            <div class="flex space-x-3">
-                <a
-                    href="/"
-                    class="hover:link hover:scale-95 active:scale-105"
-                    data-tip="Home"
-                >
-                    Home
-                </a>
-                <a
-                    href="https://github.com/hector3211"
-                    target="_blank"
-                    class="hover:link hover:scale-95 active:scale-105 px-1"
-                    data-tip="Github"
-                >
-                    Github
-                </a>
-                <a
-                    href="https://github.com/hector3211/astro-portfolio"
-                    target="_blank"
-                    class="hover:link hover:scale-95 active:scale-105 flex items-center space-x-1"
-                    data-tip="Source"
-                >
-                    <p>Source</p>
-                    <Icon name="gridicons:external" 
-                        class="h-4 w-4 pointer-events-none hover:scale-95"
-                    />
-                </a>
-            </div>
-        </div>
+  <div class="flex items-center justify-between">
+    <div
+      class="hidden md:flex md:items-end md:justify-start md:space-x-5 md:pl-3 md:font-medium"
+    >
+      <a
+        href="/"
+        class="text-2xl font-bold text-gray-300 hover:scale-95 active:scale-105"
+        class="text-2xl font-bold hover:scale-95 active:scale-105"
+      >
+        Hector Oropesa
+      </a>
+      <div class="flex space-x-3">
         <a
-            href="/"
-            class="text-gray-300 text-2xl font-bold hover:scale-95 active:scale-105 block md:hidden"
-            class="text-2xl font-bold hover:scale-95 active:scale-105 block md:hidden"
+          href="/"
+          class="hover:link hover:scale-95 active:scale-105"
+          data-tip="Home"
         >
-            Hector Oropesa
+          Home
         </a>
-        <div class="flex">
-            <ToggleThemeButton client:load/>
-            <MobileMenu client:load />
-        </div>
+        <a
+          href="https://github.com/hector3211"
+          target="_blank"
+          class="hover:link px-1 hover:scale-95 active:scale-105"
+          data-tip="Github"
+        >
+          Github
+        </a>
+        <a
+          href="https://github.com/hector3211/astro-portfolio"
+          target="_blank"
+          class="hover:link flex items-center space-x-1 hover:scale-95 active:scale-105"
+          data-tip="Source"
+        >
+          <p>Source</p>
+          <Icon
+            name="gridicons:external"
+            class="pointer-events-none h-4 w-4 hover:scale-95"
+          />
+        </a>
+      </div>
     </div>
+    <a
+      href="/"
+      class="block text-2xl font-bold text-gray-300 hover:scale-95 active:scale-105 md:hidden"
+      class="block text-2xl font-bold hover:scale-95 active:scale-105 md:hidden"
+    >
+      Hector Oropesa
+    </a>
+    <div class="flex">
+      <ToggleThemeButton client:load />
+      <MobileMenu client:load />
+    </div>
+  </div>
+</nav>

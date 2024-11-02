@@ -1,26 +1,28 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import SplineModal from "../components/SplineModal.tsx";
-import Hero from "../components/Hero.astro";
-import Projects from "../components/Projects.astro"
-import Features from "../components/Features.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "@/layouts/Layout.astro";
+import SplineModal from "@/components/SplineModal.tsx";
+import Hero from "@/components/Hero.astro";
+import Projects from "@/components/Projects.astro";
+import Features from "@/components/Features.astro";
+import Footer from "@/components/Footer.astro";
 import { Icon } from "astro-icon";
 ---
 
 <Layout transition:name="homepage" title="Hector's Portfolio">
-    <SplineModal client:load/>
-     <div class="bg-gray-800 text-white dark:text-primary-foreground px-2 py-4 w-5/6 sm:w-3/4 mx-auto rounded-lg flex justify-center items-center space-x-3 border-black">
-            <Icon
-                name="noto-v1:light-bulb"
-                class="text-info max-h-7 w-7 pointer-events-none hover:scale-95"
-            />
-        <p class="">Hello, I'm an App developer based in Florida!</p>
-    </div>
-    <div class="px-5 md:px-0">
-        <Hero />
-        <Projects />
-        <Features />
-        <Footer />
-    </div>
+  <SplineModal client:load />
+  <div
+    class="mx-auto flex w-5/6 items-center justify-center space-x-3 rounded-lg border-black bg-gray-800 px-2 py-4 text-white dark:text-primary-foreground sm:w-3/4"
+  >
+    <Icon
+      name="noto-v1:light-bulb"
+      class="text-info pointer-events-none max-h-7 w-7 hover:scale-95"
+    />
+    <p class="">Hello, I'm an App developer based in Florida!</p>
+  </div>
+  <div class="px-5 md:px-0">
+    <Hero />
+    <Projects />
+    <Features />
+    <Footer />
+  </div>
 </Layout>
