@@ -1,40 +1,50 @@
 ---
-import { Image } from 'astro:assets';
-import ProfileImage from "../assets/profile.png";
 import { Button } from "../components/ui/button.tsx";
 ---
 
-<section class="body-font sm:py-0 pb-3 md:pt-16 md:pb-0 px-2">
-    <div class="container mx-auto flex flex-col sm:flex-row">
-        <div class="w-full sm:w-3/4">
-                <Image
-                    width="300"
-                    height="200"
-                    src={ProfileImage}
-                    alt="Hero Profile Picture"
-                />
-        </div>
-        <div class="flex flex-col items-center justify-center pb-3">
-            <h1
-                class="text-transparent bg-gradient-to-tr from-slate-300 to-slate-700 bg-clip-text text-center text-2xl sm:text-4xl mb-4 font-bold"
-            >
-                Hector Oropesa
-                <br class="hidden lg:inline-block" />Full-Stack Developer
-            </h1>
-            <div class="flex justify-center items-center">
-                <Button
-                    className="bg-teal-500 hover:bg-teal-400 shadow-2xl w-60 shadow-teal-500 "
-                >
-                    <a href="mailto:horopesa494@gmail.com">Contact</a>
-                </Button>
-            </div>
-        </div>
-        </div>
-    <div
-        class="px-3 pt-3 w-full"
+<section class="body-font w-full px-2 pb-3 sm:py-0 md:pb-0 md:pt-16">
+  <div class="container mx-auto py-10">
+    <h1
+      class="mb-5 bg-gradient-to-tr from-slate-300 to-slate-700 bg-clip-text text-center text-2xl font-bold text-transparent sm:text-4xl md:text-6xl"
     >
-        <p class="text-justify whitespace-normal leading-relaxed indent-2 px-2">
-            Hector Oropesa, a driven freelance fullstack developer based in Florida. Hector possesses an unparalleled knack for rapid self-learning and is always at the forefront of the ever-evolving web design trends. With a versatile skill set that encompasses not only top-tier application coding but also a keen eye for design and the creation of intuitive UI/UX interfaces, Hector stands as a valuable asset for any project. His unwavering commitment to excellence and staying on the cutting edge of the tech world make him an ideal choice for your next software development endeavor.
-        </p>
-    </div>
+      Hector Oropesa
+      <br class="hidden lg:inline-block" />Full-Stack Developer
+    </h1>
+    <a href="mailto:hectororopesa5@gmail.com" class="flex justify-center">
+      <Button
+        className="mx-auto w-60 bg-teal-500 shadow-2xl shadow-teal-500 hover:bg-teal-400 "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="20"
+          height="20"
+        >
+          <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
+          <polyline points="3 6 12 13 21 6"></polyline>
+        </svg>
+        <p class="sm:text-md px-1">Contact</p>
+      </Button>
+    </a>
+  </div>
+  <div class="w-full px-3 pt-3">
+    <p
+      class="mx-auto max-w-3xl whitespace-normal px-2 text-justify leading-relaxed"
+    >
+      Hector Oropesa, a driven freelance fullstack developer based in Florida.
+      Hector possesses an unparalleled knack for rapid self-learning and is
+      always at the forefront of the ever-evolving web design trends. With a
+      versatile skill set that encompasses not only top-tier application coding
+      but also a keen eye for design and the creation of intuitive UI/UX
+      interfaces, Hector stands as a valuable asset for any project. His
+      unwavering commitment to excellence and staying on the cutting edge of the
+      tech world make him an ideal choice for your next software development
+      endeavor.
+    </p>
+  </div>
 </section>

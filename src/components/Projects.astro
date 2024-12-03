@@ -1,8 +1,8 @@
 ---
-import RustFlixImage from "../assets/rustflixv3.png";
+import RustFlixImage from "../assets/rustflix.png";
 import TravelImage from "../assets/travel.png";
-import GraniteImage from "../assets/granite.png";
-import GraniteSyncImage from "../assets/granite-sync-dash.png";
+import GraniteImage from "../assets/gd.png";
+import GraniteSyncImage from "../assets/sync.png";
 import { Icon } from "astro-icon";
 import { Image } from "astro:assets";
 import { Button } from "./ui/button";
@@ -23,7 +23,7 @@ import {
     Apps
   </h1>
   <div
-    class="flex flex-col items-center space-y-2 md:flex-row md:flex-wrap md:items-end md:justify-evenly md:space-y-5"
+    class="grid grid-cols-1 items-center justify-items-center gap-4 sm:grid-cols-2"
   >
     <Card>
       <CardHeader>
@@ -32,14 +32,14 @@ import {
           Job creation, inventory management, email notifications granite cms.
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="h-[35rem]">
         <Image
-          width="900"
-          height="400"
+          width={900}
+          height={400}
           src={GraniteSyncImage}
           alt="granitesync project Card"
         />
-        <p class="lg:text-md px-2 text-justify">
+        <p class="lg:text-md py-3 text-justify leading-relaxed">
           Built on Next.Js, featuring admin role-based login, inventory
           management and job creation, UploadThing for project picture uploads,
           and individual profiles for fabricators. Notably, fabricators receive
@@ -73,14 +73,14 @@ import {
         <CardTitle>RustFlix</CardTitle>
         <CardDescription>Movie application.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="h-[35rem]">
         <Image
-          width="900"
-          height="400"
+          width={900}
+          height={400}
           src={RustFlixImage}
           alt="rustlix project card"
         />
-        <p class="lg:text-md px-2 text-justify">
+        <p class="lg:text-md py-3 text-justify leading-relaxed">
           Rustflix is a cutting-edge video streaming web app. It uses Next.js 13
           server components for lightning-fast frontend rendering. On the
           backend, with Drizzle ORM ensures efficient data handling and
@@ -92,9 +92,7 @@ import {
       <CardFooter>
         <div class="ml-2 flex items-center space-x-1 py-2">
           <Button>
-            <a href="https://rustflix.hectororopesa.com/" target="_blank"
-              >Demo</a
-            >
+            <a href="https://rustflix.hectorcodes.dev/" target="_blank">Demo</a>
           </Button>
           <Button>
             <a
@@ -117,14 +115,14 @@ import {
         <CardTitle>Travel</CardTitle>
         <CardDescription>Travel aggency application.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="h-[35rem]">
         <Image
-          width="900"
-          height="400"
+          width={900}
+          height={400}
           src={TravelImage}
           alt="travel project card"
         />
-        <p class="lg:text-md px-2 text-justify">
+        <p class="lg:text-md py-3 text-justify leading-relaxed">
           This travel app, built with Next.js, offers real-time weather updates
           and leverages the latest website design trends. It incorporates modern
           design techniques like responsive design and animations, creating an
@@ -136,7 +134,7 @@ import {
       <CardFooter>
         <div class="ml-2 flex items-center space-x-1 py-2">
           <Button>
-            <a href="https://travel.hectororopesa.com" target="_blank">Demo</a>
+            <a href="https://travel.hectorcodes.dev" target="_blank">Demo</a>
           </Button>
           <Button>
             <a
@@ -159,14 +157,14 @@ import {
         <CardTitle>Granite</CardTitle>
         <CardDescription>Granite shop website.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="h-[35rem]">
         <Image
-          width="900"
-          height="400"
+          width={900}
+          height={400}
           src={GraniteImage}
           alt="Granite shop project Card"
         />
-        <p class="lg:text-md px-2 text-justify">
+        <p class="lg:text-md py-3 text-justify leading-relaxed">
           This granite shop website, created with Astro JS 3.0 and TypeScript,
           offers a smooth and engaging user experience. Powered by React, the
           site delivers enhanced interactivity and responsiveness. We've
@@ -178,7 +176,7 @@ import {
       <CardFooter>
         <div class="ml-2 flex items-center space-x-1 py-2">
           <Button>
-            <a href="https://granite.hectororopesa.com" target="_blank">Demo</a>
+            <a href="https://granite.hectorcodes.dev" target="_blank">Demo</a>
           </Button>
           <Button>
             <a
