@@ -15,6 +15,8 @@
   "author": "Hector Oropesa",
   "license": "MIT",
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/image": "^0.18.0",
     "@astrojs/react": "^3.6.3",
     "@astrojs/tailwind": "^5.1.2",
     "@astrojs/vercel": "^7.8.2",
@@ -24,7 +26,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.10",
     "add": "^2.0.6",
-    "astro": "^4.16.16",
+    "astro": "4.16.16",
     "astro-heroicons": "^0.3.0",
     "astro-icon": "^0.8.1",
     "class-variance-authority": "^0.7.0",
@@ -37,7 +39,7 @@
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.2.6",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.2.2",
+    "typescript": "^5.7.2",
     "vercel": "^39.1.2"
   },
   "devDependencies": {
