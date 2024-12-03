@@ -15,15 +15,16 @@
   "author": "Hector Oropesa",
   "license": "MIT",
   "dependencies": {
-    "@astrojs/react": "^3.0.3",
-    "@astrojs/tailwind": "^5.0.2",
-    "@astrojs/vercel": "^3.1.3",
+    "@astrojs/react": "^3.6.3",
+    "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vercel": "^7.8.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.481",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.10",
-    "astro": "^3.3.0",
+    "add": "^2.0.6",
+    "astro": "^4.16.16",
     "astro-heroicons": "^0.3.0",
     "astro-icon": "^0.8.1",
     "class-variance-authority": "^0.7.0",
@@ -36,7 +37,8 @@
     "tailwind-merge": "^2.0.0",
     "tailwindcss": "^3.2.6",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vercel": "^39.1.2"
   },
   "devDependencies": {
     "prettier": "^3.0.3",
