@@ -1,7 +1,7 @@
 ---
 import ToggleThemeButton from "../components/ToggleTheme";
 import MobileMenu from "../components/MobileMenu";
-import { Icon } from "astro-icon";
+import { ExternalLink } from "lucide-astro";
 ---
 
 <nav
@@ -38,10 +38,7 @@ import { Icon } from "astro-icon";
           data-tip="Source"
         >
           <p>Source</p>
-          <Icon
-            name="gridicons:external"
-            class="pointer-events-none h-4 w-4 hover:scale-95"
-          />
+          <ExternalLink />
         </a>
       </div>
     </div>

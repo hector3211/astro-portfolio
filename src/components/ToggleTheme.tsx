@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsMoonFill, BsSunFill } from "react-icons/bs/index.js";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "../components/ui/button.tsx";
 
 export default function Toggle() {
@@ -28,11 +28,7 @@ export default function Toggle() {
   return (
     <div className="pr-2">
       <Button className={`text-lg `} onClick={changeTheme}>
-        {current === "light" ? (
-          <BsMoonFill className="" />
-        ) : (
-          <BsSunFill className="" />
-        )}
+        {current === "light" ? <Moon className="" /> : <Sun className="" />}
       </Button>
     </div>
   );

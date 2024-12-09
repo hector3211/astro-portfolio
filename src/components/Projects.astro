@@ -4,7 +4,6 @@ import TravelImage from "@/assets/travel-update.png";
 import GraniteImage from "@/assets/granite-update.png";
 import GraniteSyncImage from "@/assets/sync.png";
 import HoneyNectarImage from "@/assets/honey-nectar-website.png";
-import { Icon } from "astro-icon";
 import { Image } from "astro:assets";
 import { Button } from "./ui/button";
 import {
@@ -15,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
+import { ExternalLink } from "lucide-astro";
 ---
 
 <section class="body-font py-10 pb-8 sm:py-20 md:pb-0">
@@ -143,10 +143,7 @@ import {
                   target="_blank"
                 >
                   <p>Source Code</p>
-                  <Icon
-                    name="gridicons:external"
-                    class="pointer-events-none h-4 w-4 hover:scale-95"
-                  />
+                  <ExternalLink />
                 </a>
               </Button>
             </div>
