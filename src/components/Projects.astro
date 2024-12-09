@@ -1,9 +1,10 @@
 ---
+import GraniteSyncImage from "@/assets/sync.png";
+import NotifyImage from "@/assets/noty.png";
+import GraniteImage from "@/assets/granite-update.png";
+import HoneyNectarImage from "@/assets/honey-nectar-website.png";
 import RustFlixImage from "@/assets/rustflix-update.png";
 import TravelImage from "@/assets/travel-update.png";
-import GraniteImage from "@/assets/granite-update.png";
-import GraniteSyncImage from "@/assets/sync.png";
-import HoneyNectarImage from "@/assets/honey-nectar-website.png";
 import { Image } from "astro:assets";
 import { Button } from "./ui/button";
 import {
@@ -30,7 +31,7 @@ import { ExternalLink } from "lucide-astro";
       [
         {
           title: "GraniteSync",
-          description: "All in one production work flow SaaS",
+          description: "Production Work Flow SaaS",
           highlight: `Built on Next.Js, featuring admin role-based login, inventory
           management and job creation, UploadThing for project picture uploads,
           and individual profiles for fabricators. Notably, fabricators receive
@@ -43,38 +44,14 @@ import { ExternalLink } from "lucide-astro";
           github: "",
         },
         {
-          title: "RustFlix",
-          description: "Movie Application",
-          highlight: `
-            Rustflix is a cutting-edge video streaming web app. It uses Next.js 13
-            server components for lightning-fast frontend rendering. On the
-            backend, with Drizzle ORM ensures efficient data handling and
-            top-notch performance, providing a seamless video streaming
-            experience. With its sleek design and user-friendly interface,
-            Rustflix offers an exceptional entertainment experience.
-        `,
-          src: RustFlixImage,
-          alt: "RustFlix iamge",
-          live: "",
-          github: "https://github.com/hector3211/rust-fullstack",
+          title: "Notify",
+          description: "Local Bussines Tool",
+          highlight: `Notify is a high-performance web application tailored for local granite shops, built with Golang, Templ, HTMX, and Tailwind CSS. Designed for speed and simplicity, Notify enables admins to create customer accounts effortlessly. Customers can sign in securely using their email and password to track the real-time status of their orders. With its responsive design and efficient functionality, Notify ensures seamless job notification management for both businesses and customers.`,
+          src: NotifyImage,
+          alt: "Notify iamge",
+          live: "https://notifyjobs.dev",
+          github: "https://github.com/hector3211/notify",
         },
-        {
-          title: "Travel",
-          description: "Travel aggency application.",
-          highlight: `
-            This travel app, built with Next.js, offers real-time weather updates
-            and leverages the latest website design trends. It incorporates modern
-            design techniques like responsive design and animations, creating an
-            engaging user experience. The app is not only fast and efficient, but
-            it also ensures that travelers are well-prepared by providing
-            up-to-the-minute weather information.
-        `,
-          src: TravelImage,
-          alt: "Travel iamge",
-          live: "https://travel.hectorcodes.dev",
-          github: "https://github.com/hector3211/Travel-website",
-        },
-
         {
           title: "GD Granite",
           description: "Local Granite Shop Website.",
@@ -103,27 +80,54 @@ import { ExternalLink } from "lucide-astro";
             devices.
         `,
           src: HoneyNectarImage,
-          alt: "GDGranite iamge",
+          alt: "Honey Nectar iamge",
           live: "https://honeynectarastrology.com",
           github: "",
         },
+        {
+          title: "RustFlix",
+          description: "Movie Application",
+          highlight: `
+            Rustflix is a cutting-edge video streaming web app. It uses Next.js 13
+            server components for lightning-fast frontend rendering. On the
+            backend, with Drizzle ORM ensures efficient data handling and
+            top-notch performance, providing a seamless video streaming
+            experience. With its sleek design and user-friendly interface,
+            Rustflix offers an exceptional entertainment experience.
+        `,
+          src: RustFlixImage,
+          alt: "RustFlix iamge",
+          live: "rustflix.hectorcodes.dev",
+          github: "https://github.com/hector3211/rust-fullstack",
+        },
+        {
+          title: "Travel",
+          description: "Travel Aggency Application.",
+          highlight: `
+            This travel app, built with Next.js, offers real-time weather updates
+            and leverages the latest website design trends. It incorporates modern
+            design techniques like responsive design and animations, creating an
+            engaging user experience. The app is not only fast and efficient, but
+            it also ensures that travelers are well-prepared by providing
+            up-to-the-minute weather information.
+        `,
+          src: TravelImage,
+          alt: "Travel iamge",
+          live: "https://travel.hectorcodes.dev",
+          github: "https://github.com/hector3211/Travel-website",
+        },
       ].map((project) => (
-        <Card
-          className={`${project.title === "GraniteSync" ? "col-span-2" : "col-span-2 lg:col-span-1"}`}
-        >
+        <Card className={`"col-span-2 lg:col-span-1`}>
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
             <CardDescription>{project.description}</CardDescription>
           </CardHeader>
-          <CardContent
-            className={`${project.title === "GraniteSync" ? "" : "h-[35rem]"}`}
-          >
+          <CardContent className={`h-[35rem]`}>
             <Image
               width={900}
               height={400}
               src={project.src}
               alt={project.alt}
-              class={`${project.title === "GraniteSync" && "w-full object-cover"}`}
             />
             <p class="lg:text-md py-3 text-justify leading-relaxed">
               {project.highlight}
@@ -131,9 +135,9 @@ import { ExternalLink } from "lucide-astro";
           </CardContent>
           <CardFooter>
             <div class="ml-2 flex items-center space-x-1 py-2">
-              <Button>
+              <Button disabled={!project.live}>
                 <a href={`${project.live}`} target="_blank">
-                  Demo
+                  Live
                 </a>
               </Button>
               <Button disabled={!project.github}>
@@ -142,8 +146,8 @@ import { ExternalLink } from "lucide-astro";
                   href={`${project.github}`}
                   target="_blank"
                 >
-                  <p>Source Code</p>
                   <ExternalLink />
+                  <p class="text-md">Source Code</p>
                 </a>
               </Button>
             </div>
