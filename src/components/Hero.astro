@@ -10,27 +10,26 @@ import { Button } from "../components/ui/button.tsx";
       Hector Oropesa
       <br class="hidden lg:inline-block" />Full-Stack Developer
     </h1>
-    <a href="mailto:hectororopesa5@gmail.com" class="flex justify-center">
-      <Button
-        className="mx-auto w-60 bg-teal-500 shadow-2xl shadow-teal-500 hover:bg-teal-400 "
+    <Button
+      id="contact-button"
+      className="mx-auto flex w-60 justify-center bg-teal-500 shadow-md shadow-teal-600 hover:bg-teal-500/80 "
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="20"
+        height="20"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          width="20"
-          height="20"
-        >
-          <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
-          <polyline points="3 6 12 13 21 6"></polyline>
-        </svg>
-        <p class="sm:text-md px-1">Contact</p>
-      </Button>
-    </a>
+        <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
+        <polyline points="3 6 12 13 21 6"></polyline>
+      </svg>
+      <p class="sm:text-md px-1">Contact</p>
+    </Button>
   </div>
   <div class="w-full px-3 pt-3">
     <p
@@ -48,3 +47,11 @@ import { Button } from "../components/ui/button.tsx";
     </p>
   </div>
 </section>
+
+<script>
+  const button = document.getElementById("contact-button");
+
+  button?.addEventListener("click", () => {
+    window.location.href = "#contact";
+  });
+</script>

@@ -6,6 +6,7 @@ export interface Props {
 
 const { title } = Astro.props;
 import NavBar from "../components/Nav.astro";
+import { Toaster } from "@/components/ui/sonner";
 ---
 
 <script is:inline>
@@ -45,5 +46,6 @@ import NavBar from "../components/Nav.astro";
     <main class="py-20">
       <slot />
     </main>
+    <Toaster client:load />
   </body>
 </html>
