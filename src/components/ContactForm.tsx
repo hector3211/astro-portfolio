@@ -40,9 +40,9 @@ export default function ContactForm() {
       setMessage("");
       toast.success("Message successful");
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : String(error);
-      console.log(`form failed with: ${errorMessage}`);
+      // const errorMessage =
+      //   error instanceof Error ? error.message : String(error);
+      // console.log(`form failed with: ${errorMessage}`);
       toast.error("failed sending message, please try again later");
     } finally {
       setPending(false);

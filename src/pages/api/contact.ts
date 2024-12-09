@@ -24,8 +24,8 @@ export const POST: APIRoute = async ({ request }) => {
   }
   const key = import.meta.env.SECRET_PLUNK_API_KEY;
   const businessEmail = import.meta.env.SECRET_BUSINESS_EMAIL;
-  console.log(`key: ${key}`);
-  console.log(`email: ${businessEmail}`);
+  // console.log(`key: ${key}`);
+  // console.log(`email: ${businessEmail}`);
   if (!key || !businessEmail) {
     return new Response(
       JSON.stringify({
