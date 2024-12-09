@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SplineModal from "@/components/SplineModal.tsx";
+import Hero from "@/components/Hero.astro";
+import Projects from "@/components/Projects.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout transition:name="homepage" title="Hector's Portfolio">
+  <SplineModal client:load />
+  <div
+    class="mx-auto flex w-5/6 items-center justify-center space-x-3 rounded-lg border-black bg-gray-800 px-2 py-4 text-white dark:text-primary-foreground sm:w-3/4"
+  >
+    💡
+    <p class="">Hello, I'm an App developer based in Florida!</p>
+  </div>
+  <Hero />
+  <Projects />
+  <Footer />
+</Layout>
