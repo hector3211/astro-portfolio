@@ -12,13 +12,16 @@ import { ExternalLink } from "lucide-astro";
     <div
       class="hidden md:flex md:items-end md:justify-start md:space-x-5 md:pl-3 md:font-medium"
     >
-      <a href="/" class="text-2xl font-bold hover:scale-95 active:scale-105">
+      <a
+        href="/"
+        class="transform text-2xl font-bold transition-all duration-200 hover:scale-95 active:scale-105"
+      >
         Hector Oropesa
       </a>
       <div class="flex space-x-3">
         <a
           href="/"
-          class="hover:link hover:scale-95 active:scale-105"
+          class="hover:link transform transition-all duration-200 hover:scale-95 active:scale-105"
           data-tip="Home"
         >
           Home
@@ -26,7 +29,7 @@ import { ExternalLink } from "lucide-astro";
         <a
           href="https://github.com/hector3211"
           target="_blank"
-          class="hover:link px-1 hover:scale-95 active:scale-105"
+          class="hover:link transform px-1 transition-all duration-200 hover:scale-95 active:scale-105"
           data-tip="Github"
         >
           Github
@@ -34,7 +37,7 @@ import { ExternalLink } from "lucide-astro";
         <a
           href="https://github.com/hector3211/astro-portfolio"
           target="_blank"
-          class="hover:link flex items-center space-x-1 hover:scale-95 active:scale-105"
+          class="hover:link flex transform items-center space-x-1 transition-all duration-200 hover:scale-95 active:scale-105"
           data-tip="Source"
         >
           <p>Source</p>
