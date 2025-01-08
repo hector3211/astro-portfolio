@@ -17,6 +17,102 @@ import {
   CardTitle,
 } from "../components/ui/card";
 import { ExternalLink } from "lucide-astro";
+
+const projects = [
+  {
+    title: "GraniteSync",
+    description: "Production Work Flow SaaS",
+    highlight: `Built on Next.Js, featuring admin role-based login, inventory
+          management and job creation, UploadThing for project picture uploads,
+          and individual profiles for fabricators. Notably, fabricators receive
+          React email notifications for newly assigned jobs. With TypeScript and
+          modern UI/UX patterns, our app offers a user-friendly solution to
+          optimize the production process for granite companies.`,
+    src: GraniteSyncImage,
+    alt: "GrnaiteSync iamge",
+    live: "https://www.granitesync.com",
+    github: "",
+  },
+  {
+    title: "Notify",
+    description: "Local Bussines Tool",
+    highlight: `Notify is a high-performance web application tailored for local granite shops, built with Golang, Templ, HTMX, and Tailwind CSS. Designed for speed and simplicity, Notify enables admins to create customer accounts effortlessly. Customers can sign in securely using their email and password to track the real-time status of their orders. With its responsive design and efficient functionality, Notify ensures seamless job notification management for both businesses and customers.`,
+    src: NotifyImage,
+    alt: "Notify iamge",
+    live: "https://notifyjobs.dev",
+    github: "https://github.com/hector3211/notify",
+  },
+  {
+    title: "GD Granite",
+    description: "Local Granite Shop Website.",
+    highlight: `
+            GDGranite was created with Astro and TypeScript,
+            offers a smooth and engaging user experience. Powered by React, the
+            site delivers enhanced interactivity and responsiveness. We've
+            implemented a top-notch validated form for data accuracy. Moreover, it
+            follows the trending responsive design, ensuring it looks great on all
+            devices.
+        `,
+    src: GraniteImage,
+    alt: "GDGranite iamge",
+    live: "https://gdgranite.com",
+    github: "",
+  },
+  {
+    title: "Honey Nectar Astrology",
+    description: "Astrology Application",
+    highlight: `
+            HoneyNectarAstrology, crafted with AstroJS, TypeScript, and React, is a modern website that seamlessly blends functionality with elegant design. It features a booking contact form that sends personalized email templates to both the business owner and the customer upon confirmation. Adhering to modern web design standards, the site ensures a polished, responsive, and user-friendly experience for astrology enthusiasts and clients alike.
+        `,
+    src: HoneyNectarImage,
+    alt: "Honey Nectar iamge",
+    live: "https://honeynectarastrology.com",
+    github: "",
+  },
+  {
+    title: "RustFlix",
+    description: "Movie Application",
+    highlight: `
+            Rustflix is a cutting-edge video streaming web app. It uses Next.js 13
+            server components for lightning-fast frontend rendering. On the
+            backend, with Drizzle ORM ensures efficient data handling and
+            top-notch performance, providing a seamless video streaming
+            experience. With its sleek design and user-friendly interface,
+            Rustflix offers an exceptional entertainment experience.
+        `,
+    src: RustFlixImage,
+    alt: "RustFlix iamge",
+    live: "rustflix.hectorcodes.dev",
+    github: "https://github.com/hector3211/rust-fullstack",
+  },
+  {
+    title: "Travel",
+    description: "Travel Aggency Application.",
+    highlight: `
+            This travel app, built with Next.js, offers real-time weather updates
+            and leverages the latest website design trends. It incorporates modern
+            design techniques like responsive design and animations, creating an
+            engaging user experience. The app is not only fast and efficient, but
+            it also ensures that travelers are well-prepared by providing
+            up-to-the-minute weather information.
+        `,
+    src: TravelImage,
+    alt: "Travel iamge",
+    live: "https://travel.hectorcodes.dev",
+    github: "https://github.com/hector3211/Travel-website",
+  },
+  {
+    title: "Supreme Granite",
+    description: "Granite Shop Website.",
+    highlight: `
+            Supreme Granite, built with AstroJS, is a sleek website that showcases granite products with modern design and functionality. It features a dynamic product inventory, a gallery with filtering for easy browsing, and a newsletter subscription to stay informed. With a contact form for inquiries and a responsive, fast-loading interface, it offers a polished and engaging experience for users. Built using TypeScript and React, it blends cutting-edge technology with elegant design.
+        `,
+    src: SupremeGranite,
+    alt: "Supreme Granite image",
+    live: "https://granite.hectorcodes.dev",
+    github: "https://github.com/hector3211/supreme-granite",
+  },
+];
 ---
 
 <section class="body-font py-10 pb-8 sm:my-20 md:pb-0">
@@ -27,116 +123,23 @@ import { ExternalLink } from "lucide-astro";
     class="grid grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-2"
   >
     {
-      [
-        {
-          title: "GraniteSync",
-          description: "Production Work Flow SaaS",
-          highlight: `Built on Next.Js, featuring admin role-based login, inventory
-          management and job creation, UploadThing for project picture uploads,
-          and individual profiles for fabricators. Notably, fabricators receive
-          React email notifications for newly assigned jobs. With TypeScript and
-          modern UI/UX patterns, our app offers a user-friendly solution to
-          optimize the production process for granite companies.`,
-          src: GraniteSyncImage,
-          alt: "GrnaiteSync iamge",
-          live: "https://www.granitesync.com",
-          github: "",
-        },
-        {
-          title: "Notify",
-          description: "Local Bussines Tool",
-          highlight: `Notify is a high-performance web application tailored for local granite shops, built with Golang, Templ, HTMX, and Tailwind CSS. Designed for speed and simplicity, Notify enables admins to create customer accounts effortlessly. Customers can sign in securely using their email and password to track the real-time status of their orders. With its responsive design and efficient functionality, Notify ensures seamless job notification management for both businesses and customers.`,
-          src: NotifyImage,
-          alt: "Notify iamge",
-          live: "https://notifyjobs.dev",
-          github: "https://github.com/hector3211/notify",
-        },
-        {
-          title: "GD Granite",
-          description: "Local Granite Shop Website.",
-          highlight: `
-            GDGranite was created with Astro and TypeScript,
-            offers a smooth and engaging user experience. Powered by React, the
-            site delivers enhanced interactivity and responsiveness. We've
-            implemented a top-notch validated form for data accuracy. Moreover, it
-            follows the trending responsive design, ensuring it looks great on all
-            devices.
-        `,
-          src: GraniteImage,
-          alt: "GDGranite iamge",
-          live: "https://gdgranite.com",
-          github: "",
-        },
-        {
-          title: "Honey Nectar Astrology",
-          description: "Astrology Application",
-          highlight: `
-            HoneyNectarAstrology, crafted with AstroJS, TypeScript, and React, is a modern website that seamlessly blends functionality with elegant design. It features a booking contact form that sends personalized email templates to both the business owner and the customer upon confirmation. Adhering to modern web design standards, the site ensures a polished, responsive, and user-friendly experience for astrology enthusiasts and clients alike.
-        `,
-          src: HoneyNectarImage,
-          alt: "Honey Nectar iamge",
-          live: "https://honeynectarastrology.com",
-          github: "",
-        },
-        {
-          title: "RustFlix",
-          description: "Movie Application",
-          highlight: `
-            Rustflix is a cutting-edge video streaming web app. It uses Next.js 13
-            server components for lightning-fast frontend rendering. On the
-            backend, with Drizzle ORM ensures efficient data handling and
-            top-notch performance, providing a seamless video streaming
-            experience. With its sleek design and user-friendly interface,
-            Rustflix offers an exceptional entertainment experience.
-        `,
-          src: RustFlixImage,
-          alt: "RustFlix iamge",
-          live: "rustflix.hectorcodes.dev",
-          github: "https://github.com/hector3211/rust-fullstack",
-        },
-        {
-          title: "Travel",
-          description: "Travel Aggency Application.",
-          highlight: `
-            This travel app, built with Next.js, offers real-time weather updates
-            and leverages the latest website design trends. It incorporates modern
-            design techniques like responsive design and animations, creating an
-            engaging user experience. The app is not only fast and efficient, but
-            it also ensures that travelers are well-prepared by providing
-            up-to-the-minute weather information.
-        `,
-          src: TravelImage,
-          alt: "Travel iamge",
-          live: "https://travel.hectorcodes.dev",
-          github: "https://github.com/hector3211/Travel-website",
-        },
-        {
-          title: "Supreme Granite",
-          description: "Granite Shop Website.",
-          highlight: `
-            Supreme Granite, built with AstroJS, is a sleek website that showcases granite products with modern design and functionality. It features a dynamic product inventory, a gallery with filtering for easy browsing, and a newsletter subscription to stay informed. With a contact form for inquiries and a responsive, fast-loading interface, it offers a polished and engaging experience for users. Built using TypeScript and React, it blends cutting-edge technology with elegant design.
-        `,
-          src: SupremeGranite,
-          alt: "Supreme Granite image",
-          live: "https://granite.hectorcodes.dev",
-          github: "https://github.com/hector3211/supreme-granite",
-        },
-      ].map((project) => (
-        <Card className={`"col-span-2 lg:col-span-1`}>
+      projects.map((project, idx) => (
+        <Card
+          className={`${idx === projects.length - 1 ? "lg:col-span-2" : "lg:col-span-1"} col-span-2 px-4 md:px-0`}
+        >
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
             <CardDescription>{project.description}</CardDescription>
           </CardHeader>
-          <CardContent className={`h-[35rem]`}>
+          <CardContent className={`min-h-[37rem]`}>
             <Image
               width={900}
               height={400}
               src={project.src}
               alt={project.alt}
+              class={"h-auto object-cover"}
             />
-            <p class="lg:text-md py-3 text-justify leading-relaxed">
-              {project.highlight}
-            </p>
+            <p class="py-3 text-justify leading-relaxed">{project.highlight}</p>
           </CardContent>
           <CardFooter>
             <div class="ml-2 flex items-center space-x-1 py-2">

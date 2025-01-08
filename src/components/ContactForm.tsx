@@ -106,7 +106,7 @@ export default function ContactForm() {
           </div>
         </CardContent>
         <CardFooter>
-          <Button disabled={pending} type="submit" className="ml-auto">
+          <Button disabled={pending} type="submit">
             {pending ? (
               <Loader2 className="mr-1 size-5 animate-spin" />
             ) : (
