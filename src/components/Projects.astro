@@ -5,6 +5,7 @@ import GraniteImage from "@/assets/granite-update.png";
 import HoneyNectarImage from "@/assets/honey-nectar-website.png";
 import RustFlixImage from "@/assets/rustflix-update.png";
 import TravelImage from "@/assets/travel-update.png";
+import SupremeGranite from "@/assets/supreme-granite.png";
 import { Image } from "astro:assets";
 import { Button } from "./ui/button";
 import {
@@ -19,10 +20,8 @@ import { ExternalLink } from "lucide-astro";
 ---
 
 <section class="body-font py-10 pb-8 sm:my-20 md:pb-0">
-  <h1
-    class="bg-gradient-to-tr from-slate-400 to-slate-700 bg-clip-text px-2 pb-8 text-3xl font-bold tracking-wide text-transparent sm:text-4xl"
-  >
-    Apps
+  <h1 class="px-2 pb-8 text-3xl font-bold tracking-wide sm:text-5xl">
+    Projects
   </h1>
   <div
     class="grid grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-2"
@@ -56,7 +55,7 @@ import { ExternalLink } from "lucide-astro";
           title: "GD Granite",
           description: "Local Granite Shop Website.",
           highlight: `
-            This granite shop website, created with Astro JS 3.0 and TypeScript,
+            GDGranite was created with Astro and TypeScript,
             offers a smooth and engaging user experience. Powered by React, the
             site delivers enhanced interactivity and responsiveness. We've
             implemented a top-notch validated form for data accuracy. Moreover, it
@@ -65,19 +64,14 @@ import { ExternalLink } from "lucide-astro";
         `,
           src: GraniteImage,
           alt: "GDGranite iamge",
-          live: "https://granite.hectorcodes.dev",
+          live: "https://gdgranite.com",
           github: "",
         },
         {
           title: "Honey Nectar Astrology",
           description: "Astrology Application",
           highlight: `
-            This granite shop website, created with Astro JS 3.0 and TypeScript,
-            offers a smooth and engaging user experience. Powered by React, the
-            site delivers enhanced interactivity and responsiveness. We've
-            implemented a top-notch validated form for data accuracy. Moreover, it
-            follows the trending responsive design, ensuring it looks great on all
-            devices.
+            HoneyNectarAstrology, crafted with AstroJS, TypeScript, and React, is a modern website that seamlessly blends functionality with elegant design. It features a booking contact form that sends personalized email templates to both the business owner and the customer upon confirmation. Adhering to modern web design standards, the site ensures a polished, responsive, and user-friendly experience for astrology enthusiasts and clients alike.
         `,
           src: HoneyNectarImage,
           alt: "Honey Nectar iamge",
@@ -115,6 +109,17 @@ import { ExternalLink } from "lucide-astro";
           alt: "Travel iamge",
           live: "https://travel.hectorcodes.dev",
           github: "https://github.com/hector3211/Travel-website",
+        },
+        {
+          title: "Supreme Granite",
+          description: "Granite Shop Website.",
+          highlight: `
+            Supreme Granite, built with AstroJS, is a sleek website that showcases granite products with modern design and functionality. It features a dynamic product inventory, a gallery with filtering for easy browsing, and a newsletter subscription to stay informed. With a contact form for inquiries and a responsive, fast-loading interface, it offers a polished and engaging experience for users. Built using TypeScript and React, it blends cutting-edge technology with elegant design.
+        `,
+          src: SupremeGranite,
+          alt: "Supreme Granite image",
+          live: "https://granite.hectorcodes.dev",
+          github: "https://github.com/hector3211/supreme-granite",
         },
       ].map((project) => (
         <Card className={`"col-span-2 lg:col-span-1`}>
