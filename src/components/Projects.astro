@@ -6,6 +6,7 @@ import HoneyNectarImage from "@/assets/honey-nectar-website.png";
 import RustFlixImage from "@/assets/rustflix-update.png";
 import TravelImage from "@/assets/travel-update.png";
 import SupremeGranite from "@/assets/supreme-granite.png";
+import HeadersImage from "@/assets/headers.png";
 import { Image } from "astro:assets";
 import { Button } from "./ui/button";
 import {
@@ -113,6 +114,17 @@ const projects = [
     live: "https://granite.hectorcodes.dev",
     github: "https://github.com/hector3211/supreme-granite",
   },
+  {
+    title: "Headers",
+    description: "Ecommerce Application.",
+    highlight: `
+        Headers, built with AstroJS, is a sleek website that showcases granite products with modern design and functionality. It features a dynamic product inventory, a gallery with filtering for easy browsing, and a newsletter subscription to stay informed. With a contact form for inquiries and a responsive, fast-loading interface, it offers a polished and engaging experience for users. Built using TypeScript and React, it blends cutting-edge technology with elegant design.
+        `,
+    src: HeadersImage,
+    alt: "Headers image",
+    live: "https://headers.hectorcodes.dev",
+    github: "https://github.com/hector3211/headers",
+  },
 ];
 ---
 
@@ -124,10 +136,8 @@ const projects = [
     class="grid grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-2"
   >
     {
-      projects.map((project, idx) => (
-        <Card
-          className={`${idx === projects.length - 1 ? "lg:col-span-2" : "lg:col-span-1"} col-span-2 px-4 md:px-0`}
-        >
+      projects.map((project) => (
+        <Card className={`col-span-2 px-4 md:px-0 lg:col-span-1`}>
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
             <CardDescription>{project.description}</CardDescription>
