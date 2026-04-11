@@ -7,9 +7,13 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://hectorcodes.dev",
-  integrations: [tailwind({
-    applyBaseStyles: false,
-  }), react(), sitemap()],
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    react(),
+    sitemap(),
+  ],
   output: "server",
   adapter: vercel(),
   env: {
@@ -17,10 +21,12 @@ export default defineConfig({
       SECRET_PLUNK_API_KEY: envField.string({
         context: "server",
         access: "secret",
+        optional: true,
       }),
       SECRET_BUSINESS_EMAIL: envField.string({
         context: "server",
         access: "secret",
+        optional: true,
       }),
     },
   },
