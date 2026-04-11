@@ -1,54 +1,61 @@
-# Astro Starter Kit: Basics
+# Hector Oropesa Portfolio
 
-```
-npm create astro@latest -- --template basics
-```
+Personal portfolio site built with Astro, React, and Tailwind CSS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+It includes:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- a landing page for projects and contact info
+- a blog powered by Astro Content Collections
+- a Vercel-ready Astro server build
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## Stack
 
+- Astro
+- React
+- Tailwind CSS
+- TypeScript
+- Vercel adapter
 
-## 🚀 Project Structure
+## Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
+```text
+.
 ├── public/
-│   └── favicon.svg
+├── scripts/
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   ├── content/
+│   │   └── blog/
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── pages/
+│   │   ├── blog/
+│   │   └── index.astro
+│   └── styles/
+├── astro.config.mjs
+├── package.json
+└── tailwind.config.cjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Run commands from the project root.
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Command                   | Action                                        |
+| ------------------------- | --------------------------------------------- |
+| `npm install`             | Install dependencies                          |
+| `npm run dev`             | Start the local dev server                    |
+| `npm run build`           | Build the site for production                 |
+| `npm run preview`         | Preview the production build locally          |
+| `npm run new-post <slug>` | Create a new blog post folder with `index.md` |
 
-## 🧞 Commands
+## Blog Posts
 
-All commands are run from the root of the project, from a terminal:
+Blog content lives in `src/content/blog/`.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+Each post should use its own folder so the markdown and images stay together:
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```text
+src/content/blog/my-post/
+├── index.md
+└── image.png
+```
