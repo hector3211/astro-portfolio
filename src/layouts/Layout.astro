@@ -3,21 +3,9 @@ import "../styles/globals.css";
 export interface Props {
   title: string;
   description?: string;
-  canonicalUrl?: string;
-  ogType?: string;
-  publishedDate?: string;
 }
 
-const {
-  title,
-  description,
-  canonicalUrl,
-  ogType = "website",
-  publishedDate,
-} = Astro.props;
-
-const siteUrl = "https://hectorcodes.dev";
-const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+const { title, description } = Astro.props;
 
 import NavBar from "../components/Nav.astro";
 import { Toaster } from "@/components/ui/sonner";
@@ -52,16 +40,8 @@ import { Toaster } from "@/components/ui/sonner";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={canonical} />
     <meta name="generator" content={Astro.generator} />
     {description && <meta name="description" content={description} />}
-    <meta property="og:title" content={title} />
-    {description && <meta property="og:description" content={description} />}
-    <meta property="og:url" content={canonical} />
-    <meta property="og:type" content={ogType} />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={title} />
-    {description && <meta name="twitter:description" content={description} />}
     <title>{title}</title></head
   >
   <body class="relative mx-auto min-h-screen max-w-screen-lg">
