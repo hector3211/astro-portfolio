@@ -294,7 +294,7 @@ The lab is small enough to understand completely. VLANs add real isolation witho
 
 More than anything it's a record of what I've learned. It went from a few disconnected services to something with structure, useful tooling, and room to keep growing.
 
-## Frequently asked questions
+## A few notes if you build something similar
 
 **What hardware do you need to run something like this?**
 Any small form factor PC with 8GB RAM and a dual-core CPU can run Proxmox and a handful of VMs. The OptiPlex 3040 is a popular choice because it's cheap, quiet, and draws very little power.
