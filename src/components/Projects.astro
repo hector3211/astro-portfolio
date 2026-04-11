@@ -133,42 +133,49 @@ const projects = [
     Projects
   </h1>
   <div
-    class="grid grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-2"
+    class="grid grid-cols-2 items-stretch justify-items-center gap-4 sm:grid-cols-2"
   >
     {
       projects.map((project) => (
-        <Card className={`col-span-2 px-4 md:px-0 lg:col-span-1`}>
+        <Card className={`col-span-2 flex flex-col px-4 md:px-0 lg:col-span-1`}>
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
             <CardDescription>{project.description}</CardDescription>
           </CardHeader>
-          <CardContent className={`min-h-[37rem]`}>
-            <Image
-              width={900}
-              height={400}
-              src={project.src}
-              alt={project.alt}
-              class={"h-auto object-cover"}
-            />
+          <CardContent className="flex-1">
+            <div class="aspect-video w-full overflow-hidden rounded-md">
+              <Image
+                width={900}
+                height={400}
+                src={project.src}
+                alt={project.alt}
+                class={"h-full w-full object-cover"}
+              />
+            </div>
             <p class="py-3 text-justify leading-relaxed">{project.highlight}</p>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="mt-auto">
             <div class="ml-2 flex items-center space-x-1 py-2">
-              <Button disabled={!project.live}>
-                <a href={`${project.live}`} target="_blank">
-                  Live
+              {project.live ? (
+                <a href={project.live} target="_blank">
+                  <Button>Live</Button>
                 </a>
-              </Button>
-              <Button disabled={!project.github}>
-                <a
-                  class="flex items-center"
-                  href={`${project.github}`}
-                  target="_blank"
-                >
+              ) : (
+                <Button disabled>Live</Button>
+              )}
+              {project.github ? (
+                <a href={project.github} target="_blank">
+                  <Button className="flex items-center">
+                    <ExternalLink />
+                    <p class="text-md">Source Code</p>
+                  </Button>
+                </a>
+              ) : (
+                <Button disabled className="flex items-center">
                   <ExternalLink />
                   <p class="text-md">Source Code</p>
-                </a>
-              </Button>
+                </Button>
+              )}
             </div>
           </CardFooter>
         </Card>

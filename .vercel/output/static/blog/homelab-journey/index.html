@@ -1,0 +1,377 @@
+<!DOCTYPE html><script>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+  const isDark = getThemePreference() === "dark";
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+  if (typeof localStorage !== "undefined") {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+</script> <html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://hectorcodes.dev/blog/homelab-journey"><meta name="generator" content="Astro v6.1.5"><meta name="description" content="A practical homelab setup guide covering Proxmox virtualization, VLAN segmentation with TP-Link Omada, and a Traefik reverse proxy for Pi-hole, Vaultwarden, and n8n, all running on consumer hardware."><meta property="og:title" content="Homelab Setup Guide: Proxmox, VLANs, Traefik, and Self-Hosted Services | Hector Oropesa"><meta property="og:description" content="A practical homelab setup guide covering Proxmox virtualization, VLAN segmentation with TP-Link Omada, and a Traefik reverse proxy for Pi-hole, Vaultwarden, and n8n, all running on consumer hardware."><meta property="og:url" content="https://hectorcodes.dev/blog/homelab-journey"><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Homelab Setup Guide: Proxmox, VLANs, Traefik, and Self-Hosted Services | Hector Oropesa"><meta name="twitter:description" content="A practical homelab setup guide covering Proxmox virtualization, VLAN segmentation with TP-Link Omada, and a Traefik reverse proxy for Pi-hole, Vaultwarden, and n8n, all running on consumer hardware."><title>Homelab Setup Guide: Proxmox, VLANs, Traefik, and Self-Hosted Services | Hector Oropesa</title><link rel="stylesheet" href="/_astro/_astro_content.BnSEO4C7.css"></head> <body class="relative mx-auto min-h-screen max-w-screen-lg"> <nav class="container fixed top-0 z-50 w-full items-center bg-opacity-60 py-4 backdrop-blur-md lg:max-w-screen-lg" data-astro-transition-persist="astro-zscz5gm2-1"> <div class="flex items-center justify-between"> <div class="hidden md:flex md:items-end md:justify-start md:space-x-5 md:pl-3 md:font-medium"> <a href="/" class="transform text-2xl font-bold transition-all duration-200 hover:scale-95 active:scale-105">
+Hector Oropesa
+</a> <div class="flex space-x-3"> <a href="/" class="hover:link transform transition-all duration-200 hover:scale-95 active:scale-105" data-tip="Home">
+Home
+</a> <a href="/blog" class="hover:link transform transition-all duration-200 hover:scale-95 active:scale-105 underline underline-offset-4" data-tip="Blog">
+Blog
+</a> <a href="https://github.com/hector3211" target="_blank" class="hover:link transform px-1 transition-all duration-200 hover:scale-95 active:scale-105" data-tip="Github">
+Github
+</a> <a href="https://github.com/hector3211/astro-portfolio" target="_blank" class="hover:link flex transform items-center space-x-1 transition-all duration-200 hover:scale-95 active:scale-105" data-tip="Source"> <p>Source</p> <svg xmlns="http://www.w3.org/2000/svg" stroke-width="2" width="24" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" viewBox="0 0 24 24" class="lucide lucide-external-link">  <path d="M15 3h6v6"></path> <path d="M10 14 21 3"></path> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>  </svg> </a> </div> </div> <a href="/" class="block text-2xl font-bold hover:scale-95 active:scale-105 md:hidden">
+Hector Oropesa
+</a> <div class="flex"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="2sL0cW" prefix="r4" component-url="/_astro/ToggleTheme.ChLWGw0q.js" component-export="default" renderer-url="/_astro/client.DM1DoCdx.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;ToggleThemeButton&quot;,&quot;value&quot;:true}" await-children><div class="pr-2"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 text-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></button></div><!--astro:end--></astro-island> <astro-island uid="Z1C8Qcu" prefix="r5" component-url="/_astro/MobileMenu.BtO3yKS2.js" component-export="default" renderer-url="/_astro/client.DM1DoCdx.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;MobileMenu&quot;,&quot;value&quot;:true}" await-children><div class="relative z-50 md:hidden"><button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-menu"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M7 8h10"></path><path d="M7 12h10"></path><path d="M7 16h10"></path></svg></button></div><!--astro:end--></astro-island> </div> </div> </nav> <main class="py-20">  <article class="prose prose-lg prose-neutral dark:prose-invert mx-auto w-5/6 sm:w-3/4"> <header class="mb-8"> <a href="/blog" class="mb-4 inline-block text-sm no-underline hover:underline">
+&larr; Back to blog
+</a> <h1 class="mb-2">Homelab Setup Guide: Proxmox, VLANs, Traefik, and Self-Hosted Services</h1> <time datetime="2026-04-11T00:00:00.000Z" class="text-muted-foreground text-sm"> April 10, 2026 </time> </header> <p>My homelab started as a few services thrown onto whatever hardware I had. Over time it turned into something I actually thought about: VLANs, a proper Proxmox host, a reverse proxy that makes everything feel less like a weekend hack. This post documents what I built, why I made certain choices, and a few places where I got stuck.</p>
+<p><em>Hostnames, IPs, and URLs below are all dummy values.</em></p>
+<h2 id="how-it-evolved">How it evolved</h2>
+<p>The biggest shift wasn’t adding more services, it was starting to think about structure.</p>
+<ul>
+<li>VLANs split lab traffic from everyday wireless devices instead of everything sitting on one flat network.</li>
+<li>Proxmox replaced scattered bare-metal installs. Now everything runs in VMs on one host.</li>
+<li>Traefik replaced memorizing port numbers. Every service gets a clean subdomain with TLS handled in one place.</li>
+<li>The services I’m running now are things I actually use, not just infrastructure for its own sake.</li>
+</ul>
+<p>That change in mindset is the real upgrade. The hardware is still modest, but the structure is much better than where I started.</p>
+<h2 id="network-layout">Network layout</h2>
+<p>The network runs through a TP-Link Omada router and a managed switch, split into two VLANs.</p>
+<h3 id="wireless-networks">Wireless networks</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Name</th><th>Hidden</th><th>Guest</th></tr></thead><tbody><tr><td>Homestead</td><td>✓</td><td></td></tr><tr><td>Homestead-Guest</td><td></td><td>✓</td></tr></tbody></table>
+<h3 id="vlans">VLANs</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>ID</th><th>Name</th><th>Purpose</th></tr></thead><tbody><tr><td>10</td><td>Homelab</td><td>Proxmox host and all server workloads</td></tr><tr><td>20</td><td>Wireless</td><td>Laptops, streaming devices, and Wi-Fi clients</td></tr></tbody></table>
+<p>Keeping the lab on VLAN 10 means a compromised wireless device can’t reach Proxmox or any of the VMs. It’s a simple split and doesn’t add much ongoing maintenance.</p>
+<p>The network layout is simple on purpose. I wanted something I could reason about quickly without losing the benefits of segmentation.</p>
+<h2 id="ssids-hidden-networks-and-client-isolation">SSIDs, hidden networks, and client isolation</h2>
+<h3 id="what-an-ssid-is">What an SSID is</h3>
+<p>SSID is just the name of a Wi-Fi network, what you see when you scan for networks on your phone. By default, access points broadcast that name constantly in beacon frames so devices can find it. One AP can broadcast multiple SSIDs at the same time, which is how <code>Homestead</code> and <code>Homestead-Guest</code> both come from the same hardware. Each one maps to a different VLAN, so devices that join them end up on completely separate network segments.</p>
+<h3 id="hiding-the-main-ssid">Hiding the main SSID</h3>
+<p><code>Homestead</code> is set to hidden, meaning the AP doesn’t include the name in its beacon frames. It won’t show up in anyone’s scan list and you have to type the name in manually to connect.</p>
+<p>It’s not a cryptographic security measure. Someone actively sniffing can still detect it when a client connects. But practically it does a few useful things:</p>
+<ul>
+<li>Guests and neighbors scanning for Wi-Fi won’t see it and won’t try to join.</li>
+<li>Anyone coming over defaults to <code>Homestead-Guest</code> since that’s the only visible network.</li>
+<li>The main network stays for devices I’ve deliberately added.</li>
+</ul>
+<p>The guest SSID stays visible on purpose. That’s the whole point of it.</p>
+<h3 id="client-isolation">Client isolation</h3>
+<p>Client isolation stops devices on the same Wi-Fi network from talking directly to each other. Without it, two devices on the same SSID can reach each other the same way wired devices on a switch can. With it on, each device can only reach the router.</p>
+<p><code>Homestead-Guest</code> has client isolation enabled. A guest device gets internet access through VLAN 20 but can’t probe anything else on the network: other guests, IoT devices, streaming sticks, none of it. It matches what a guest network should actually be.</p>
+<p><code>Homestead</code> doesn’t use client isolation since the devices on it are trusted and sometimes need to reach each other directly. The hidden SSID and VLAN separation handle the boundary there instead. Put together it’s a meaningfully more secure wireless setup without adding any real day-to-day overhead.</p>
+<p>The SSID choices are small details, but they reflect the same goal as the rest of the homelab: keep the setup practical, understandable, and a little more deliberate than before.</p>
+<h2 id="hardware">Hardware</h2>
+<h3 id="tp-link-er707-m2-omada-router">TP-Link ER707-M2 Omada router</h3>
+<p>Handles VLAN-aware routing at the edge and ties into the Omada SDN controller.</p>
+<h3 id="tp-link-tl-sg108e-managed-switch">TP-Link TL-SG108E managed switch</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>VLAN</th><th>VLAN ID</th><th>Tagged port</th><th>Untagged ports</th></tr></thead><tbody><tr><td>Wireless</td><td>20</td><td>1</td><td>2</td></tr><tr><td>Homelab</td><td>10</td><td>1</td><td>7, 8</td></tr></tbody></table>
+<h3 id="dell-optiplex-3040-proxmox-host">Dell OptiPlex 3040 (Proxmox host)</h3>
+<p>The main hypervisor. Runs all the VMs.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><td>Management IP</td><td><code>10.0.10.100</code></td></tr><tr><td>Direct URL</td><td><code>https://10.0.10.100:8006</code></td></tr><tr><td>Reverse proxy URL</td><td><code>https://lab.example.net</code></td></tr></tbody></table>
+<h3 id="hp-prodesk-405-g4">HP ProDesk 405 G4</h3>
+<p>On standby. Potential second node or future cluster member when I get around to it.</p>
+<p><img alt="Dell OptiPlex 3040 and HP ProDesk 405 G4 homelab hardware" loading="lazy" decoding="async"  width="1280" height="1707" src="/_astro/homelab-hardware.Bb-Gbgwh_1mNvPO.webp" ></p>
+<h2 id="services">Services</h2>
+<p>This is where the lab stopped being just infrastructure and started being actually useful.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Service</th><th>Role</th><th>Static IP</th><th>Internal URL</th></tr></thead><tbody><tr><td>Pi-hole</td><td>DNS-level ad blocking</td><td><code>10.0.10.101</code></td><td><code>https://pihole.lab.example.net</code></td></tr><tr><td>Vaultwarden</td><td>Self-hosted passwords</td><td><code>10.0.10.103</code></td><td><code>https://vault.lab.example.net</code></td></tr><tr><td>Traefik</td><td>Reverse proxy</td><td><code>10.0.10.104</code></td><td><code>https://proxy.lab.example.net</code></td></tr><tr><td>n8n</td><td>Workflow automation</td><td><code>10.0.10.105</code></td><td><code>https://n8n.lab.example.net</code></td></tr><tr><td>Uptime Kuma</td><td>Uptime monitoring</td><td><code>10.0.10.106</code></td><td><code>https://kuma.lab.example.net</code></td></tr></tbody></table>
+<p>Pi-hole sits on a static IP because everything points at it for DNS and it can’t move. The rest are flexible enough to route through Traefik and reach via subdomain.</p>
+<p>Each service taught me something different. Pi-hole made the network itself more useful. Vaultwarden made the lab feel like it was supporting real daily workflows. n8n opened up automation instead of pure hosting. Traefik tied everything together.</p>
+<p>Here is the current VM layout running on the Proxmox host:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>VM ID</th><th>Service</th><th>Purpose</th></tr></thead><tbody><tr><td>100</td><td>Pi-hole</td><td>Network-wide DNS filtering</td></tr><tr><td>103</td><td>Vaultwarden</td><td>Password management</td></tr><tr><td>104</td><td>Traefik</td><td>Reverse proxy and TLS termination</td></tr><tr><td>105</td><td>n8n</td><td>Workflow automation</td></tr><tr><td>106</td><td>Uptime Kuma</td><td>Service monitoring</td></tr></tbody></table>
+<h2 id="traefik-setup">Traefik setup</h2>
+<p>Traefik made the biggest day-to-day difference. No more remembering ports. Every service is a hostname, TLS terminates in one place, certs renew automatically via Cloudflare.</p>
+<p>I started from the community Proxmox install script, then moved into config files for the static setup and a dynamic config for the services.</p>
+<h3 id="config-file-locations">Config file locations</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nano</span><span style="color:#9ECBFF"> /etc/systemd/system/traefik.service</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nano</span><span style="color:#9ECBFF"> /etc/traefik/traefik.yaml</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> nano</span><span style="color:#9ECBFF"> /etc/traefik/conf.d/homelab.yml</span></span></code></pre>
+<h3 id="static-config-cloudflare-cert-resolver-traefikyaml">Static config, Cloudflare cert resolver (<code>traefik.yaml</code>)</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">certificatesResolvers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  cloudflare</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    acme</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      email</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">you@example.com</span></span>
+<span class="line"><span style="color:#85E89D">      storage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/etc/traefik/acme.json</span></span>
+<span class="line"><span style="color:#85E89D">      dnsChallenge</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        provider</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cloudflare</span></span>
+<span class="line"><span style="color:#85E89D">        resolvers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#9ECBFF">"1.1.1.1:53"</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#9ECBFF">"1.0.0.1:53"</span></span></code></pre>
+<p>Traefik reads the Cloudflare API token from an environment variable. In the systemd service file, under <code>[Service]</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#F97583">Environment</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"CF_DNS_API_TOKEN=your_cloudflare_api_token_here"</span></span></code></pre>
+<p>The token needs <code>Zone:DNS:Edit</code> scoped to your domain. Worth creating a restricted token in the Cloudflare dashboard instead of using the global API key.</p>
+<h3 id="dynamic-config-homelabyml">Dynamic config (<code>homelab.yml</code>)</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">http</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  routers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    proxmox</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      rule</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Host(`lab.example.net`)"</span></span>
+<span class="line"><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">proxmox</span></span>
+<span class="line"><span style="color:#85E89D">      entryPoints</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#9ECBFF">websecure</span></span>
+<span class="line"><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        certResolver</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cloudflare</span></span>
+<span class="line"><span style="color:#85E89D">    pihole</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      rule</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Host(`pihole.lab.example.net`)"</span></span>
+<span class="line"><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pihole</span></span>
+<span class="line"><span style="color:#85E89D">      entryPoints</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#9ECBFF">websecure</span></span>
+<span class="line"><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        certResolver</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cloudflare</span></span>
+<span class="line"><span style="color:#85E89D">    vaultwarden</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      rule</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Host(`vault.lab.example.net`)"</span></span>
+<span class="line"><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">vaultwarden</span></span>
+<span class="line"><span style="color:#85E89D">      entryPoints</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#9ECBFF">websecure</span></span>
+<span class="line"><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        certResolver</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cloudflare</span></span>
+<span class="line"><span style="color:#85E89D">    uptimekuma</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      rule</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Host(`kuma.lab.example.net`)"</span></span>
+<span class="line"><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">uptimekuma</span></span>
+<span class="line"><span style="color:#85E89D">      entryPoints</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#9ECBFF">websecure</span></span>
+<span class="line"><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        certResolver</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cloudflare</span></span>
+<span class="line"><span style="color:#85E89D">    n8n</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      rule</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Host(`n8n.lab.example.net`)"</span></span>
+<span class="line"><span style="color:#85E89D">      service</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">n8n</span></span>
+<span class="line"><span style="color:#85E89D">      entryPoints</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        - </span><span style="color:#9ECBFF">websecure</span></span>
+<span class="line"><span style="color:#85E89D">      tls</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        certResolver</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cloudflare</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">  services</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    proxmox</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      loadBalancer</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        servers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">url</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://10.0.10.100:8006"</span></span>
+<span class="line"><span style="color:#85E89D">        serversTransport</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">proxmox-transport</span></span>
+<span class="line"><span style="color:#85E89D">    pihole</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      loadBalancer</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        servers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">url</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://10.0.10.101"</span></span>
+<span class="line"><span style="color:#85E89D">    vaultwarden</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      loadBalancer</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        servers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">url</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://10.0.10.103:8000"</span></span>
+<span class="line"><span style="color:#85E89D">        serversTransport</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">vaultwarden-transport</span></span>
+<span class="line"><span style="color:#85E89D">    uptimekuma</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      loadBalancer</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        servers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">url</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://10.0.10.106:3001"</span></span>
+<span class="line"><span style="color:#85E89D">    n8n</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      loadBalancer</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        servers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">          - </span><span style="color:#85E89D">url</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"http://10.0.10.105:5678"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">  serversTransports</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    proxmox-transport</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      insecureSkipVerify</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">    vaultwarden-transport</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      insecureSkipVerify</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span></code></pre>
+<p><code>insecureSkipVerify</code> is needed for Proxmox and Vaultwarden because they use self-signed certs internally. Traefik still terminates TLS properly at the edge. This just skips cert validation on the internal hop.</p>
+<h3 id="reloading-after-changes">Reloading after changes</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> daemon-reexec</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> restart</span><span style="color:#9ECBFF"> traefik</span></span></code></pre>
+<p><img alt="Traefik diagram showing what the tool can do" loading="lazy" decoding="async"  width="2048" height="1151" src="/_astro/traefik.Bc7ujXOo_21mJws.webp" ></p>
+<h2 id="vaultwarden-on-iphone-getting-the-bitwarden-app-working">Vaultwarden on iPhone: getting the Bitwarden app working</h2>
+<p>Getting Vaultwarden accessible on my phone was one of the main reasons to bother with Traefik and Cloudflare in the first place. It works now. The Bitwarden iOS app connects to <code>https://vault.lab.example.net</code> over Tailscale with no cert errors, but it took some frustrating detours to get there.</p>
+<h3 id="why-tailscale-certs-didnt-work">Why Tailscale certs didn’t work</h3>
+<p>Tailscale can issue certs for <code>*.ts.net</code> hostnames via <code>tailscale cert</code>. They’re signed by Let’s Encrypt and they work fine in a browser. I assumed that meant they’d work everywhere.</p>
+<p>They don’t. The Bitwarden iOS app refused to connect and just showed a generic error with no useful output. The issue is Apple’s App Transport Security (ATS) policy. ATS requires iOS apps to only accept TLS certs from a publicly trusted CA for the specific domain being requested. The problem wasn’t the CA, Let’s Encrypt is trusted. The problem was that the cert is scoped to a <code>*.ts.net</code> hostname which only resolves when Tailscale is active, iOS apps have no way to install a custom CA trust anchor the way macOS Keychain or a browser profile can, and the Bitwarden app doesn’t have a “skip cert validation” option. Nor should it. That would be a bad idea in a password manager.</p>
+<p>So even though the cert was technically valid, the combination of the hostname scope and ATS enforcement killed the handshake. Safari works because you can install a trust profile manually. The app doesn’t have that escape hatch.</p>
+<h3 id="why-cloudflare-dns-01-fixes-it">Why Cloudflare DNS-01 fixes it</h3>
+<p>With Traefik using Cloudflare as the cert resolver, the cert is issued for the actual public domain, <code>vault.lab.example.net</code>, via a DNS-01 challenge. That cert is valid for exactly what the app is connecting to, signed by a CA that iOS trusts, and Traefik renews it automatically before it expires.</p>
+<p>The traffic still stays internal. Cloudflare only touches DNS during cert issuance to prove domain ownership. At runtime the request goes from the phone through Tailscale to Traefik to Vaultwarden. Cloudflare isn’t in that path at all.</p>
+<p><img alt="Diagram comparing a working Cloudflare DNS-01 certificate flow with a failing Tailscale certificate flow in the Bitwarden iPhone app" loading="lazy" decoding="async"  width="727" height="430" src="/_astro/ios-ats-cert-flow.DF4uNGzG_2oaTUj.webp" ></p>
+<h3 id="setting-up-the-bitwarden-app">Setting up the Bitwarden app</h3>
+<p>In the Bitwarden iOS app, set the server URL to:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>https://vault.lab.example.net</span></span></code></pre>
+<p>Tailscale needs to be connected first. The domain resolves to an internal IP through Pi-hole or Tailscale MagicDNS and isn’t reachable otherwise. After the first successful login, Bitwarden caches the vault locally so it stays usable offline.</p>
+<blockquote>
+<p>Image spot: Bitwarden iOS server URL screen and successful login.</p>
+</blockquote>
+<h2 id="what-im-happy-with">What I’m happy with</h2>
+<p>The lab is small enough to understand completely. VLANs add real isolation without becoming a maintenance problem. Hiding the main SSID and running client isolation on the guest network handles the wireless security without needing a complicated firewall setup. Proxmox makes it easy to move things around, snapshot before experiments, and rebuild if something breaks. Traefik means every service has a proper URL and a cert that actually works on every device.</p>
+<p>More than anything it’s a record of what I’ve learned. It went from a few disconnected services to something with structure, useful tooling, and room to keep growing.</p>
+<h2 id="frequently-asked-questions">Frequently asked questions</h2>
+<p><strong>What hardware do you need to run something like this?</strong>
+Any small form factor PC with 8GB RAM and a dual-core CPU can run Proxmox and a handful of VMs. The OptiPlex 3040 is a popular choice because it’s cheap, quiet, and draws very little power.</p>
+<p><strong>Do you actually need VLANs?</strong>
+Not at first. But once you’re running something like Vaultwarden that you actually depend on, separating it from general wireless traffic is worth the one-time setup. It limits how far a compromised device can reach.</p>
+<p><strong>Does hiding your SSID actually do anything?</strong>
+Not cryptographically, it’s still detectable. But it keeps the network off passive scan lists, which means guests and neighbors don’t see it and don’t try to join. In practice that’s useful even if it’s not a hard security boundary.</p>
+<p><strong>What is client isolation?</strong>
+It prevents devices on the same Wi-Fi network from talking to each other directly. They can only reach the router. Worth enabling on any network where you don’t fully trust every device. For a home setup that usually means the guest network and anything IoT-facing.</p>
+<p><strong>Why Traefik over Nginx Proxy Manager?</strong>
+Traefik reloads config without restarting, integrates directly with Cloudflare for DNS-based TLS, and the config-as-code approach means I can version control it and rebuild from scratch if needed.</p>
+<p><strong>Is Vaultwarden safe to trust with real passwords?</strong>
+Yes, with the caveat that you’re responsible for the infrastructure. Vaultwarden is well-maintained and Bitwarden-compatible. The main risk is downtime or data loss on your end, so keep regular encrypted backups of the data volume.</p>
+<p><strong>Why did Bitwarden on iOS fail with the Tailscale cert?</strong>
+Apple’s ATS policy enforces stricter cert validation inside apps than Safari does. You can install trust profiles manually in a browser, but iOS apps don’t have that mechanism. A Cloudflare DNS-01 cert through Traefik issues a real publicly trusted cert for your domain, which passes ATS without any extra device config.</p> </article> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Homelab Setup Guide: Proxmox, VLANs, Traefik, and Self-Hosted Services","description":"A practical homelab setup guide covering Proxmox virtualization, VLAN segmentation with TP-Link Omada, and a Traefik reverse proxy for Pi-hole, Vaultwarden, and n8n, all running on consumer hardware.","datePublished":"2026-04-11T00:00:00.000Z","url":"https://hectorcodes.dev/blog/homelab-journey","author":{"@type":"Person","name":"Hector Oropesa"}}</script>  </main> <astro-island uid="2gXP5J" prefix="r3" component-url="/_astro/sonner.BQcvrxua.js" component-export="Toaster" renderer-url="/_astro/client.DM1DoCdx.js" props="{}" ssr client="load" opts="{&quot;name&quot;:&quot;Toaster&quot;,&quot;value&quot;:true}" await-children><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section><!--astro:end--></astro-island> </body></html>

@@ -2,6 +2,10 @@
 import ToggleThemeButton from "../components/ToggleTheme";
 import MobileMenu from "../components/MobileMenu";
 import { ExternalLink } from "lucide-astro";
+
+const pathname = Astro.url.pathname;
+const isHome = pathname === "/";
+const isBlog = pathname.startsWith("/blog");
 ---
 
 <nav
@@ -21,10 +25,23 @@ import { ExternalLink } from "lucide-astro";
       <div class="flex space-x-3">
         <a
           href="/"
-          class="hover:link transform transition-all duration-200 hover:scale-95 active:scale-105"
+          class:list={[
+            "hover:link transform transition-all duration-200 hover:scale-95 active:scale-105",
+            { "underline underline-offset-4": isHome },
+          ]}
           data-tip="Home"
         >
           Home
+        </a>
+        <a
+          href="/blog"
+          class:list={[
+            "hover:link transform transition-all duration-200 hover:scale-95 active:scale-105",
+            { "underline underline-offset-4": isBlog },
+          ]}
+          data-tip="Blog"
+        >
+          Blog
         </a>
         <a
           href="https://github.com/hector3211"

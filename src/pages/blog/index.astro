@@ -1,0 +1,45 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Layout title="Blog | Hector Oropesa" description="Blog posts by Hector Oropesa">
+  <section class="mx-auto w-5/6 sm:w-3/4">
+    {
+      posts.length === 0 ? (
+        <p class="text-muted-foreground">No posts yet. Check back soon!</p>
+      ) : (
+        <ul class="space-y-4">
+          {posts.map((post) => (
+            <li>
+              <a
+                href={`/blog/${post.id}`}
+                class="group flex items-center justify-between rounded-lg px-3 py-3 transition-colors hover:bg-accent"
+              >
+                <span class="text-lg font-medium group-hover:underline">
+                  {post.data.title}
+                </span>
+                <time
+                  datetime={post.data.date.toISOString()}
+                  class="text-sm text-muted-foreground"
+                >
+                  {post.data.date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</Layout>
