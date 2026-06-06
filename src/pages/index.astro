@@ -12,10 +12,10 @@ export const prerender = true;
 <Layout transition:name="homepage" title="Hector's Portfolio">
   <SplineModal client:only="react" />
   <div
-    class="mx-auto flex w-5/6 items-center justify-center space-x-3 rounded-lg border-black bg-gray-800 px-2 py-4 text-white dark:text-primary-foreground sm:w-3/4"
+    class="mx-auto flex w-5/6 items-center justify-center gap-2 rounded-xl border border-white/10 bg-gray-800/90 px-4 py-3 text-sm text-white shadow-sm dark:text-primary-foreground sm:w-3/4 sm:text-base"
   >
-    💡
-    <p class="">Hello, I'm an App developer based in Florida!</p>
+    <span aria-hidden="true">💡</span>
+    <p>Hello, I'm a software developer based in Florida.</p>
   </div>
   <Hero />
   <Projects />

@@ -2,15 +2,14 @@
 import { Button } from "../components/ui/button.tsx";
 ---
 
-<section class="body-font w-full px-2 py-16 pb-3 sm:py-0 md:pb-0">
-  <div class="container mx-auto py-10">
-    <h1 class="mb-5 text-center text-2xl font-bold sm:text-4xl md:text-6xl">
+<section class="body-font mx-auto w-full max-w-5xl px-4 pb-8 pt-12 sm:pt-14">
+  <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+    <h1 class="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
       Hector Oropesa
-      <br class="hidden lg:inline-block" />Full-Stack Developer
     </h1>
-    <a href="#contact" class="mx-auto flex w-60 justify-center">
+    <a href="#contact" class="mt-7 flex w-full max-w-60 justify-center">
       <Button
-        className="w-full bg-teal-500 shadow-sm shadow-teal-600 hover:bg-teal-500/80"
+        className="w-full bg-teal-500 shadow-sm shadow-teal-600 transition hover:bg-teal-500/80"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,19 +29,14 @@ import { Button } from "../components/ui/button.tsx";
       </Button>
     </a>
   </div>
-  <div class="w-full px-3 pt-3">
-    <p
-      class="mx-auto max-w-3xl whitespace-normal px-2 text-justify leading-relaxed"
-    >
-      Hi, I'm Hector! I'm a self-taught software developer and cloud engineer.
-      My tech stack typically includes TypeScript, React, Next.js, and either
-      SQLite or PostgreSQL. I also enjoy using Python for scripting and
-      automating tasks in the cloud. I love building full-stack applications and
-      even creating low-level CLI tools or developer tooling with Go. I started
-      creating software in 2022 and have never looked back! I'm always tinkering
-      or working on some sort of application. I enjoy finding simple solutions
-      to tricky problems and experimenting with new ideas. Most days, you’ll
-      find me learning something new or building something fun.
+  <div class="mx-auto mt-14 max-w-4xl">
+    <p class="text-left text-base leading-8 text-foreground/90 sm:text-lg">
+      Hi, I'm Hector. I build full-stack applications and cloud infrastructure
+      with a focus on practical systems that make real workflows easier. My work
+      usually involves TypeScript, React, TanStack, PostgreSQL, AWS, and
+      Terraform. I enjoy turning messy business problems into simple tools,
+      improving deployment workflows, and learning how each part of a system fits
+      together.
     </p>
   </div>
 </section>

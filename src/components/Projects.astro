@@ -1,184 +1,210 @@
 ---
-import GraniteSyncImage from "@/assets/sync.png";
-import NotifyImage from "@/assets/noty.png";
-import GraniteImage from "@/assets/granite-update.png";
-import HoneyNectarImage from "@/assets/honey-nectar-website.png";
-import RustFlixImage from "@/assets/rustflix-update.png";
-import TravelImage from "@/assets/travel-update.png";
-import SupremeGranite from "@/assets/supreme-granite.png";
-import HeadersImage from "@/assets/headers.png";
-import { Image } from "astro:assets";
-import { Button } from "./ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
 import { ExternalLink } from "lucide-astro";
 
 const projects = [
   {
-    title: "GraniteSync",
-    description: "Production Work Flow SaaS",
-    highlight: `Built on Next.Js, featuring admin role-based login, inventory
-          management and job creation, UploadThing for project picture uploads,
-          and individual profiles for fabricators. Notably, fabricators receive
-          React email notifications for newly assigned jobs. With TypeScript and
-          modern UI/UX patterns, our app offers a user-friendly solution to
-          optimize the production process for granite companies.`,
-    src: GraniteSyncImage,
-    alt: "GrnaiteSync iamge",
-    live: "",
-    // live: "https://www.granitsync.com",
-    github: "",
+    title: "Confidential AWS Infrastructure",
+    type: "Client cloud infrastructure work",
+    summary:
+      "Terraform-managed AWS environment focused on repeatable infrastructure, remote state, runtime migration, and CI/CD planning.",
+    stack: ["AWS", "Terraform"],
+    details: [
+      "Managed Terraform remote state with S3 versioning and native S3 lockfiles.",
+      "Planned CI/CD workflows using GitHub Actions and AWS OIDC instead of long-lived keys.",
+      "Worked through runtime direction from App Runner toward ECS.",
+      "Improved module boundaries around networking, runtime, registry, IAM, and deployment responsibilities.",
+    ],
   },
   {
-    title: "Notify",
-    description: "Local Bussines Tool",
-    highlight: `Notify is a high-performance web application tailored for local granite shops, built with Golang, Templ, HTMX, and Tailwind CSS. Designed for speed and simplicity, Notify enables admins to create customer accounts effortlessly. Customers can sign in securely using their email and password to track the real-time status of their orders. With its responsive design and efficient functionality, Notify ensures seamless job notification management for both businesses and customers.`,
-    src: NotifyImage,
-    alt: "Notify iamge",
-    live: "https://notifyjobs.dev",
-    github: "https://github.com/hector3211/notify",
+    title: "CM Data",
+    type: "Commercial trucking repair application",
+    summary:
+      "A repair operations app built to make estimator workflows faster and easier.",
+    stack: [
+      "TanStack Start",
+      "PostgreSQL",
+      "Drizzle",
+      "Coolify",
+      "Self-hosted on-prem",
+    ],
+    details: [
+      "Built for commercial trucking repair operations.",
+      "Helps estimators move through repair and estimate workflows with less friction.",
+      "Uses PostgreSQL and Drizzle for the data layer.",
+      "Self-hosted on-prem with Coolify for deployment and operations.",
+    ],
+  },
+  {
+    title: "GraniteSync",
+    type: "Production workflow SaaS",
+    summary:
+      "A workflow tool for granite shops with role-based access, job management, inventory, uploads, and fabricator notifications.",
+    stack: ["AWS", "S3", "PostgreSQL", "Better Auth", "TanStack Start"],
+    details: [
+      "Built admin workflows for inventory management and job creation.",
+      "Added project image uploads and individual fabricator profiles.",
+      "Sent email notifications when fabricators were assigned new jobs.",
+      "Focused on simplifying production coordination for granite companies.",
+    ],
   },
   {
     title: "GD Granite",
-    description: "Local Granite Shop Website.",
-    highlight: `
-            GDGranite was created with Astro and TypeScript,
-            offers a smooth and engaging user experience. Powered by React, the
-            site delivers enhanced interactivity and responsiveness. We've
-            implemented a top-notch validated form for data accuracy. Moreover, it
-            follows the trending responsive design, ensuring it looks great on all
-            devices.
-        `,
-    src: GraniteImage,
-    alt: "GDGranite iamge",
+    type: "Local business website",
+    summary:
+      "A fast, responsive website for a granite shop with a validated contact flow and polished service presentation.",
+    stack: ["Astro", "TypeScript", "React", "Responsive design"],
+    details: [
+      "Created a production website for a local granite business.",
+      "Built a validated form flow for cleaner customer inquiries.",
+      "Focused on speed, responsiveness, and clear service presentation.",
+    ],
     live: "https://gdgranite.com",
-    github: "",
-  },
-  {
-    title: "Honey Nectar Astrology",
-    description: "Astrology Application",
-    highlight: `
-            HoneyNectarAstrology, crafted with AstroJS, TypeScript, and React, is a modern website that seamlessly blends functionality with elegant design. It features a booking contact form that sends personalized email templates to both the business owner and the customer upon confirmation. Adhering to modern web design standards, the site ensures a polished, responsive, and user-friendly experience for astrology enthusiasts and clients alike.
-        `,
-    src: HoneyNectarImage,
-    alt: "Honey Nectar iamge",
-    live: "https://honeynectarastrology.com",
-    github: "",
   },
   {
     title: "RustFlix",
-    description: "Movie Application",
-    highlight: `
-            Rustflix is a cutting-edge video streaming web app. It uses Next.js 13
-            server components for lightning-fast frontend rendering. On the
-            backend, with Drizzle ORM ensures efficient data handling and
-            top-notch performance, providing a seamless video streaming
-            experience. With its sleek design and user-friendly interface,
-            Rustflix offers an exceptional entertainment experience.
-        `,
-    src: RustFlixImage,
-    alt: "RustFlix iamge",
+    type: "Movie application",
+    summary:
+      "A streaming-style web app built around modern full-stack patterns and fast frontend rendering.",
+    stack: ["Next.js", "Server Components", "Drizzle", "TypeScript"],
+    details: [
+      "Built a video streaming interface with a full-stack application structure.",
+      "Used server components for fast frontend rendering.",
+      "Worked with Drizzle for typed data access and backend performance.",
+    ],
     live: "https://rustflix.hectorcodes.dev",
     github: "https://github.com/hector3211/rust-fullstack",
   },
   {
     title: "Travel",
-    description: "Travel Aggency Application.",
-    highlight: `
-            This travel app, built with Next.js, offers real-time weather updates
-            and leverages the latest website design trends. It incorporates modern
-            design techniques like responsive design and animations, creating an
-            engaging user experience. The app is not only fast and efficient, but
-            it also ensures that travelers are well-prepared by providing
-            up-to-the-minute weather information.
-        `,
-    src: TravelImage,
-    alt: "Travel iamge",
+    type: "Travel application",
+    summary:
+      "A travel-focused web app with weather-aware trip context and responsive UI patterns.",
+    stack: ["Next.js", "Weather API", "Responsive design", "Animations"],
+    details: [
+      "Built real-time weather context into a travel experience.",
+      "Designed responsive layouts for travelers planning across devices.",
+      "Used animation and modern UI patterns to make the app feel more engaging.",
+    ],
     live: "https://travel.hectorcodes.dev",
     github: "https://github.com/hector3211/Travel-website",
   },
   {
     title: "Supreme Granite",
-    description: "Granite Shop Website.",
-    highlight: `
-            Supreme Granite, built with AstroJS, is a sleek website that showcases granite products with modern design and functionality. It features a dynamic product inventory, a gallery with filtering for easy browsing, and a newsletter subscription to stay informed. With a contact form for inquiries and a responsive, fast-loading interface, it offers a polished and engaging experience for users. Built using TypeScript and React, it blends cutting-edge technology with elegant design.
-        `,
-    src: SupremeGranite,
-    alt: "Supreme Granite image",
+    type: "Granite shop website",
+    summary:
+      "A product-focused business site with inventory browsing, gallery filtering, and customer inquiry flows.",
+    stack: ["Astro", "TypeScript", "React", "Tailwind CSS"],
+    details: [
+      "Built a responsive website for browsing granite products and services.",
+      "Added inventory and gallery experiences for easier product discovery.",
+      "Included inquiry and newsletter flows for customer engagement.",
+    ],
     live: "https://granite.hectorcodes.dev",
     github: "https://github.com/hector3211/supreme-granite",
   },
   {
     title: "Headers",
-    description: "Ecommerce Application.",
-    highlight: `
-        Headers, built with AstroJS, is a sleek website that showcases granite products with modern design and functionality. It features a dynamic product inventory, a gallery with filtering for easy browsing, and a newsletter subscription to stay informed. With a contact form for inquiries and a responsive, fast-loading interface, it offers a polished and engaging experience for users. Built using TypeScript and React, it blends cutting-edge technology with elegant design.
-        `,
-    src: HeadersImage,
-    alt: "Headers image",
+    type: "Ecommerce application",
+    summary:
+      "A storefront-style application focused on product presentation and clean shopping flows.",
+    stack: ["Astro", "TypeScript", "React", "Ecommerce UI"],
+    details: [
+      "Built a product-focused frontend with clear browsing and detail views.",
+      "Focused on fast page loads and responsive ecommerce presentation.",
+      "Used a modern Astro and React stack for interactive UI pieces.",
+    ],
     live: "https://headers.hectorcodes.dev",
     github: "https://github.com/hector3211/headers",
   },
 ];
 ---
 
-<section class="body-font py-10 pb-8 sm:my-20 md:pb-0">
-  <h1 class="px-2 pb-8 text-3xl font-bold tracking-wide sm:text-5xl">
-    Projects
-  </h1>
-  <div
-    class="grid grid-cols-2 items-stretch justify-items-center gap-4 sm:grid-cols-2"
-  >
+<section class="mx-auto w-full max-w-5xl px-4 py-16 sm:py-24">
+  <div class="mb-8 sm:mb-10">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">Projects</h2>
+  </div>
+
+  <div class="space-y-3">
     {
       projects.map((project) => (
-        <Card className={`col-span-2 flex flex-col px-4 md:px-0 lg:col-span-1`}>
-          <CardHeader>
-            <CardTitle>{project.title}</CardTitle>
-            <CardDescription>{project.description}</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-1">
-            <div class="aspect-video w-full overflow-hidden rounded-md">
-              <Image
-                width={900}
-                height={400}
-                src={project.src}
-                alt={project.alt}
-                class={"h-full w-full object-cover"}
-              />
+        <details class="group rounded-2xl border bg-background/70 shadow-sm transition duration-200 open:border-foreground/20 hover:border-foreground/20 hover:bg-muted/30">
+          <summary class="grid cursor-pointer list-none gap-4 p-5 marker:hidden sm:grid-cols-[1fr_auto] sm:items-start sm:p-6 [&::-webkit-details-marker]:hidden">
+            <div class="min-w-0">
+              <div class="mb-2 flex flex-wrap items-center gap-2">
+                <h3 class="text-xl font-semibold tracking-tight">{project.title}</h3>
+                <span class="rounded-full border px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                  {project.type}
+                </span>
+              </div>
+              <p class="max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base">
+                {project.summary}
+              </p>
+              <div class="mt-3 flex flex-wrap gap-2">
+                {project.stack.slice(0, 4).map((item) => (
+                  <span class="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-            <p class="py-3 text-justify leading-relaxed">{project.highlight}</p>
-          </CardContent>
-          <CardFooter className="mt-auto">
-            <div class="ml-2 flex items-center space-x-1 py-2">
-              {project.live ? (
-                <a href={project.live} target="_blank">
-                  <Button>Live</Button>
-                </a>
-              ) : (
-                <Button disabled>Live</Button>
-              )}
-              {project.github ? (
-                <a href={project.github} target="_blank">
-                  <Button className="flex items-center">
-                    <ExternalLink />
-                    <p class="text-md">Source Code</p>
-                  </Button>
-                </a>
-              ) : (
-                <Button disabled className="flex items-center">
-                  <ExternalLink />
-                  <p class="text-md">Source Code</p>
-                </Button>
-              )}
+            <span class="text-sm font-medium text-muted-foreground transition group-open:rotate-45 sm:mt-1">
+              +
+            </span>
+          </summary>
+
+          <div class="border-t px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+            <div class="grid gap-5 md:grid-cols-[1.5fr_1fr]">
+              <ul class="space-y-2 text-sm leading-6 text-muted-foreground">
+                {project.details.map((detail) => (
+                  <li class="flex gap-2">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/60" />
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="space-y-4">
+                <div>
+                  <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    Tech Stack
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span class="rounded-full border px-2.5 py-1 text-xs text-muted-foreground">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {(project.live || project.github) && (
+                  <div class="flex flex-wrap gap-3 text-sm font-medium">
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex items-center gap-1 underline-offset-4 hover:underline"
+                      >
+                        Live site <ExternalLink class="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex items-center gap-1 underline-offset-4 hover:underline"
+                      >
+                        Source <ExternalLink class="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-          </CardFooter>
-        </Card>
+          </div>
+        </details>
       ))
     }
   </div>
