@@ -37,13 +37,24 @@ const projects = [
     title: "GraniteSync",
     type: "Production workflow SaaS",
     summary:
-      "A workflow tool for granite shops with role-based access, job management, inventory, uploads, and fabricator notifications.",
-    stack: ["AWS", "S3", "PostgreSQL", "Better Auth", "TanStack Start"],
+      "A workflow tool for granite shops with role-based access, job management, inventory, uploads, API Gateway routing, and fabricator notifications.",
+    stack: [
+      "AWS",
+      "Terraform",
+      "API Gateway",
+      "GitHub Actions",
+      "S3",
+      "PostgreSQL",
+      "Better Auth",
+      "TanStack Start",
+    ],
     details: [
       "Built admin workflows for inventory management and job creation.",
       "Added project image uploads and individual fabricator profiles.",
+      "Managed Terraform state with S3 versioning and locking for safer infrastructure changes.",
+      "Set up GitHub OIDC for CI/CD workflows that deploy when main is pushed.",
+      "Used API Gateway and blue-green deployments to make releases safer.",
       "Sent email notifications when fabricators were assigned new jobs.",
-      "Focused on simplifying production coordination for granite companies.",
     ],
   },
   {
