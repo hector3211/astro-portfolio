@@ -269,26 +269,15 @@ That is the kind of setup Terraform is good at describing, because the relations
 
 ## Running Into Terraform Dependency Boundaries
 
-One of the most useful lessons came from Terraform dependency boundaries.
+One of the most useful lessons was learning when modules were too connected.
 
-At one point, I had modules passing too many values between each other. The more connected the runtime, networking, identity, storage, and deployment pieces became, the easier it was to create messy dependencies.
+At one point, I had too many values being passed between the runtime, networking, IAM, storage, and deployment pieces. Each module started depending on too much information from another module, and the setup became harder to change.
 
-A simple version looked like this:
+The fix was not to add more Terraform code. It was to make the design simpler.
 
-```text
-The runtime needed configuration from another module
-Another module needed runtime outputs
-Deployment settings depended on both
-Terraform could not build the graph cleanly
-```
+I had to make the module boundaries cleaner, pass fewer outputs around, and decide which values should be stable inputs instead of hard dependencies.
 
-The fix was not just changing a line of Terraform. The fix was changing the design.
-
-I had to stop passing outputs everywhere and make cleaner boundaries between modules. Some values needed to become stable inputs instead of hard dependencies. Some modules needed to know less about the whole system.
-
-That was a useful lesson.
-
-Sometimes the answer is not more Terraform code. Sometimes the answer is making the design simpler.
+That helped me see that good Terraform is not only about creating resources. It is also about keeping the infrastructure easy to understand as it grows.
 
 ## Keeping Modules Focused
 
