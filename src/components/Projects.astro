@@ -138,7 +138,7 @@ const projects = [
     {
       projects.map((project) => (
         <details class="group rounded-2xl border bg-background/70 shadow-sm transition duration-200 open:border-foreground/20 hover:border-foreground/20 hover:bg-muted/30">
-          <summary class="grid cursor-pointer list-none gap-4 p-5 marker:hidden sm:grid-cols-[1fr_auto] sm:items-start sm:p-6 [&::-webkit-details-marker]:hidden">
+          <summary class="grid cursor-pointer list-none grid-cols-[1fr_auto] gap-4 p-5 marker:hidden sm:items-start sm:p-6 [&::-webkit-details-marker]:hidden">
             <div class="min-w-0">
               <div class="mb-2 flex flex-wrap items-center gap-2">
                 <h3 class="text-xl font-semibold tracking-tight">{project.title}</h3>
@@ -157,7 +157,7 @@ const projects = [
                 ))}
               </div>
             </div>
-            <span class="text-sm font-medium text-muted-foreground transition group-open:rotate-45 sm:mt-1">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full border text-lg font-medium leading-none text-muted-foreground transition-transform group-open:rotate-45 sm:mt-1 sm:h-auto sm:w-auto sm:border-0 sm:text-sm">
               +
             </span>
           </summary>
