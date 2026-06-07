@@ -11,18 +11,18 @@ export default function Model() {
   }, []);
 
   return (
-    <div className="relative h-[24rem] w-full overflow-hidden rounded-md py-5 md:h-[30rem] md:px-0 lg:h-[34rem]">
+    <div className="relative h-full w-full overflow-hidden rounded-[2rem]">
       <Suspense
         fallback={
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-teal-500 border-t-transparent"></div>
           </div>
         }
       >
         <Spline
           renderOnDemand={false}
           className="h-full w-full"
-          style={{ borderRadius: "6px", width: "100%", height: "100%" }}
+          style={{ borderRadius: "2rem", width: "100%", height: "100%" }}
           scene="https://prod.spline.design/jNzC38qWlP4eDXCX/scene.splinecode"
           onLoad={onLoad}
         />

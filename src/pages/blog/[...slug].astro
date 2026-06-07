@@ -1,18 +1,26 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import { ArrowLeft, ArrowRight } from "lucide-astro";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  );
+
+  return posts.map((post, index) => ({
     params: { slug: post.id },
-    props: { post },
+    props: {
+      post,
+      nextPost: posts[index - 1],
+      previousPost: posts[index + 1],
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, nextPost, previousPost } = Astro.props;
 const { Content } = await render(post);
 
 const siteUrl = "https://hectorcodes.dev";
@@ -31,7 +39,9 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
   ogType="article"
   publishedDate={post.data.date.toISOString()}
 >
-  <article class="prose prose-lg prose-neutral dark:prose-invert mx-auto w-5/6 sm:w-3/4">
+  <article
+    class="container prose prose-lg prose-neutral max-w-none dark:prose-invert lg:max-w-screen-lg"
+  >
     <header class="mb-8">
       <a
         href="/blog"
@@ -40,11 +50,73 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
         &larr; Back to blog
       </a>
       <h1 class="mb-2">{post.data.title}</h1>
-      <time datetime={post.data.date.toISOString()} class="text-muted-foreground text-sm">
+      <time
+        datetime={post.data.date.toISOString()}
+        class="text-sm text-muted-foreground"
+      >
         {formattedDate}
       </time>
     </header>
     <Content />
+    {
+      (nextPost || previousPost) && (
+        <footer class="not-prose mt-14 border-t pt-8">
+          <div class="grid gap-4 md:grid-cols-2">
+            {nextPost && (
+              <a
+                href={`/blog/${nextPost.id}`}
+                class="group block rounded-2xl border bg-background p-5 transition duration-200 hover:border-foreground/20 hover:bg-muted/30 sm:p-6"
+                aria-label={`Read next blog post: ${nextPost.data.title}`}
+              >
+                <p class="mb-3 text-sm font-medium text-muted-foreground">
+                  Next post
+                </p>
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h2 class="text-xl font-semibold tracking-tight">
+                      {nextPost.data.title}
+                    </h2>
+                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                      {nextPost.data.description}
+                    </p>
+                  </div>
+                  <span class="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-teal-700 dark:text-teal-300">
+                    Read
+                    <ArrowRight class="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </a>
+            )}
+
+            {previousPost && (
+              <a
+                href={`/blog/${previousPost.id}`}
+                class="group block rounded-2xl border bg-background p-5 transition duration-200 hover:border-foreground/20 hover:bg-muted/30 sm:p-6"
+                aria-label={`Read previous blog post: ${previousPost.data.title}`}
+              >
+                <p class="mb-3 text-sm font-medium text-muted-foreground">
+                  Previous post
+                </p>
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h2 class="text-xl font-semibold tracking-tight">
+                      {previousPost.data.title}
+                    </h2>
+                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
+                      {previousPost.data.description}
+                    </p>
+                  </div>
+                  <span class="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-teal-700 dark:text-teal-300">
+                    <ArrowLeft class="h-4 w-4 transition duration-200 group-hover:-translate-x-1" />
+                    Read
+                  </span>
+                </div>
+              </a>
+            )}
+          </div>
+        </footer>
+      )
+    }
   </article>
   <script
     type="application/ld+json"

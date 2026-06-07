@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import SplineModal from "@/components/SplineModal.tsx";
 import Hero from "@/components/Hero.astro";
+import LatestPost from "@/components/LatestPost.astro";
 import Projects from "@/components/Projects.astro";
 import ContactForm from "@/components/ContactForm.tsx";
 import Footer from "@/components/Footer.astro";
@@ -10,14 +10,8 @@ export const prerender = true;
 ---
 
 <Layout transition:name="homepage" title="Hector's Portfolio">
-  <SplineModal client:only="react" />
-  <div
-    class="mx-auto flex w-5/6 items-center justify-center gap-2 rounded-xl border border-white/10 bg-gray-800/90 px-4 py-3 text-sm text-white shadow-sm dark:text-primary-foreground sm:w-3/4 sm:text-base"
-  >
-    <span aria-hidden="true">💡</span>
-    <p>Hello, I'm a software developer based in Florida.</p>
-  </div>
   <Hero />
+  <LatestPost />
   <Projects />
   <ContactForm client:load />
   <Footer />

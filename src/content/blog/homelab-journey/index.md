@@ -286,8 +286,6 @@ https://vault.lab.example.net
 
 Tailscale needs to be connected first. The domain resolves to an internal IP through Pi-hole or Tailscale MagicDNS and isn't reachable otherwise. After the first successful login, Bitwarden caches the vault locally so it stays usable offline.
 
-> Image spot: Bitwarden iOS server URL screen and successful login.
-
 ## What I'm happy with
 
 The lab is small enough to understand completely. VLANs add real isolation without becoming a maintenance problem. Hiding the main SSID and running client isolation on the guest network handles the wireless security without needing a complicated firewall setup. Proxmox makes it easy to move things around, snapshot before experiments, and rebuild if something breaks. Traefik means every service has a proper URL and a cert that actually works on every device.

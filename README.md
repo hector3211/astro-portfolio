@@ -4,7 +4,7 @@ Personal portfolio site built with Astro, React, and Tailwind CSS.
 
 It includes:
 
-- a landing page for projects and contact info
+- a landing page with a latest-post highlight, projects, and contact info
 - a blog powered by Astro Content Collections
 - a Vercel-ready Astro server build
 

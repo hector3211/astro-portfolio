@@ -1,64 +1,57 @@
 ---
 import ToggleThemeButton from "../components/ToggleTheme";
 import MobileMenu from "../components/MobileMenu";
-import { ExternalLink } from "lucide-astro";
+import { ExternalLink, Github } from "lucide-astro";
 ---
 
 <nav
   transition:persist
-  class="container fixed top-0 z-50 w-full items-center bg-opacity-60 py-4 backdrop-blur-md lg:max-w-screen-lg"
+  class="fixed inset-x-0 top-0 z-50 border-b bg-background/85 backdrop-blur-xl"
 >
-  <div class="flex items-center justify-between">
-    <div
-      class="hidden md:flex md:items-end md:justify-start md:space-x-5 md:pl-3 md:font-medium"
-    >
+  <div
+    class="mx-auto flex h-16 w-full max-w-screen-lg items-center justify-between px-4 sm:px-6 lg:px-8"
+  >
+    <div class="flex items-center">
       <a
         href="/"
-        class="transform text-2xl font-bold transition-all duration-200 hover:scale-95 active:scale-105"
+        class="text-lg font-bold tracking-tight text-foreground transition duration-200 hover:text-foreground/75"
       >
         Hector Oropesa
       </a>
-      <div class="flex space-x-3">
+    </div>
+    <div class="flex items-center gap-3 sm:gap-5">
+      <div
+        class="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex"
+      >
         <a
-          href="/"
-          class="hover:link transform transition-all duration-200 hover:scale-95 active:scale-105"
-          data-tip="Home"
+          href="/#projects"
+          class="transition duration-200 hover:text-foreground"
         >
-          Home
+          Projects
         </a>
         <a
-          href="/blog"
-          class="hover:link transform transition-all duration-200 hover:scale-95 active:scale-105"
-          data-tip="Blog"
+          href="/#contact"
+          class="transition duration-200 hover:text-foreground"
         >
-          Blog
+          Contact
         </a>
         <a
           href="https://github.com/hector3211"
           target="_blank"
-          class="hover:link transform px-1 transition-all duration-200 hover:scale-95 active:scale-105"
-          data-tip="Github"
+          rel="noreferrer"
+          class="flex items-center gap-1.5 transition duration-200 hover:text-foreground"
         >
-          Github
+          <Github class="h-4 w-4" /> GitHub
         </a>
         <a
           href="https://github.com/hector3211/astro-portfolio"
           target="_blank"
-          class="hover:link flex transform items-center space-x-1 transition-all duration-200 hover:scale-95 active:scale-105"
-          data-tip="Source"
+          rel="noreferrer"
+          class="flex items-center gap-1.5 transition duration-200 hover:text-foreground"
         >
-          <p>Source</p>
-          <ExternalLink />
+          Source <ExternalLink class="h-3.5 w-3.5" />
         </a>
       </div>
-    </div>
-    <a
-      href="/"
-      class="block text-2xl font-bold hover:scale-95 active:scale-105 md:hidden"
-    >
-      Hector Oropesa
-    </a>
-    <div class="flex">
       <ToggleThemeButton client:load />
       <MobileMenu client:load />
     </div>

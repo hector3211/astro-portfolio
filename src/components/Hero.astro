@@ -1,42 +1,118 @@
 ---
-import { Button } from "../components/ui/button.tsx";
+import SplineModal from "@/components/SplineModal.tsx";
+import { ArrowDown, Mail, MapPin } from "lucide-astro";
+
+const skills = [
+  "TypeScript",
+  "React",
+  "Next.js",
+  "PostgreSQL",
+  "AWS",
+  "Terraform",
+];
+
+const toolbox = [
+  {
+    label: "Languages",
+    items: ["TypeScript", "JavaScript", "SQL", "Go", "Bash", "PowerShell"],
+  },
+  {
+    label: "Frontend",
+    items: ["React", "Next.js", "Astro", "TanStack", "Tailwind CSS"],
+  },
+  {
+    label: "Backend & Data",
+    items: ["Node.js", "PostgreSQL", "Drizzle", "REST APIs"],
+  },
+  {
+    label: "Cloud & DevOps",
+    items: ["AWS", "Terraform", "GitHub Actions", "CI/CD"],
+  },
+];
 ---
 
-<section class="body-font mx-auto w-full max-w-5xl px-4 pb-8 pt-12 sm:pt-14">
+<section
+  class="mx-auto w-full max-w-screen-lg px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-16 lg:px-8"
+>
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-    <h1 class="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
+    <div class="mb-8 h-48 w-full max-w-sm overflow-hidden sm:h-64">
+      <SplineModal client:only="react" />
+    </div>
+
+    <div
+      class="inline-flex items-center gap-2 rounded-full border bg-muted/40 px-4 py-2 text-sm text-muted-foreground"
+    >
+      <MapPin class="h-4 w-4" />
+      Software developer based in Florida
+    </div>
+
+    <h1 class="mt-7 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
       Hector Oropesa
     </h1>
-    <a href="#contact" class="mt-7 flex w-full max-w-60 justify-center">
-      <Button
-        className="w-full bg-teal-500 shadow-sm shadow-teal-600 transition hover:bg-teal-500/80"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          width="20"
-          height="20"
-        >
-          <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
-          <polyline points="3 6 12 13 21 6"></polyline>
-        </svg>
-        <p class="sm:text-md px-1">Contact</p>
-      </Button>
-    </a>
-  </div>
-  <div class="mx-auto mt-14 max-w-4xl">
-    <p class="text-left text-base leading-8 text-foreground/90 sm:text-lg">
-      Hi, I'm Hector. I build full-stack applications and cloud infrastructure
-      with a focus on practical systems that make real workflows easier. My work
-      usually involves TypeScript, React, TanStack, PostgreSQL, AWS, and
-      Terraform. I enjoy turning messy business problems into simple tools,
-      improving deployment workflows, and learning how each part of a system fits
-      together.
+    <p class="mt-4 text-xl font-semibold text-foreground/85">
+      Full-Stack & Cloud Engineer
     </p>
+
+    <p
+      class="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
+    >
+      I build full-stack applications and cloud infrastructure with a focus on
+      practical systems that make real workflows easier. I enjoy turning messy
+      business problems into simple tools, improving deployment workflows, and
+      learning how each part of a system fits together.
+    </p>
+
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <a
+        href="#contact"
+        class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-foreground px-5 text-sm font-semibold text-background transition duration-200 hover:bg-foreground/90"
+      >
+        <Mail class="h-4 w-4" />
+        Get in touch
+      </a>
+      <a
+        href="#projects"
+        class="inline-flex h-12 items-center justify-center gap-2 rounded-xl border bg-background px-5 text-sm font-semibold transition duration-200 hover:bg-muted/50"
+      >
+        View projects
+        <ArrowDown class="h-4 w-4" />
+      </a>
+    </div>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-2">
+      {
+        skills.map((skill) => (
+          <span class="rounded-md border bg-muted/60 px-3 py-1 text-xs font-medium text-foreground/85">
+            {skill}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <div
+    class="mt-14 rounded-3xl border bg-muted/20 p-6 shadow-sm sm:p-8 lg:p-10"
+  >
+    <p
+      class="mb-7 text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground"
+    >
+      Toolbox
+    </p>
+    <div class="grid gap-8 sm:grid-cols-2">
+      {
+        toolbox.map((group) => (
+          <div>
+            <h2 class="mb-3 text-sm font-semibold">{group.label}</h2>
+            <div class="flex flex-wrap gap-2">
+              {group.items.map((item) => (
+                <span class="rounded-md bg-muted px-3 py-1 text-xs font-medium text-foreground/85">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
