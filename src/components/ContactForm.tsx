@@ -50,15 +50,18 @@ export default function ContactForm() {
   };
 
   return (
-    <Card id="contact" className="mx-auto my-20 w-full max-w-7xl">
-      <CardHeader>
-        <CardTitle>Contact Me</CardTitle>
-        <CardDescription>
+    <Card
+      id="contact"
+      className="mx-4 my-12 w-auto max-w-7xl rounded-2xl sm:mx-6 sm:my-16 lg:mx-auto lg:my-20"
+    >
+      <CardHeader className="p-5 pb-4 sm:p-6">
+        <CardTitle className="text-2xl sm:text-3xl">Contact Me</CardTitle>
+        <CardDescription className="leading-6">
           Send me a message and I'll get back to you as soon as possible.
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 px-5 pb-5 sm:px-6">
           <div>
             <Input
               type="text"
@@ -73,6 +76,7 @@ export default function ContactForm() {
             <Input
               id="name"
               placeholder="Your name"
+              className="h-12 sm:h-10"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -87,6 +91,7 @@ export default function ContactForm() {
               type="email"
               name="email"
               placeholder="Your email"
+              className="h-12 sm:h-10"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               maxLength={150}
@@ -99,14 +104,19 @@ export default function ContactForm() {
               id="message"
               placeholder="Your message"
               name="message"
+              className="min-h-36 resize-y sm:min-h-28"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
             />
           </div>
         </CardContent>
-        <CardFooter>
-          <Button disabled={pending} type="submit">
+        <CardFooter className="px-5 pb-5 pt-0 sm:px-6 sm:pb-6">
+          <Button
+            disabled={pending}
+            type="submit"
+            className="h-12 w-full sm:h-10 sm:w-auto"
+          >
             {pending ? (
               <Loader2 className="mr-1 size-5 animate-spin" />
             ) : (
