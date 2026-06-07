@@ -51,13 +51,15 @@ That is why S3 versioning is important.
 
 With versioning turned on, the state file has history. If something gets overwritten or a bad apply causes an issue, there is a way to recover instead of panicking.
 
-Locking is important too.
+Locking was another part that helped me understand how Terraform grows from a local tool into a team workflow.
 
-Without locking, two people, or two automation jobs, could run Terraform at the same time against the same environment. That can cause conflicts or mess up the state file.
+When I first started, it was easy to think, "I am the only one running this, so what could go wrong?" But once the project starts moving toward automation, that mindset changes. Two people, or two pipeline jobs, should not be able to update the same state file at the same time.
 
-Terraform's S3 backend now supports native state locking with an S3 lockfile by setting `use_lockfile = true`. Older setups often used DynamoDB for locking, but DynamoDB-based locking is deprecated in the S3 backend.
+That is where locking started to make sense to me. It is not just a Terraform setting. It is a guardrail that protects the whole workflow while the project grows.
 
-A safer Terraform backend setup includes:
+I also learned that the backend setup itself has evolved. A lot of older Terraform examples still use DynamoDB for S3 state locking, so that was the option I expected to reach for at first. But for this setup, the simpler path was using the S3 backend's native lockfile with `use_lockfile = true`.
+
+So the safer backend setup became less about copying an old pattern and more about understanding what the project needed next:
 
 - Remote state in S3
 - Versioning enabled on the state bucket
