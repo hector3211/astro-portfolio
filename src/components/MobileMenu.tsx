@@ -43,6 +43,15 @@ export default function Menu() {
             <li className="w-full">
               <a
                 className="block w-full rounded-xl px-3 py-2 hover:bg-accent"
+                href="/blog"
+                onClick={handleShow}
+              >
+                Blog
+              </a>
+            </li>
+            <li className="w-full">
+              <a
+                className="block w-full rounded-xl px-3 py-2 hover:bg-accent"
                 href="https://github.com/hector3211"
                 target="_blank"
                 rel="noreferrer"
