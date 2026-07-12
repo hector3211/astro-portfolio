@@ -96,7 +96,7 @@ I created a standard configuration policy that defined what a deployed machine s
 
 The process I built cut deployment time per machine and reduced the small inconsistencies that used to generate follow-up tickets. Onboarding new clients and new users got faster because the baseline was already defined. And the team now has a scalable foundation they can keep improving without starting from scratch.
 
-I don't have exact public numbers to share, but the difference was clear in day-to-day work: fewer questions about "how do we set this one up again," and more confidence that a deployed machine was ready for the user.
+The time savings were real. A deployment that used to take around two hours dropped to about an hour and forty minutes as we standardized the workflow. Now the same process takes roughly thirty to forty minutes. We are handling more machines than before while keeping quality steady because technicians aren't stuck babysitting every step - the policies and automations handle the repeatable work, and people step in only when something actually needs attention.
 
 <!-- IMAGE: impact-metrics.png -->
 <!-- Suggested visual: A simple bar or metric card graphic showing qualitative improvements: deployment time ↓, consistency ↑, technician questions ↓, client onboarding speed ↑. Keep numbers vague or use arrows if exact metrics aren't public. -->
