@@ -1,14 +1,26 @@
 ---
 import "../styles/globals.css";
+import NavBar from "../components/Nav.astro";
+import { Toaster } from "@/components/ui/sonner";
+
 export interface Props {
   title: string;
   description?: string;
+  canonicalUrl?: string;
+  ogType?: string;
+  publishedDate?: string;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  canonicalUrl,
+  ogType = "website",
+  publishedDate,
+} = Astro.props;
 
-import NavBar from "../components/Nav.astro";
-import { Toaster } from "@/components/ui/sonner";
+const siteUrl = "https://hectorcodes.dev";
+const pageUrl = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
 ---
 
 <script is:inline>
@@ -41,9 +53,22 @@ import { Toaster } from "@/components/ui/sonner";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    <title>{title}</title></head
-  >
+    <link rel="canonical" href={pageUrl} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    {
+      publishedDate && ogType === "article" && (
+        <meta property="article:published_time" content={publishedDate} />
+      )
+    }
+  </head>
   <body class="relative mx-auto min-h-screen max-w-screen-lg">
     <NavBar />
     <main class="py-20">
