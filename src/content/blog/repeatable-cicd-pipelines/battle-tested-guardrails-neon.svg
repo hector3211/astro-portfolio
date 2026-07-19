@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Battle-tested CI/CD guardrails</title>
+  <desc id="desc">Pipeline signals expose unexpected Terraform plans, infrastructure drift, and inconsistent releases before guarded recovery actions are taken.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%"><stop stop-color="#10244f"/><stop offset=".58" stop-color="#050d20"/><stop offset="1" stop-color="#020713"/></radialGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#268cff" stroke-opacity=".07"/></pattern>
+    <filter id="blueGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="redGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="greenGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5 0 10Z" fill="#48b9ff"/></marker>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/><rect width="1200" height="675" fill="url(#grid)"/>
+  <g opacity=".38" fill="none" stroke="#248fff" stroke-width="2"><path d="M20 94h96c16 0 17-24 1-27-4-31-50-34-59-5-19-3-30 9-30 32z"/><path d="M1080 93h97c15 0 16-23 1-26-5-31-49-34-59-5-19-3-29 9-29 31z"/></g>
+  <text x="600" y="58" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="36" font-weight="800">When the Happy Path Breaks</text>
+  <text x="600" y="89" text-anchor="middle" fill="#79bfff" font-family="system-ui, sans-serif" font-size="18">Detect. Review. Recover.</text>
+  <path d="M330 104h540" stroke="#248fff" stroke-opacity=".5"/><circle cx="330" cy="104" r="4" fill="#48b9ff"/><circle cx="870" cy="104" r="4" fill="#48b9ff"/>
+
+  <text x="80" y="148" fill="#ff7b72" font-family="ui-monospace, monospace" font-size="14">PIPELINE SIGNALS</text>
+  <g filter="url(#redGlow)"><rect x="70" y="165" width="330" height="110" rx="15" fill="#22101a" stroke="#ff6259" stroke-width="2"/></g>
+  <path d="M102 244l30-55 30 55z" fill="#4b171e" stroke="#ff6c62" stroke-width="3"/><path d="M132 207v18M132 234v2" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <text x="181" y="205" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Unexpected plan</text><text x="181" y="232" fill="#dba5a5" font-family="system-ui, sans-serif" font-size="14">Review catches unintended changes</text><rect x="181" y="242" width="133" height="20" rx="10" fill="#4b171e"/><text x="247" y="256" text-anchor="middle" fill="#ff8f87" font-family="ui-monospace, monospace" font-size="11">APPLY PAUSED</text>
+  <g filter="url(#redGlow)"><rect x="70" y="296" width="330" height="110" rx="15" fill="#22101a" stroke="#ff6259" stroke-width="2"/></g>
+  <path d="M102 330h60v47h-60z" fill="#391521" stroke="#ff6c62" stroke-width="2"/><path d="M111 345h42M111 357h28M111 369h36" stroke="#ff9189" stroke-width="3"/>
+  <text x="181" y="336" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Infrastructure drift</text><text x="181" y="363" fill="#dba5a5" font-family="system-ui, sans-serif" font-size="14">Code and reality no longer agree</text><rect x="181" y="373" width="153" height="20" rx="10" fill="#4b171e"/><text x="257" y="387" text-anchor="middle" fill="#ff8f87" font-family="ui-monospace, monospace" font-size="11">MISMATCH VISIBLE</text>
+  <g filter="url(#redGlow)"><rect x="70" y="427" width="330" height="110" rx="15" fill="#22101a" stroke="#ff6259" stroke-width="2"/></g>
+  <path d="M103 462h58v41h-58z" fill="#391521" stroke="#ff6c62" stroke-width="2"/><path d="M114 452h36v10M112 513h40" stroke="#ff9189" stroke-width="3"/><circle cx="132" cy="482" r="7" fill="#ff8a3d"/>
+  <text x="181" y="467" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Manual image release</text><text x="181" y="494" fill="#dba5a5" font-family="system-ui, sans-serif" font-size="14">Tags and commands can diverge</text><rect x="181" y="504" width="142" height="20" rx="10" fill="#4b171e"/><text x="252" y="518" text-anchor="middle" fill="#ff8f87" font-family="ui-monospace, monospace" font-size="11">PROCESS BYPASSED</text>
+
+  <path d="M400 220h103M400 351h103M400 482h103" stroke="#48b9ff" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+  <g filter="url(#blueGlow)"><path d="M600 161l104 37v97c0 87-49 145-104 171-55-26-104-84-104-171v-97z" fill="#081a35" stroke="#48b9ff" stroke-width="3"/></g>
+  <path d="M555 295l30 30 63-80" fill="none" stroke="#5ac4ff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="378" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="23" font-weight="700">Guardrails</text><text x="600" y="406" text-anchor="middle" fill="#7dc9ff" font-family="ui-monospace, monospace" font-size="12">REVIEW / VISIBILITY</text><text x="600" y="425" text-anchor="middle" fill="#7dc9ff" font-family="ui-monospace, monospace" font-size="12">AUTOMATION</text>
+  <path d="M704 351h96" stroke="#48b9ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="819" y="148" fill="#68e6a0" font-family="ui-monospace, monospace" font-size="14">SAFE OUTCOMES</text>
+  <g filter="url(#greenGlow)"><rect x="810" y="165" width="320" height="110" rx="15" fill="#09201c" stroke="#47db8d" stroke-width="2"/></g>
+  <circle cx="858" cy="220" r="27" fill="#10382d" stroke="#51e89a"/><path d="M845 220l9 9 18-23" fill="none" stroke="#6af0a8" stroke-width="4"/>
+  <text x="901" y="211" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Pause safely</text><text x="901" y="238" fill="#98cfb2" font-family="system-ui, sans-serif" font-size="14">Approval prevents unintended apply</text>
+  <g filter="url(#greenGlow)"><rect x="810" y="296" width="320" height="110" rx="15" fill="#09201c" stroke="#47db8d" stroke-width="2"/></g>
+  <circle cx="858" cy="351" r="27" fill="#10382d" stroke="#51e89a"/><path d="M846 350a12 12 0 1024 0 12 12 0 00-24 0zm21 9l12 12" fill="none" stroke="#6af0a8" stroke-width="3"/>
+  <text x="901" y="342" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Inspect the mismatch</text><text x="901" y="369" fill="#98cfb2" font-family="system-ui, sans-serif" font-size="14">Refresh-only plan exposes drift</text>
+  <g filter="url(#greenGlow)"><rect x="810" y="427" width="320" height="110" rx="15" fill="#09201c" stroke="#47db8d" stroke-width="2"/></g>
+  <circle cx="858" cy="482" r="27" fill="#10382d" stroke="#51e89a"/><path d="M845 482h26M858 469v26" stroke="#6af0a8" stroke-width="3"/>
+  <text x="901" y="473" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Release consistently</text><text x="901" y="500" fill="#98cfb2" font-family="system-ui, sans-serif" font-size="14">Build, push, and deploy together</text>
+
+  <g filter="url(#blueGlow)"><rect x="139" y="575" width="922" height="67" rx="14" fill="#061326" stroke="#2b91ef"/></g>
+  <circle cx="180" cy="608" r="20" fill="#102e55" stroke="#48b9ff"/><path d="M170 608h20M180 598v20" stroke="#68caff" stroke-width="3"/>
+  <text x="216" y="603" fill="#fff" font-family="system-ui, sans-serif" font-size="17" font-weight="700">Battle-tested does not mean nothing fails.</text><text x="216" y="625" fill="#8fb1d0" font-family="system-ui, sans-serif" font-size="14">It means failure stays visible, reviewable, and recoverable.</text>
+  <rect x="882" y="591" width="145" height="34" rx="7" fill="#10382d" stroke="#47db8d"/><text x="954" y="613" text-anchor="middle" fill="#70e9a4" font-family="ui-monospace, monospace" font-size="12">TRUST EARNED</text>
+</svg>
