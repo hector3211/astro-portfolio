@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Terraform plan and apply CI/CD workflow</title>
+  <desc id="desc">A GitHub pull request runs checks and Terraform plan through OIDC. Human approval and a separate role protect Terraform apply and deployment.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="74%"><stop stop-color="#102554"/><stop offset=".58" stop-color="#050d20"/><stop offset="1" stop-color="#020713"/></radialGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b36dff"/><stop offset="1" stop-color="#5930df"/></linearGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#2a8cff" stroke-opacity=".07"/></pattern>
+    <filter id="glowBlue" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glowPurple" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5 0 10Z" fill="#48b9ff"/></marker>
+    <marker id="arrowP" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5 0 10Z" fill="#a962ff"/></marker>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/><rect width="1200" height="675" fill="url(#grid)"/>
+  <g opacity=".4" fill="none" stroke="#248fff" stroke-width="2"><path d="M22 92h90c16 0 17-24 1-27-4-31-50-34-59-5-19-3-30 9-30 32z"/><path d="M1080 91h98c15 0 16-23 1-26-5-31-49-34-59-5-19-3-29 9-29 31z"/></g>
+  <text x="600" y="58" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="36" font-weight="800">Terraform CI/CD Delivery Flow</text>
+  <text x="600" y="89" text-anchor="middle" fill="#79bfff" font-family="system-ui, sans-serif" font-size="18">Plan automatically. Apply intentionally.</text>
+  <path d="M286 104h628" stroke="#248fff" stroke-opacity=".5"/><circle cx="286" cy="104" r="4" fill="#48b9ff"/><circle cx="914" cy="104" r="4" fill="#48b9ff"/>
+
+  <g filter="url(#glowBlue)"><rect x="55" y="157" width="180" height="178" rx="15" fill="#07152a" stroke="#48b9ff" stroke-width="2"/></g>
+  <circle cx="145" cy="209" r="31" fill="#0a0f1d" stroke="#fff" stroke-width="2"/><path d="M132 230c-19 6-19-10-27-12m54 12v-15c0-5 2-9 5-12 1-4 1-8 0-12-4-1-8 1-11 4-7-2-15-2-22 0-3-3-7-5-11-4-1 4-1 8 0 12 3 3 5 7 5 12v15" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <text x="145" y="273" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Pull Request</text>
+  <text x="145" y="300" text-anchor="middle" fill="#77c8ff" font-family="ui-monospace, monospace" font-size="13">GITHUB ACTIONS</text>
+
+  <g filter="url(#glowPurple)"><rect x="290" y="157" width="215" height="178" rx="15" fill="#0c1028" stroke="#a962ff" stroke-width="2"/></g>
+  <path d="M368 188l33 19-33 19-33-19zm0 42l33-19v39l-33 19zm-37-19l33 20v38l-33-19z" fill="url(#purple)"/>
+  <text x="397" y="285" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Validate + Plan</text>
+  <text x="397" y="311" text-anchor="middle" fill="#c291ff" font-family="ui-monospace, monospace" font-size="13">FMT / VALIDATE / PLAN</text>
+
+  <g filter="url(#glowBlue)"><rect x="560" y="157" width="190" height="178" rx="15" fill="#07152a" stroke="#48b9ff" stroke-width="2"/></g>
+  <path d="M655 184l34 14v27c0 23-15 38-34 46-19-8-34-23-34-46v-27z" fill="#0e315e" stroke="#48b9ff" stroke-width="2"/><path d="M638 224l11 11 23-29" fill="none" stroke="#63c7ff" stroke-width="4"/>
+  <text x="655" y="285" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Review Gate</text>
+  <text x="655" y="311" text-anchor="middle" fill="#77c8ff" font-family="ui-monospace, monospace" font-size="13">HUMAN APPROVAL</text>
+
+  <g filter="url(#glowPurple)"><rect x="805" y="157" width="180" height="178" rx="15" fill="#0c1028" stroke="#a962ff" stroke-width="2"/></g>
+  <path d="M857 197h76v54h-76z" fill="#151a3c" stroke="#b573ff" stroke-width="2"/><path d="M870 213h45M870 225h31M870 237h38" stroke="#b98bff" stroke-width="3"/>
+  <text x="895" y="285" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Apply</text>
+  <text x="895" y="311" text-anchor="middle" fill="#c291ff" font-family="ui-monospace, monospace" font-size="13">TERRAFORM APPLY</text>
+
+  <g filter="url(#glowBlue)"><rect x="1035" y="157" width="120" height="178" rx="15" fill="#07152a" stroke="#48b9ff" stroke-width="2"/></g>
+  <path d="M1063 205h64v48h-64zM1073 195h44v10M1075 263h40" fill="none" stroke="#5ec5ff" stroke-width="3"/><circle cx="1095" cy="229" r="8" fill="#ff9c3e"/>
+  <text x="1095" y="285" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Deploy</text>
+  <text x="1095" y="311" text-anchor="middle" fill="#77c8ff" font-family="ui-monospace, monospace" font-size="12">IMAGE + ECS</text>
+
+  <path d="M235 246h43" stroke="#48b9ff" stroke-width="3" marker-end="url(#arrow)"/><path d="M505 246h43" stroke="#a962ff" stroke-width="3" marker-end="url(#arrowP)"/><path d="M750 246h43" stroke="#48b9ff" stroke-width="3" marker-end="url(#arrow)"/><path d="M985 246h38" stroke="#a962ff" stroke-width="3" marker-end="url(#arrowP)"/>
+  <circle cx="527" cy="246" r="12" fill="#06142a" stroke="#48b9ff"/><path d="M522 246l4 4 7-9" fill="none" stroke="#68d09b" stroke-width="2"/>
+
+  <g filter="url(#glowBlue)"><rect x="72" y="384" width="1056" height="104" rx="16" fill="#061326" stroke="#2a91ef"/></g>
+  <text x="101" y="417" fill="#48b9ff" font-family="ui-monospace, monospace" font-size="14">OIDC TRUST PATH</text>
+  <path d="M102 449h886" stroke="#48b9ff" stroke-width="2" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+  <rect x="151" y="430" width="194" height="38" rx="7" fill="#0b2547" stroke="#287fca"/><text x="248" y="454" text-anchor="middle" fill="#d9efff" font-family="ui-monospace, monospace" font-size="13">NO STORED AWS KEYS</text>
+  <rect x="458" y="430" width="224" height="38" rx="7" fill="#0b2547" stroke="#287fca"/><text x="570" y="454" text-anchor="middle" fill="#d9efff" font-family="ui-monospace, monospace" font-size="13">SHORT-LIVED CREDENTIALS</text>
+  <rect x="794" y="430" width="228" height="38" rx="7" fill="#0b2547" stroke="#287fca"/><text x="908" y="454" text-anchor="middle" fill="#d9efff" font-family="ui-monospace, monospace" font-size="13">REPOSITORY-SCOPED TRUST</text>
+
+  <rect x="72" y="523" width="500" height="106" rx="15" fill="#07162b" stroke="#2a91ef"/><circle cx="118" cy="576" r="25" fill="#0c315d" stroke="#48b9ff"/><path d="M105 576h26M118 563v26" stroke="#62c7ff" stroke-width="3"/>
+  <text x="158" y="558" fill="#61c5ff" font-family="ui-monospace, monospace" font-size="14">PLAN ROLE</text><text x="158" y="586" fill="#fff" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Read environment + produce plan</text><text x="158" y="610" fill="#8faecc" font-family="system-ui, sans-serif" font-size="14">A compromised check cannot modify infrastructure.</text>
+  <rect x="628" y="523" width="500" height="106" rx="15" fill="#100f2b" stroke="#9458ff"/><circle cx="674" cy="576" r="25" fill="#281650" stroke="#a962ff"/><path d="M663 576l8 8 16-20" fill="none" stroke="#c798ff" stroke-width="3"/>
+  <text x="714" y="558" fill="#bd86ff" font-family="ui-monospace, monospace" font-size="14">APPLY ROLE</text><text x="714" y="586" fill="#fff" font-family="system-ui, sans-serif" font-size="18" font-weight="700">Make reviewed, approved changes</text><text x="714" y="610" fill="#a995c3" font-family="system-ui, sans-serif" font-size="14">Stronger access begins only after the gate.</text>
+</svg>
