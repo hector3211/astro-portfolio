@@ -3,6 +3,30 @@ import { ExternalLink } from "lucide-astro";
 
 const projects = [
   {
+    title: "Enterprise MCP",
+    type: "Internal platform engineering",
+    summary:
+      "Model Context Protocol server that unifies enterprise tool integrations behind one OAuth-secured layer, with a React client for authenticated employee access.",
+    stack: [
+      "TypeScript",
+      "React",
+      "PostgreSQL",
+      "Docker",
+      "Traefik",
+      "Proxmox",
+      "Terraform",
+      "Ansible",
+      "OAuth 2.0",
+    ],
+    details: [
+      "Built an MCP server in TypeScript exposing existing enterprise tool integrations to AI clients through a single interface.",
+      "Secured both surfaces with OAuth. Employees authenticate in the React client, and the MCP layer authorizes its own tokens.",
+      "Used PostgreSQL for persistence and Docker for packaging and deployment.",
+      "Routed traffic through Traefik with a blue-green deployment strategy for zero-downtime releases.",
+      "Self-hosted on Proxmox, provisioned with Terraform and configured with Ansible.",
+    ],
+  },
+  {
     title: "Confidential AWS Infrastructure",
     type: "Client cloud infrastructure work",
     summary:
