@@ -25,10 +25,10 @@ export default function Menu() {
             <li className="w-full">
               <a
                 className="block w-full rounded-xl px-3 py-2 hover:bg-accent"
-                href="/#projects"
+                href="/#experience"
                 onClick={handleShow}
               >
-                Projects
+                Experience
               </a>
             </li>
             <li className="w-full">

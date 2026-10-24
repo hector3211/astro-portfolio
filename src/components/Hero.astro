@@ -4,35 +4,15 @@ import { ArrowDown, Mail, MapPin } from "lucide-astro";
 
 const skills = [
   "TypeScript",
-  "React",
-  "Next.js",
   "PostgreSQL",
   "AWS",
   "Terraform",
 ];
 
-const toolbox = [
-  {
-    label: "Languages",
-    items: ["TypeScript", "JavaScript", "SQL", "Go", "Bash", "PowerShell"],
-  },
-  {
-    label: "Frontend",
-    items: ["React", "Next.js", "Astro", "TanStack", "Tailwind CSS"],
-  },
-  {
-    label: "Backend & Data",
-    items: ["Node.js", "PostgreSQL", "Drizzle", "REST APIs"],
-  },
-  {
-    label: "Cloud & DevOps",
-    items: ["AWS", "Terraform", "GitHub Actions", "CI/CD"],
-  },
-];
 ---
 
 <section
-  class="mx-auto w-full max-w-screen-lg px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-16 lg:px-8"
+  class="mx-auto w-full max-w-screen-xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-16 lg:px-8"
 >
   <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
     <div class="mb-8 h-48 w-full max-w-sm overflow-hidden sm:h-64">
@@ -56,25 +36,24 @@ const toolbox = [
     <p
       class="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
     >
-      I build full-stack applications and cloud infrastructure with a focus on
-      practical systems that make real workflows easier. I enjoy turning messy
-      business problems into simple tools, improving deployment workflows, and
-      learning how each part of a system fits together.
+      I build software and connect the systems behind it. From APIs and AWS
+      infrastructure to servers and workstations, I turn practical problems into
+      tools that make work easier.
     </p>
 
     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
       <a
         href="#contact"
-        class="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-foreground px-5 text-sm font-semibold text-background transition duration-200 hover:bg-foreground/90"
+        class="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-foreground px-5 text-sm font-semibold text-background transition duration-200 hover:bg-foreground/90"
       >
         <Mail class="h-4 w-4" />
         Get in touch
       </a>
       <a
-        href="#projects"
-        class="inline-flex h-12 items-center justify-center gap-2 rounded-xl border bg-background px-5 text-sm font-semibold transition duration-200 hover:bg-muted/50"
+        href="#experience"
+        class="inline-flex h-12 items-center justify-center gap-2 rounded-none border bg-background px-5 text-sm font-semibold transition duration-200 hover:bg-muted/50"
       >
-        View projects
+        View experience
         <ArrowDown class="h-4 w-4" />
       </a>
     </div>
@@ -90,29 +69,4 @@ const toolbox = [
     </div>
   </div>
 
-  <div
-    class="mt-14 rounded-3xl border bg-muted/20 p-6 shadow-sm sm:p-8 lg:p-10"
-  >
-    <p
-      class="mb-7 text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground"
-    >
-      Toolbox
-    </p>
-    <div class="grid gap-8 sm:grid-cols-2">
-      {
-        toolbox.map((group) => (
-          <div>
-            <h2 class="mb-3 text-sm font-semibold">{group.label}</h2>
-            <div class="flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <span class="rounded-md bg-muted px-3 py-1 text-xs font-medium text-foreground/85">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
 </section>

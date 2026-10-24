@@ -1,0 +1,39 @@
+---
+const technology = [
+  {
+    label: "Application development",
+    items: ["TypeScript", "React", "Node.js", "PostgreSQL", "SQL", "REST APIs", "Go", "Bash", "PowerShell"],
+  },
+  {
+    label: "Cloud & automation",
+    items: ["AWS", "Terraform", "Ansible", "Docker", "GitHub Actions", "CI/CD"],
+  },
+  {
+    label: "Systems & networking",
+    items: ["Linux", "Proxmox", "Firewalls", "VPNs", "Reverse proxies"],
+  },
+  {
+    label: "Endpoint & identity",
+    items: ["Microsoft 365 admin", "Intune device management", "Entra ID admin", "NinjaOne RMM"],
+  },
+];
+---
+
+<section class="mx-auto w-full max-w-screen-xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+  <header class="mb-8">
+    <p class="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-teal-700 dark:text-teal-300/80">Tools & systems</p>
+    <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Technology profile</h2>
+    <p class="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">My everyday tools, from applications to infrastructure.</p>
+  </header>
+
+  <div class="grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+    {technology.map((group) => (
+      <div>
+        <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{group.label}</h3>
+        <ul class="space-y-2 text-sm text-foreground/85">
+          {group.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

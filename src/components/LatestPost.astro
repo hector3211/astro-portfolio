@@ -15,11 +15,13 @@ const formattedDate = latestPost?.data.date.toLocaleDateString("en-US", {
 
 {
   latestPost && (
-    <section class="mx-auto w-full max-w-screen-lg px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-      <div class="mb-4 flex items-center justify-between gap-4">
-        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-          Latest post
-        </h2>
+    <section class="mx-auto w-full max-w-screen-xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+      <div class="mb-6 flex flex-col gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Field notes</p>
+          <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Writing & ideas</h2>
+          <p class="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">Notes from building software and running systems.</p>
+        </div>
         <a
           href="/blog"
           class="text-sm font-medium text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
@@ -30,27 +32,30 @@ const formattedDate = latestPost?.data.date.toLocaleDateString("en-US", {
 
       <a
         href={`/blog/${latestPost.id}`}
-        class="group block rounded-3xl border bg-muted/20 px-5 py-5 outline-none transition duration-200 hover:border-foreground/20 hover:bg-muted/30 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:px-6 sm:py-6"
+        class="group block rounded-none border border-border border-t-2 border-t-teal-600/60 bg-muted/20 p-5 outline-none transition duration-200 hover:bg-muted/40 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:p-7"
         aria-label={`Read latest blog post: ${latestPost.data.title}`}
       >
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div class="max-w-3xl">
-            <time
-              datetime={latestPost.data.date.toISOString()}
-              class="text-sm text-muted-foreground"
-            >
-              {formattedDate}
-            </time>
-            <h3 class="mt-2 text-xl font-semibold tracking-tight sm:text-2xl">
+            <div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span class="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Latest article</span>
+              <span class="h-1 w-1 rounded-full bg-teal-600/70 dark:bg-teal-300/70"></span>
+              <time
+                datetime={latestPost.data.date.toISOString()}
+                class="text-xs text-muted-foreground"
+              >
+                {formattedDate}
+              </time>
+            </div>
+            <h3 class="text-2xl font-semibold tracking-tight sm:text-3xl">
               {latestPost.data.title}
             </h3>
             <p class="mt-3 text-sm leading-6 text-muted-foreground sm:text-base">
               {latestPost.data.description}
             </p>
           </div>
-
-          <span class="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-teal-700 dark:text-teal-300">
-            Read
+          <span class="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-foreground">
+            Read article
             <ArrowRight class="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
           </span>
         </div>
