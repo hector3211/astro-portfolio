@@ -6,7 +6,7 @@ export default function Model() {
   let modal = useRef<Application | undefined>();
   const onLoad = useCallback((splineApp: Application) => {
     modal.current = splineApp;
-    splineApp.setZoom(1.1);
+    splineApp.setZoom(0.9);
     // splineApp.setBackgroundColor("black");
   }, []);
 
