@@ -1,0 +1,94 @@
+---
+import { Check, LoaderCircle } from "lucide-astro";
+---
+
+<aside class="editor-startup" data-editor-startup aria-hidden="true" hidden>
+  <div class="editor-startup-title"><span>LSP</span> portfolio-ls</div>
+  <div class="editor-startup-message">
+    <LoaderCircle class="editor-startup-spinner" size={16} aria-hidden="true" />
+    <Check class="editor-startup-check" size={16} aria-hidden="true" />
+    <span data-lsp-message>Starting language server…</span>
+  </div>
+</aside>
+
+<script>
+  const notification = document.querySelector<HTMLElement>(
+    "[data-editor-startup]",
+  );
+  const message = notification?.querySelector("[data-lsp-message]");
+
+  // This is editor chrome, not a real language server. Skip it on deep links.
+  if (notification && message && !location.hash) {
+    notification.hidden = false;
+    window.setTimeout(() => {
+      message.textContent = "Indexing buffers…";
+    }, 700);
+    window.setTimeout(() => {
+      notification.dataset.ready = "true";
+      message.textContent = "Buffers ready";
+    }, 2000);
+    window.setTimeout(() => {
+      notification.hidden = true;
+    }, 3450);
+  }
+</script>
+
+<style>
+  .editor-startup {
+    position: fixed;
+    z-index: 9;
+    right: max(0.75rem, env(safe-area-inset-right, 0px));
+    bottom: calc(var(--editor-footer-height) + 0.7rem);
+    width: min(17rem, calc(100vw - 1.5rem));
+    border: 1px solid hsl(var(--border));
+    border-left: 2px solid var(--storm-blue);
+    background: var(--storm-deep);
+    box-shadow: 0 0.45rem 1.4rem #10121f70;
+    font: 0.74rem/1.45 var(--storm-mono);
+    pointer-events: none;
+  }
+  .editor-startup-title,
+  .editor-startup-message {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.75rem;
+  }
+  .editor-startup-title {
+    border-bottom: 1px solid hsl(var(--border));
+    background: var(--storm-selection);
+  }
+  .editor-startup-title span {
+    color: var(--storm-purple);
+  }
+  .editor-startup-message {
+    color: hsl(var(--muted-foreground));
+  }
+  .editor-startup-spinner {
+    color: var(--storm-cyan);
+  }
+  .editor-startup-check {
+    display: none;
+    color: var(--storm-green);
+  }
+  .editor-startup[data-ready] {
+    border-left-color: var(--storm-green);
+  }
+  [data-ready] .editor-startup-check {
+    display: block;
+  }
+  [data-ready] .editor-startup-spinner {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .editor-startup-spinner {
+      animation: editor-lsp-spin 0.85s linear infinite;
+    }
+  }
+  @keyframes editor-lsp-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

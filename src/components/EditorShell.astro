@@ -1,0 +1,772 @@
+---
+import {
+  CodeXml,
+  FileText,
+  FolderOpen,
+  GitBranch,
+  Github,
+  Linkedin,
+  Terminal,
+} from "lucide-astro";
+import EditorStartup from "./EditorStartup.astro";
+
+const files = [
+  {
+    name: "README.md",
+    href: "/",
+    command: "home",
+    label: "About Hector",
+    color: "blue",
+  },
+  {
+    name: "work.ts",
+    href: "/#experience",
+    command: "work",
+    label: "Selected work",
+    color: "cyan",
+  },
+  {
+    name: "stack.lua",
+    href: "/#about",
+    command: "stack",
+    label: "Tools and skills",
+    color: "purple",
+  },
+  {
+    name: "notes/",
+    href: "/blog",
+    command: "notes",
+    label: "Blog and field notes",
+    color: "yellow",
+  },
+  {
+    name: "contact.sh",
+    href: "/#contact",
+    command: "contact",
+    label: "Send a message",
+    color: "green",
+  },
+];
+const remotes = [
+  { label: "GitHub", href: "https://github.com/hector3211", icon: Github },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/hectororopesa/",
+    icon: Linkedin,
+  },
+  {
+    label: "Site source",
+    href: "https://github.com/hector3211/astro-portfolio",
+    icon: GitBranch,
+  },
+];
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const current = pathname.startsWith("/blog") ? "/blog" : "/";
+const entry = pathname.startsWith("/blog/")
+  ? `${pathname.split("/").at(-1)}.md`
+  : null;
+const extraFiles = entry
+  ? [
+      {
+        name: entry,
+        href: pathname,
+        command: "",
+        label: "Current article",
+        color: "blue",
+      },
+    ]
+  : [];
+const selected = entry ? pathname : current;
+const buffer = entry ?? files.find((file) => file.href === current)?.name;
+---
+
+<div class="editor-window" data-editor data-selected={selected}>
+  <a class="editor-skip" href="#main-content">Skip to content</a>
+  <header class="editor-titlebar">
+    <a class="editor-brand" href="/" aria-label="Hector Oropesa, home">
+      <span class="editor-mark" aria-hidden="true"><CodeXml size={17} /></span>
+      hector<span class="editor-brand-dot">codes.dev</span>
+    </a>
+    <span class="editor-window-title" aria-hidden="true"
+      >~/hectorcodes <span>—</span> NVIM</span
+    >
+    <button
+      class="editor-command-button"
+      type="button"
+      data-command-open
+      hidden
+    >
+      <kbd>:</kbd> Commands
+    </button>
+  </header>
+
+  <div class="editor-workspace">
+    <aside class="editor-sidebar">
+      <nav aria-label="File explorer">
+        <p class="editor-oil-label">
+          <button type="button" data-oil-open hidden>OIL</button>
+          <span>EXPLORER</span>
+        </p>
+        <p class="editor-directory">
+          <FolderOpen size={15} aria-hidden="true" /> ~/hectorcodes
+        </p>
+        <ul class="editor-file-list">
+          {
+            files.map((file) => (
+              <li>
+                <a
+                  href={file.href}
+                  data-buffer={file.name}
+                  data-file
+                  data-color={file.color}
+                  aria-current={selected === file.href ? "page" : undefined}
+                >
+                  {file.command === "notes" ? (
+                    <FolderOpen size={15} aria-hidden="true" />
+                  ) : (
+                    <FileText size={15} aria-hidden="true" />
+                  )}
+                  {file.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <nav class="editor-external" aria-label="External links">
+        <p>REMOTES</p>
+        {
+          remotes.map(({ label, href, icon: Icon }) => (
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              <Icon size={15} aria-hidden="true" /> {label}{" "}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))
+        }
+      </nav>
+    </aside>
+
+    <div class="editor-buffer">
+      <nav class="editor-tabs" aria-label="Open files">
+        {
+          [...files, ...extraFiles].map((file) => (
+            <a
+              href={file.href}
+              data-buffer={file.name}
+              data-file
+              data-color={file.color}
+              aria-current={selected === file.href ? "page" : undefined}
+            >
+              <span aria-hidden="true">
+                {file.command === "notes" ? "▸" : "▪"}
+              </span>{" "}
+              {file.name}
+            </a>
+          ))
+        }
+      </nav>
+      <main id="main-content" tabindex="-1">
+        <slot />
+      </main>
+      <footer class="editor-footer">
+        <span>© {new Date().getFullYear()} Hector Oropesa</span>
+        <nav class="editor-footer-links" aria-label="Social and source links">
+          {
+            remotes.map(({ label, href, icon: Icon }) => (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                <Icon size={13} aria-hidden="true" /> {label}{" "}
+                <span aria-hidden="true">↗</span>
+              </a>
+            ))
+          }
+        </nav>
+      </footer>
+    </div>
+  </div>
+
+  <div class="editor-bottom">
+    <div class="editor-status" aria-label="Editor status">
+      <span class="editor-mode" data-editor-mode role="status">NORMAL</span>
+      <span class="editor-branch"
+        ><GitBranch size={14} aria-hidden="true" /> main</span
+      >
+      <span class="editor-active-file" data-active-buffer>{buffer}</span>
+      <span class="editor-encoding" aria-hidden="true"
+        >utf-8 <span>|</span> tokyonight-storm</span
+      >
+    </div>
+    <div class="editor-status-actions">
+      <button class="editor-prompt" type="button" data-command-open hidden>
+        <Terminal aria-hidden="true" size={14} />
+        <span data-command-hint
+          ><kbd>j</kbd>/<kbd>k</kbd> move <span aria-hidden="true">·</span>
+          <kbd>:</kbd> commands</span
+        >
+        <span data-command-label hidden>Open commands</span>
+      </button>
+      <button
+        class="editor-help-button"
+        type="button"
+        data-vim-help-open
+        hidden
+      >
+        <kbd>?</kbd> Vim keys
+      </button>
+    </div>
+  </div>
+
+  {pathname === "/" && <EditorStartup />}
+
+  <dialog class="editor-picker editor-oil" aria-labelledby="oil-title" data-oil>
+    <div class="editor-picker-heading">
+      <h2 id="oil-title">
+        <FolderOpen size={16} aria-hidden="true" /> Oil · ~/hectorcodes/
+      </h2>
+      <form method="dialog">
+        <button type="submit" aria-label="Close Oil">Esc</button>
+      </form>
+    </div>
+    <ul aria-label="Files">
+      {
+        [...files, ...extraFiles].map((file) => (
+          <li>
+            <a href={file.href} data-oil-file data-color={file.color}>
+              {file.command === "notes" ? (
+                <FolderOpen size={15} aria-hidden="true" />
+              ) : (
+                <FileText size={15} aria-hidden="true" />
+              )}
+              <>
+                <span>{file.name}</span>
+                <span>{file.label}</span>
+              </>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="editor-oil-controls">
+      <kbd>j</kbd>/<kbd>k</kbd> move <kbd>Enter</kbd> open <kbd>Esc</kbd> close
+    </p>
+  </dialog>
+
+  <dialog
+    class="editor-picker"
+    aria-labelledby="command-title"
+    data-command-picker
+  >
+    <div class="editor-picker-heading">
+      <h2 id="command-title">Commands</h2>
+      <form method="dialog">
+        <button type="submit" aria-label="Close commands">Esc</button>
+      </form>
+    </div>
+    <label class="editor-picker-input">
+      <span aria-hidden="true">:</span>
+      <input
+        type="search"
+        aria-label="Filter commands"
+        autocomplete="off"
+        enterkeyhint="go"
+        placeholder="Type a command…"
+        autofocus
+      />
+    </label>
+    <ul>
+      {
+        files.map((file) => (
+          <li>
+            <a href={file.href} data-command-link>
+              <span>:{file.command}</span>
+              <span>{file.label}</span>
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <button type="button" data-command-link data-oil-command
+          ><span>:oil</span><span>Browse files</span></button
+        >
+      </li>
+    </ul>
+    <button type="button" class="editor-run-command" data-run-quit hidden
+    ></button>
+    <p class="editor-picker-empty" data-command-empty role="status" hidden>
+      No matches. Try “work” or clear your search.
+    </p>
+  </dialog>
+
+  <dialog
+    class="editor-picker editor-key-help"
+    aria-labelledby="vim-help-title"
+    data-vim-help
+  >
+    <div class="editor-picker-heading">
+      <h2 id="vim-help-title">Vim keymaps</h2>
+      <form method="dialog">
+        <button type="submit" aria-label="Close Vim keymaps" autofocus
+          >Esc</button
+        >
+      </form>
+    </div>
+    <dl class="editor-key-list">
+      <div>
+        <dt><kbd>j</kbd> / <kbd>k</kbd></dt><dd>
+          Focus the next / previous item
+        </dd>
+      </div>
+      <div>
+        <dt><kbd>Space</kbd> <kbd>e</kbd></dt><dd>
+          Toggle the Oil file explorer
+        </dd>
+      </div>
+      <div>
+        <dt><kbd>gg</kbd> / <kbd>G</kbd></dt><dd>Jump to top / bottom</dd>
+      </div>
+      <div>
+        <dt><kbd>]b</kbd> / <kbd>[b</kbd></dt><dd>
+          Next / previous buffer (also <kbd>gt</kbd> / <kbd>gT</kbd>)
+        </dd>
+      </div>
+      <div>
+        <dt><kbd>:</kbd> / <kbd>?</kbd></dt><dd>
+          Open commands / show keymaps
+        </dd>
+      </div>
+      <div>
+        <dt><kbd>i</kbd> / <kbd>Esc</kbd></dt><dd>
+          Edit a focused field / resume navigation
+        </dd>
+      </div>
+      <div>
+        <dt><kbd>Tab</kbd> / <kbd>Enter</kbd></dt><dd>
+          Focus / activate a link or control
+        </dd>
+      </div>
+    </dl>
+    <button
+      class="editor-key-toggle"
+      type="button"
+      aria-pressed="true"
+      data-vim-toggle
+    >
+      Vim shortcuts: <span data-vim-state aria-hidden="true">on</span>
+    </button>
+  </dialog>
+
+  <dialog class="editor-picker editor-quit" aria-labelledby="quit-title">
+    <div class="editor-picker-heading">
+      <span>~/hectorcodes — terminal</span>
+    </div>
+    <div class="editor-quit-content">
+      <p class="editor-quit-command" data-quit-command></p>
+      <h2 id="quit-title">You quit Vim.</h2>
+      <p>Your browser tab survived. The editor didn’t.</p>
+      <form method="dialog">
+        <button type="submit" aria-label="Reopen editor" autofocus
+          >$ nvim <span data-reopen-buffer>README.md</span> ↵</button
+        >
+      </form>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  import { createVimPageNavigation } from "@/lib/vim-page-navigation";
+
+  const editor = document.querySelector<HTMLElement>("[data-editor]");
+  const picker = editor?.querySelector<HTMLDialogElement>(
+    "[data-command-picker]",
+  );
+  const input = picker?.querySelector<HTMLInputElement>("input");
+  const empty = picker?.querySelector<HTMLElement>("[data-command-empty]");
+  const runQuit = picker?.querySelector<HTMLButtonElement>("[data-run-quit]");
+  const openButtons = Array.from(
+    editor?.querySelectorAll<HTMLButtonElement>("[data-command-open]") ?? [],
+  );
+  const commands = Array.from(
+    picker?.querySelectorAll<HTMLElement>("[data-command-link]") ?? [],
+  );
+  const fileLinks = Array.from(
+    editor?.querySelectorAll<HTMLAnchorElement>("[data-file]") ?? [],
+  );
+  const activeBuffer = editor?.querySelector<HTMLElement>(
+    "[data-active-buffer]",
+  );
+  const main = editor?.querySelector<HTMLElement>("main");
+  const statusBar = editor?.querySelector<HTMLElement>(".editor-bottom");
+  const modeIndicator =
+    statusBar?.querySelector<HTMLElement>("[data-editor-mode]");
+  const quit = editor?.querySelector<HTMLDialogElement>(".editor-quit");
+  const help = editor?.querySelector<HTMLDialogElement>("[data-vim-help]");
+  const oil = editor?.querySelector<HTMLDialogElement>("[data-oil]");
+  const oilButton = editor?.querySelector<HTMLButtonElement>("[data-oil-open]");
+  const oilFiles = Array.from(
+    oil?.querySelectorAll<HTMLAnchorElement>("[data-oil-file]") ?? [],
+  );
+  const helpButton = editor?.querySelector<HTMLButtonElement>(
+    "[data-vim-help-open]",
+  );
+  const keysToggle =
+    help?.querySelector<HTMLButtonElement>("[data-vim-toggle]");
+  const keysState = help?.querySelector<HTMLElement>("[data-vim-state]");
+  const commandHint = editor?.querySelector<HTMLElement>("[data-command-hint]");
+  const commandLabel = editor?.querySelector<HTMLElement>(
+    "[data-command-label]",
+  );
+  const tabs = Array.from(
+    editor?.querySelectorAll<HTMLAnchorElement>(".editor-tabs [data-file]") ??
+      [],
+  );
+  const quitCommand = quit?.querySelector<HTMLElement>("[data-quit-command]");
+  const reopenBuffer = quit?.querySelector<HTMLElement>("[data-reopen-buffer]");
+  const quitCommands = new Set([
+    "q",
+    "q!",
+    "quit",
+    "quit!",
+    "qa",
+    "qa!",
+    "wq",
+    "wq!",
+    "x",
+  ]);
+  const normalizeCommand = (value: string) =>
+    value.trim().replace(/^:/, "").toLowerCase();
+
+  if (
+    editor &&
+    picker &&
+    input &&
+    empty &&
+    activeBuffer &&
+    main &&
+    statusBar &&
+    modeIndicator &&
+    quit &&
+    quitCommand &&
+    reopenBuffer &&
+    runQuit &&
+    oil &&
+    oilButton &&
+    help &&
+    helpButton &&
+    keysToggle &&
+    keysState &&
+    commandHint &&
+    commandLabel
+  ) {
+    const pageNavigation = createVimPageNavigation(
+      main,
+      statusBar,
+      modeIndicator,
+    );
+    let returnFocus: { element: HTMLElement; normalField: boolean } | undefined;
+    const keysPreference = "hectorcodes:vim-keys";
+    const sequenceTimeout = 1200;
+    let pending: { key: string; expires: number } | undefined;
+    let keysEnabled = true;
+    try {
+      keysEnabled = localStorage.getItem(keysPreference) !== "off";
+    } catch {
+      // The toggle still works on this page if browser storage is blocked.
+    }
+    const syncKeysToggle = () => {
+      editor.toggleAttribute("data-vim-enabled", keysEnabled);
+      keysToggle.setAttribute("aria-pressed", String(keysEnabled));
+      keysState.textContent = keysEnabled ? "on" : "off";
+      commandHint.hidden = !keysEnabled;
+      commandLabel.hidden = keysEnabled;
+    };
+    syncKeysToggle();
+    keysToggle.addEventListener("click", () => {
+      keysEnabled = !keysEnabled;
+      syncKeysToggle();
+      try {
+        localStorage.setItem(keysPreference, keysEnabled ? "on" : "off");
+      } catch {
+        // Keep the in-memory preference.
+      }
+    });
+    const captureFocus = (fallback?: HTMLElement) => {
+      const element =
+        document.activeElement instanceof HTMLElement &&
+        document.activeElement !== document.body
+          ? document.activeElement
+          : fallback;
+      return element
+        ? { element, normalField: pageNavigation.isNormalField(element) }
+        : undefined;
+    };
+    const restoreFocus = (dialog: HTMLDialogElement) => {
+      if (!returnFocus) return;
+      const { element, normalField } = returnFocus;
+      if (
+        dialog.contains(document.activeElement) ||
+        document.activeElement === document.body
+      ) {
+        element.focus({ preventScroll: true });
+      }
+      if (keysEnabled && normalField) pageNavigation.resumeNormalField(element);
+    };
+    const openHelp = () => {
+      returnFocus = captureFocus(helpButton);
+      help.showModal();
+    };
+    helpButton.hidden = false;
+    helpButton.addEventListener("click", openHelp);
+    help.addEventListener("close", () => restoreFocus(help));
+
+    function currentBufferHref() {
+      const target =
+        location.pathname === "/"
+          ? `/${location.hash}`
+          : (editor?.dataset.selected ?? "/");
+      return tabs.some((tab) => tab.getAttribute("href") === target)
+        ? target
+        : "/";
+    }
+
+    function markCurrentLink(link: HTMLAnchorElement, href: string) {
+      const current = link.getAttribute("href") === href;
+      if (current)
+        link.setAttribute(
+          "aria-current",
+          href.includes("#") ? "location" : "page",
+        );
+      else link.removeAttribute("aria-current");
+      return current;
+    }
+
+    const openOil = () => {
+      const active = currentBufferHref();
+      if (picker.open) {
+        picker.close();
+        restoreFocus(picker);
+      } else {
+        returnFocus = captureFocus(main);
+      }
+      for (const link of oilFiles) markCurrentLink(link, active);
+      oil.showModal();
+      (
+        oilFiles.find((link) => link.hasAttribute("aria-current")) ??
+        oilFiles[0]
+      )?.focus();
+    };
+    oilButton.hidden = false;
+    oilButton.addEventListener("click", openOil);
+    oil.addEventListener("close", () => restoreFocus(oil));
+    for (const link of oilFiles)
+      link.addEventListener("click", () => oil.close());
+    oil.addEventListener("keydown", (event) => {
+      if (event.ctrlKey || event.metaKey || event.altKey || event.isComposing)
+        return;
+      const { key } = event;
+      if (keysEnabled && key === "\\") {
+        event.preventDefault();
+        oil.close();
+        return;
+      }
+      const down = key === "ArrowDown" || (keysEnabled && key === "j");
+      const up = key === "ArrowUp" || (keysEnabled && key === "k");
+      if (!down && !up) return;
+      event.preventDefault();
+      const index = oilFiles.findIndex(
+        (link) => link === document.activeElement,
+      );
+      const next = down
+        ? Math.min(index + 1, oilFiles.length - 1)
+        : index < 0
+          ? oilFiles.length - 1
+          : Math.max(index - 1, 0);
+      oilFiles[next]?.focus();
+    });
+
+    function cycleBuffer(direction: number) {
+      const href = currentBufferHref();
+      const active = tabs.findIndex((tab) => tab.getAttribute("href") === href);
+      const next = (active + direction + tabs.length) % tabs.length;
+      tabs[next]?.click();
+    }
+
+    function filterCommands(query: string) {
+      const term = normalizeCommand(query);
+      for (const link of commands) {
+        if (link.parentElement)
+          link.parentElement.hidden = !link.textContent
+            ?.toLowerCase()
+            .includes(term);
+      }
+    }
+
+    function visibleCommands() {
+      return commands.filter((link) => !link.parentElement?.hidden);
+    }
+
+    function syncBuffer() {
+      const active = currentBufferHref();
+      for (const link of fileLinks) {
+        if (markCurrentLink(link, active) && activeBuffer)
+          activeBuffer.textContent = link.dataset.buffer ?? "";
+      }
+    }
+
+    const openPicker = () => {
+      if (picker.open || quit.open) return;
+      returnFocus = captureFocus(openButtons[0]);
+      input.value = "";
+      filterCommands("");
+      empty.hidden = true;
+      runQuit.hidden = true;
+      picker.showModal();
+    };
+
+    const showQuit = (command: string) => {
+      if (!quitCommands.has(command)) return;
+      quitCommand.textContent = `:${command}`;
+      reopenBuffer.textContent = activeBuffer.textContent;
+      picker.close();
+      restoreFocus(picker);
+      quit.showModal();
+    };
+
+    picker.addEventListener("close", () => {
+      if (!quit.open && !oil.open) restoreFocus(picker);
+    });
+    quit.addEventListener("close", () => restoreFocus(quit));
+    runQuit.addEventListener("click", () =>
+      showQuit(normalizeCommand(input.value)),
+    );
+
+    for (const button of openButtons) {
+      button.hidden = false;
+      button.addEventListener("click", openPicker);
+    }
+
+    window.addEventListener("hashchange", syncBuffer);
+    syncBuffer();
+
+    document.addEventListener("keydown", (event) => {
+      const { key } = event;
+      // Shift is part of several mappings; pressing it alone must not clear `g` before `T`.
+      if (key === "Shift") return;
+      const prefix =
+        pending && pending.expires > performance.now()
+          ? pending.key
+          : undefined;
+      pending = undefined;
+      if (
+        !keysEnabled ||
+        event.defaultPrevented ||
+        event.isComposing ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        picker.open ||
+        quit.open ||
+        help.open
+      )
+        return;
+      if (pageNavigation.handleFieldKey(event)) return;
+      if (
+        event.target instanceof HTMLElement &&
+        (event.target.isContentEditable ||
+          event.target.closest("input, textarea, select, [role='textbox']")) &&
+        !pageNavigation.isNormalField(event.target)
+      )
+        return;
+
+      const sequence = `${prefix ?? ""}${key}`;
+      if (sequence === " e" && !event.repeat) {
+        event.preventDefault();
+        if (oil.open) oil.close();
+        else openOil();
+        return;
+      }
+      if (key === " " && !event.shiftKey && !event.repeat) {
+        // Keep Space activation on controls, including the modal's Close button.
+        if (
+          event.target instanceof Element &&
+          event.target.closest("button, summary, [role='button']")
+        )
+          return;
+        event.preventDefault();
+        pending = { key, expires: performance.now() + sequenceTimeout };
+        return;
+      }
+      if (oil.open || prefix === " ") return;
+
+      if (key === "j" || key === "k") {
+        event.preventDefault();
+        pageNavigation.move(key === "j" ? 1 : -1);
+        return;
+      }
+      if (event.repeat) return;
+
+      if (key === ":") {
+        openPicker();
+      } else if (key === "?") {
+        openHelp();
+      } else if (sequence === "gg" || key === "G") {
+        window.scrollTo({
+          top: key === "G" ? document.documentElement.scrollHeight : 0,
+          behavior: "instant",
+        });
+      } else if (sequence === "gt" || sequence === "]b") {
+        cycleBuffer(1);
+      } else if (sequence === "gT" || sequence === "[b") {
+        cycleBuffer(-1);
+      } else if (key === "g" || key === "[" || key === "]") {
+        pending = { key, expires: performance.now() + sequenceTimeout };
+      } else return;
+
+      event.preventDefault();
+    });
+
+    input.addEventListener("input", () => {
+      filterCommands(input.value);
+      const command = normalizeCommand(input.value);
+      const isQuit = quitCommands.has(command);
+      runQuit.hidden = !isQuit;
+      if (isQuit) runQuit.textContent = `Run :${command} ↵`;
+      empty.hidden = isQuit || visibleCommands().length > 0;
+    });
+
+    picker.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        picker.close();
+        restoreFocus(picker);
+        return;
+      }
+      const matches = visibleCommands();
+      if (event.key === "Enter" && event.target === input) {
+        event.preventDefault();
+        const command = normalizeCommand(input.value);
+        if (quitCommands.has(command)) showQuit(command);
+        else matches[0]?.click();
+      } else if (!matches.length) {
+        return;
+      } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        const index = matches.findIndex(
+          (link) => link === document.activeElement,
+        );
+        const next =
+          event.key === "ArrowDown"
+            ? (index + 1) % matches.length
+            : index <= 0
+              ? matches.length - 1
+              : index - 1;
+        matches[next]?.focus();
+      }
+    });
+
+    for (const link of commands) {
+      link.addEventListener("click", () => {
+        if (link.hasAttribute("data-oil-command")) openOil();
+        else picker.close();
+      });
+    }
+  }
+</script>

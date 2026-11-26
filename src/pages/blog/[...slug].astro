@@ -44,14 +44,14 @@ const adjacentPosts = [
   ogType="article"
   publishedDate={post.data.date.toISOString()}
 >
-  <article class="portfolio-shell pb-16 pt-12 sm:pb-24 sm:pt-20">
+  <article class="portfolio-shell py-10 sm:py-14">
     <div class="mx-auto max-w-3xl">
       <header class="mb-9 border-b pb-8 sm:mb-12 sm:pb-10">
         <a
           href="/blog"
           class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
         >
-          <ArrowLeft aria-hidden="true" class="size-4" /> Back to blog
+          <ArrowLeft aria-hidden="true" class="size-4" /> All field notes
         </a>
         <p class="portfolio-label mt-8 sm:mt-12">
           <time datetime={post.data.date.toISOString()}>{formattedDate}</time>

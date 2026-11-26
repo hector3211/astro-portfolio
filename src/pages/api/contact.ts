@@ -1,5 +1,15 @@
 import type { APIRoute } from "astro";
 
+const htmlEntities: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
+const escapeHtml = (text: string) =>
+  text.replace(/[&<>"']/g, (character) => htmlEntities[character] ?? character);
+
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.formData();
   const honeyPot = data.get("honeypot");
@@ -14,7 +24,14 @@ export const POST: APIRoute = async ({ request }) => {
   const name = data.get("name");
   const email = data.get("email");
   const message = data.get("message");
-  if (!name || !email || !message) {
+  if (
+    typeof name !== "string" ||
+    !name.trim() ||
+    typeof email !== "string" ||
+    !email.trim() ||
+    typeof message !== "string" ||
+    !message.trim()
+  ) {
     return new Response(
       JSON.stringify({
         message: "Missing required fields",
@@ -33,7 +50,7 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
   try {
-    await fetch("https://api.useplunk.com/v1/send", {
+    const response = await fetch("https://api.useplunk.com/v1/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,15 +67,16 @@ export const POST: APIRoute = async ({ request }) => {
                 <h1 style="margin:0;font-size:20px;">New Client Inquiry</h1>
             </div>
             <div style="padding:15px;">
-                <p><strong>Name:</strong> ${name.toString()}</p>
-                <p><strong>Email:</strong> ${email.toString()}</p>
-                <p><strong>Message:</strong> ${message.toString().trim()}</p>
+                <p><strong>Name:</strong> ${escapeHtml(name.trim())}</p>
+                <p><strong>Email:</strong> ${escapeHtml(email.trim())}</p>
+                <p><strong>Message:</strong> ${escapeHtml(message.trim())}</p>
             </div>
         </body>
         </html>
         `,
       }),
     });
+    if (!response.ok) throw new Error("Email provider rejected the message");
     return new Response("Message sent!", { status: 200 });
   } catch {
     return new Response(

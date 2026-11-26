@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Hero from "@/components/Hero.astro";
+import EditorIntro from "@/components/EditorIntro.astro";
 import Projects from "@/components/Projects.astro";
 import Technology from "@/components/Technology.astro";
 import ContactForm from "@/components/ContactForm";
@@ -8,8 +8,12 @@ import ContactForm from "@/components/ContactForm";
 export const prerender = true;
 ---
 
-<Layout contactToasts title="Hector Oropesa | Software & Systems">
-  <Hero />
+<Layout
+  contactToasts
+  title="Hector Oropesa | Software & Systems"
+  description="Selected work and field notes from Hector Oropesa on software, infrastructure, and automation."
+>
+  <EditorIntro />
   <Projects />
   <Technology />
   <ContactForm client:load />

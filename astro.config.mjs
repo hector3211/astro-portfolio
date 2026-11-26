@@ -9,6 +9,7 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   output: "server",
   adapter: vercel(),
+  devToolbar: { enabled: false }, // Keep the editor status line clear in local previews.
   env: {
     schema: {
       SECRET_PLUNK_API_KEY: envField.string({
