@@ -1,0 +1,80 @@
+.portfolio {
+  --background: 180 5% 9%;
+  --foreground: 60 11% 94%;
+  --muted: 180 5% 13%;
+  --muted-foreground: 150 4% 67%;
+  --border: 165 4% 23%;
+  --input: var(--border);
+  --ring: 166 54% 65%;
+  --portfolio-accent: hsl(var(--ring));
+  --portfolio-gutter: clamp(1.25rem, 4.8vw, 4.5rem);
+  --portfolio-width: 90rem;
+  color-scheme: dark;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+
+.portfolio :is(a, button, summary):focus-visible {
+  outline: 2px solid var(--portfolio-accent);
+  outline-offset: 4px;
+}
+
+.portfolio-shell {
+  width: min(var(--portfolio-width), 100%);
+  margin-inline: auto;
+  padding-inline: var(--portfolio-gutter);
+}
+
+.portfolio [id] {
+  scroll-margin-top: 6rem;
+}
+
+.portfolio-label {
+  color: var(--portfolio-accent);
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.portfolio-title {
+  font-size: var(--portfolio-title-size, clamp(2.45rem, 5.5vw, 5.25rem));
+  font-weight: 500;
+  letter-spacing: -0.075em;
+  line-height: 1;
+}
+
+.portfolio-heading {
+  display: grid;
+  align-items: end;
+  gap: 1.25rem 2rem;
+  margin-block: 1.25rem 2.5rem;
+}
+
+.portfolio-heading > p {
+  max-width: 22rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.blog-prose {
+  overflow-wrap: anywhere;
+}
+
+.blog-prose pre {
+  border: 1px solid hsl(var(--border));
+  border-radius: 0;
+  overflow-wrap: normal;
+}
+
+.blog-prose img {
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .portfolio-heading {
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 28%);
+  }
+}

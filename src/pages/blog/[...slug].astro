@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
-import { ArrowLeft, ArrowRight } from "lucide-astro";
+import { ArrowLeft, ArrowUpRight } from "lucide-astro";
 
 export const prerender = true;
 
@@ -29,7 +29,12 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",
+  timeZone: "UTC",
 });
+const adjacentPosts = [
+  { label: "Newer post", entry: nextPost },
+  { label: "Older post", entry: previousPost },
+];
 ---
 
 <Layout
@@ -39,84 +44,64 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
   ogType="article"
   publishedDate={post.data.date.toISOString()}
 >
-  <article
-    class="container prose prose-lg prose-neutral max-w-none dark:prose-invert lg:max-w-screen-lg"
-  >
-    <header class="mb-8">
-      <a
-        href="/blog"
-        class="mb-4 inline-block text-sm no-underline hover:underline"
-      >
-        &larr; Back to blog
-      </a>
-      <h1 class="mb-2">{post.data.title}</h1>
-      <time
-        datetime={post.data.date.toISOString()}
-        class="text-sm text-muted-foreground"
-      >
-        {formattedDate}
-      </time>
-    </header>
-    <Content />
-    {
-      (nextPost || previousPost) && (
-        <footer class="not-prose mt-14 border-t pt-8">
-          <div class="grid gap-4 md:grid-cols-2">
-            {nextPost && (
-              <a
-                href={`/blog/${nextPost.id}`}
-                class="group block rounded-2xl border bg-background p-5 transition duration-200 hover:border-foreground/20 hover:bg-muted/30 sm:p-6"
-                aria-label={`Read next blog post: ${nextPost.data.title}`}
-              >
-                <p class="mb-3 text-sm font-medium text-muted-foreground">
-                  Next post
-                </p>
-                <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h2 class="text-xl font-semibold tracking-tight">
-                      {nextPost.data.title}
-                    </h2>
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                      {nextPost.data.description}
-                    </p>
-                  </div>
-                  <span class="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-teal-700 dark:text-teal-300">
-                    Read
-                    <ArrowRight class="h-4 w-4 transition duration-200 group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </a>
-            )}
+  <article class="portfolio-shell pb-16 pt-12 sm:pb-24 sm:pt-20">
+    <div class="mx-auto max-w-3xl">
+      <header class="mb-9 border-b pb-8 sm:mb-12 sm:pb-10">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+        >
+          <ArrowLeft aria-hidden="true" class="size-4" /> Back to blog
+        </a>
+        <p class="portfolio-label mt-8 sm:mt-12">
+          <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
+        </p>
+        <h1 class="portfolio-title mt-4 text-balance sm:mt-5">
+          {post.data.title}
+        </h1>
+        <p
+          class="mt-5 max-w-[58ch] text-base leading-relaxed text-muted-foreground sm:text-lg"
+        >
+          {post.data.description}
+        </p>
+      </header>
 
-            {previousPost && (
-              <a
-                href={`/blog/${previousPost.id}`}
-                class="group block rounded-2xl border bg-background p-5 transition duration-200 hover:border-foreground/20 hover:bg-muted/30 sm:p-6"
-                aria-label={`Read previous blog post: ${previousPost.data.title}`}
-              >
-                <p class="mb-3 text-sm font-medium text-muted-foreground">
-                  Previous post
-                </p>
-                <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h2 class="text-xl font-semibold tracking-tight">
-                      {previousPost.data.title}
-                    </h2>
-                    <p class="mt-2 text-sm leading-6 text-muted-foreground">
-                      {previousPost.data.description}
-                    </p>
-                  </div>
-                  <span class="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-teal-700 dark:text-teal-300">
-                    <ArrowLeft class="h-4 w-4 transition duration-200 group-hover:-translate-x-1" />
-                    Read
-                  </span>
-                </div>
-              </a>
+      <div
+        class="blog-prose prose max-w-none sm:prose-lg prose-headings:font-medium prose-headings:tracking-tight prose-a:text-[var(--portfolio-accent)] prose-a:underline-offset-4"
+      >
+        <Content />
+      </div>
+
+      {
+        (nextPost || previousPost) && (
+          <nav
+            aria-label="More blog posts"
+            class="mt-12 grid gap-x-8 border-y sm:mt-16 sm:grid-cols-2"
+          >
+            {adjacentPosts.map(
+              ({ label, entry }) =>
+                entry && (
+                  <a
+                    href={`/blog/${entry.id}`}
+                    class="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-5 [&+a]:border-t sm:[&+a]:border-t-0"
+                  >
+                    <span>
+                      <span class="portfolio-label block">{label}</span>
+                      <span class="mt-1.5 block text-lg font-medium leading-tight tracking-tight group-hover:text-[var(--portfolio-accent)]">
+                        {entry.data.title}
+                      </span>
+                    </span>
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      class="size-4 text-[var(--portfolio-accent)]"
+                    />
+                  </a>
+                ),
             )}
-          </div>
-        </footer>
-      )
-    }
+          </nav>
+        )
+      }
+    </div>
   </article>
   <script
     is:inline

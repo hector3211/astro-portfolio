@@ -1,62 +1,52 @@
 ---
-import ToggleThemeButton from "../components/ToggleTheme";
-import MobileMenu from "../components/MobileMenu";
-import { ExternalLink, Github } from "lucide-astro";
+import { ArrowUpRight } from "lucide-astro";
+
+const pathname = Astro.url.pathname;
+const isHome = pathname === "/";
+const isBlogIndex = pathname.replace(/\/$/, "") === "/blog";
 ---
 
 <nav
-  transition:persist
-  class="fixed inset-x-0 top-0 z-50 border-b bg-background/85 backdrop-blur-xl"
+  aria-label="Main navigation"
+  class="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur"
 >
   <div
-    class="mx-auto flex h-16 w-full max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8"
+    class="portfolio-shell flex h-[4.25rem] items-center justify-between gap-4"
   >
-    <div class="flex items-center">
+    <a
+      href="/"
+      aria-label="Hector Oropesa, home"
+      class="text-lg font-bold tracking-[-0.08em]"
+    >
+      HO<span class="text-[var(--portfolio-accent)]">.</span>
+    </a>
+    <div class="flex items-center gap-4 text-sm sm:gap-8">
       <a
-        href="/"
-        class="text-lg font-bold tracking-tight text-foreground transition duration-200 hover:text-foreground/75"
+        class="text-muted-foreground hover:text-foreground"
+        href={isHome ? "#experience" : "/#experience"}>Work</a
       >
-        Hector Oropesa
+      <a
+        class="text-muted-foreground hover:text-foreground"
+        href={isHome ? "#about" : "/#about"}>About</a
+      >
+      <a
+        class="text-muted-foreground hover:text-foreground aria-[current]:text-[var(--portfolio-accent)]"
+        href="/blog"
+        aria-current={isBlogIndex
+          ? "page"
+          : pathname.startsWith("/blog/")
+            ? "location"
+            : undefined}>Blog</a
+      >
+      <a
+        class="inline-flex items-center gap-1.5 hover:text-[var(--portfolio-accent)]"
+        href={isHome ? "#contact" : "/#contact"}
+      >
+        Let’s talk <ArrowUpRight
+          aria-hidden="true"
+          class="hidden size-3.5 sm:block"
+        />
       </a>
-    </div>
-    <div class="flex items-center gap-3 sm:gap-5">
-      <div
-        class="hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex"
-      >
-        <a
-          href="/#experience"
-          class="transition duration-200 hover:text-foreground"
-        >
-          Experience
-        </a>
-        <a
-          href="/#contact"
-          class="transition duration-200 hover:text-foreground"
-        >
-          Contact
-        </a>
-        <a href="/blog" class="transition duration-200 hover:text-foreground">
-          Blog
-        </a>
-        <a
-          href="https://github.com/hector3211"
-          target="_blank"
-          rel="noreferrer"
-          class="flex items-center gap-1.5 transition duration-200 hover:text-foreground"
-        >
-          <Github class="h-4 w-4" /> GitHub
-        </a>
-        <a
-          href="https://github.com/hector3211/astro-portfolio"
-          target="_blank"
-          rel="noreferrer"
-          class="flex items-center gap-1.5 transition duration-200 hover:text-foreground"
-        >
-          Source <ExternalLink class="h-3.5 w-3.5" />
-        </a>
-      </div>
-      <ToggleThemeButton client:load />
-      <MobileMenu client:load />
     </div>
   </div>
 </nav>

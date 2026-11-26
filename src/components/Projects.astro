@@ -1,5 +1,202 @@
 ---
-import ProjectsExperience from "@/components/ProjectsExperience";
+type Project = {
+  title: string;
+  type: string;
+  summary: string;
+  stack: string[];
+  details: string[];
+  live?: string;
+  github?: string;
+};
+
+const projects: Project[] = [
+  {
+    title: "Enterprise MCP",
+    type: "AI integration",
+    summary:
+      "Enterprise tools connected to AI clients through one secure integration layer.",
+    stack: [
+      "MCP",
+      "API integrations",
+      "Secure authentication",
+      "Infrastructure automation",
+    ],
+    details: [
+      "Unified enterprise tool integrations behind a single MCP interface.",
+      "Built authenticated employee access and authorization for AI clients.",
+      "Automated infrastructure provisioning and service configuration.",
+      "Designed deployment workflows for safer releases.",
+    ],
+  },
+  {
+    title: "Provisioning Engineer",
+    type: "Endpoint automation",
+    summary:
+      "Device provisioning, policy management, and automation across Microsoft services and NinjaOne RMM.",
+    stack: [
+      "Microsoft 365",
+      "Entra ID",
+      "Intune",
+      "NinjaOne RMM",
+      "PowerShell",
+    ],
+    details: [
+      "Administered Microsoft 365 and Entra ID identity and access, including user accounts, groups, roles, and permissions.",
+      "Enrolled devices in Intune and configured device policies and automations.",
+      "Built provisioning workflows and device management automations with NinjaOne RMM and PowerShell.",
+      "Set up provisioning monitoring and notifications when devices finished provisioning.",
+    ],
+  },
+  {
+    title: "Confidential AWS Infrastructure",
+    type: "Cloud infrastructure",
+    summary:
+      "Repeatable AWS infrastructure with safer state management and deployment planning.",
+    stack: [
+      "AWS",
+      "Terraform",
+      "ECS",
+      "ECR",
+      "Docker",
+      "S3",
+      "GitHub Actions",
+      "OIDC",
+    ],
+    details: [
+      "Managed Terraform remote state with S3 versioning and native S3 lockfiles.",
+      "Planned GitHub Actions deployments using AWS OIDC instead of long-lived credentials.",
+      "Worked with Docker images, ECR for image storage, and ECS for container deployment.",
+      "Improved module boundaries across networking, runtime, registry, IAM, and deployment responsibilities.",
+    ],
+  },
+  {
+    title: "CM Data",
+    type: "Operations software",
+    summary: "Repair and estimate workflows for commercial trucking shops.",
+    stack: [
+      "TanStack Start",
+      "PostgreSQL",
+      "Drizzle",
+      "AWS S3",
+      "Coolify",
+      "On-prem deployment",
+    ],
+    details: [
+      "Built software around commercial trucking repair and estimate workflows.",
+      "Designed the data layer with PostgreSQL and Drizzle, with AWS S3 for file storage.",
+      "Deployed on-premises and managed application operations through Coolify.",
+    ],
+  },
+  {
+    title: "GraniteSync",
+    type: "Workflow software",
+    summary:
+      "Jobs, inventory, and fabricator assignments in one workflow for granite shops.",
+    stack: [
+      "AWS",
+      "EC2",
+      "Terraform",
+      "Traefik",
+      "API Gateway",
+      "S3",
+      "PostgreSQL",
+      "GitHub Actions",
+      "Blue-green deployments",
+    ],
+    details: [
+      "Built admin workflows for inventory, job creation, project images, and fabricator profiles.",
+      "Provisioned AWS infrastructure with Terraform and managed state in versioned S3 storage.",
+      "Deployed on EC2 instances with Traefik as a reverse proxy and blue-green releases.",
+      "Set up GitHub OIDC deployments and API Gateway routing for safer releases.",
+      "Added email notifications when fabricators are assigned new jobs.",
+    ],
+  },
+  {
+    title: "GD Granite",
+    type: "Web development",
+    summary:
+      "A fast business website that turns service browsing into customer inquiries.",
+    stack: ["Astro", "TypeScript", "React", "Responsive design"],
+    details: [
+      "Built and launched a production website for a local granite business.",
+      "Created a validated contact form for more useful customer inquiries.",
+      "Focused on fast loading, responsive layouts, and clear service information.",
+    ],
+    live: "https://gdgranite.com",
+  },
+];
 ---
 
-<ProjectsExperience client:load />
+<section id="experience" class="portfolio-shell" aria-labelledby="work-title">
+  <p class="portfolio-label">
+    Selected work <span class="text-muted-foreground">/ 01</span>
+  </p>
+  <header class="portfolio-heading">
+    <h2 id="work-title" class="portfolio-title">Built to be useful.</h2>
+    <p>A few examples of software and systems made for real work.</p>
+  </header>
+
+  <div class="border-y border-border">
+    {
+      projects.map((project, index) => (
+        <details
+          name="experience-projects"
+          class="group border-b border-border last:border-b-0"
+        >
+          <summary class="grid cursor-pointer list-none grid-cols-[2ch_minmax(0,1fr)_auto] items-center gap-3 px-1 py-5 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:px-3 [&::-webkit-details-marker]:hidden">
+            <span aria-hidden="true" class="portfolio-label self-start pt-1.5">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span>
+              <span class="block font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">
+                {project.type}
+              </span>
+              <span class="mt-1 block text-xl font-medium leading-tight tracking-[-0.045em] group-hover:text-[var(--portfolio-accent)] sm:text-[1.625rem]">
+                {project.title}
+              </span>
+              <span class="mt-1 block text-sm leading-snug text-muted-foreground">
+                {project.summary}
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              class="flex items-center gap-2.5 text-[var(--portfolio-accent)]"
+            >
+              <span class="hidden font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground sm:block">
+                <span class="group-open:hidden">More</span>
+                <span class="hidden group-open:inline">Less</span>
+              </span>
+              <span class="w-4 text-center text-xl group-open:hidden">+</span>
+              <span class="hidden w-4 text-center text-xl group-open:inline">
+                −
+              </span>
+            </span>
+          </summary>
+
+          <div class="ml-[1.75rem] max-w-prose space-y-3 pb-5 pr-4 text-sm leading-6 sm:ml-20">
+            <ul class="list-disc space-y-1 pl-5 text-foreground/85">
+              {project.details.map((detail) => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+            <p class="text-muted-foreground">{project.stack.join(" · ")}</p>
+            {(project.live || project.github) && (
+              <div class="flex flex-wrap gap-4 font-medium underline underline-offset-4">
+                {project.live && (
+                  <a href={project.live} target="_blank" rel="noreferrer">
+                    Live site
+                  </a>
+                )}
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noreferrer">
+                    Source
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>

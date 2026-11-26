@@ -1,61 +1,65 @@
 ---
 import SplineModal from "@/components/SplineModal.tsx";
-import { ArrowDown, Mail } from "lucide-astro";
+import { ArrowDownRight } from "lucide-astro";
 
-const skills = [
-  "TypeScript",
-  "PostgreSQL",
-  "AWS",
-  "Terraform",
-];
-
+const disciplines = ["Software", "Infrastructure", "Automation"];
 ---
 
 <section
-  class="mx-auto w-full max-w-screen-xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-16 lg:px-8"
+  class="portfolio-shell pb-16 pt-16 sm:pb-24 lg:pb-32 lg:pt-28"
+  aria-labelledby="hero-title"
 >
-  <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-    <div class="mb-8 h-48 w-full max-w-sm overflow-hidden sm:h-64">
-      <SplineModal client:only="react" />
+  <div class="grid items-center gap-x-8 md:grid-cols-[1.18fr_1fr]">
+    <div>
+      <p class="portfolio-label flex items-center gap-2.5">
+        <span aria-hidden="true" class="size-1.5 rounded-full bg-current"
+        ></span>
+        Independent software &amp; systems
+      </p>
+      <h1
+        id="hero-title"
+        class="mt-7 text-[clamp(3.45rem,16.5vw,6.75rem)] font-medium leading-[0.88] tracking-[-0.085em] md:text-[clamp(5.75rem,12vw,11rem)]"
+      >
+        Hector <span class="block text-muted-foreground">Oropesa.</span>
+      </h1>
+      <p
+        class="mt-7 max-w-[31rem] text-base leading-relaxed text-foreground/80 sm:mt-9 sm:text-xl"
+      >
+        I build software and connect the systems behind it, turning practical
+        problems into tools that make work easier.
+      </p>
     </div>
 
-    <h1 class="mt-7 text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
-      Hector Oropesa
-    </h1>
-    <p
-      class="mt-7 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg"
+    <div
+      class="mx-auto mt-2 h-48 w-full max-w-lg overflow-hidden sm:h-64 md:mt-0 md:h-[clamp(19rem,35vw,32rem)]"
     >
-      I build software and connect the systems behind it. From APIs and AWS
-      infrastructure to servers and workstations, I turn practical problems into
-      tools that make work easier.
-    </p>
-
-    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-      <a
-        href="#contact"
-        class="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-foreground px-5 text-sm font-semibold text-background transition duration-200 hover:bg-foreground/90"
-      >
-        <Mail class="h-4 w-4" />
-        Get in touch
-      </a>
-      <a
-        href="#experience"
-        class="inline-flex h-12 items-center justify-center gap-2 rounded-none border bg-background px-5 text-sm font-semibold transition duration-200 hover:bg-muted/50"
-      >
-        View experience
-        <ArrowDown class="h-4 w-4" />
-      </a>
-    </div>
-
-    <div class="mt-10 flex flex-wrap justify-center gap-2">
-      {
-        skills.map((skill) => (
-          <span class="rounded-md border bg-muted/60 px-3 py-1 text-xs font-medium text-foreground/85">
-            {skill}
-          </span>
-        ))
-      }
+      <SplineModal client:only="react" />
     </div>
   </div>
 
+  <div class="mt-4 flex md:mt-0 md:justify-end">
+    <a
+      href="#experience"
+      class="inline-flex items-center gap-2.5 border-b pb-2 text-sm hover:border-current hover:text-[var(--portfolio-accent)]"
+    >
+      Explore selected work <ArrowDownRight aria-hidden="true" class="size-4" />
+    </a>
+  </div>
+
+  <ul
+    class="portfolio-label mt-9 flex flex-wrap gap-x-3 gap-y-2 border-t pt-4 text-muted-foreground sm:mt-16 sm:gap-x-6"
+  >
+    {
+      disciplines.map((discipline, index) => (
+        <li class="flex items-center gap-3 sm:gap-6">
+          {index > 0 && (
+            <span aria-hidden="true" class="text-[var(--portfolio-accent)]">
+              ·
+            </span>
+          )}
+          {discipline}
+        </li>
+      ))
+    }
+  </ul>
 </section>

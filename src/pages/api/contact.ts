@@ -24,8 +24,6 @@ export const POST: APIRoute = async ({ request }) => {
   }
   const key = import.meta.env.SECRET_PLUNK_API_KEY;
   const businessEmail = import.meta.env.SECRET_BUSINESS_EMAIL;
-  // console.log(`key: ${key}`);
-  // console.log(`email: ${businessEmail}`);
   if (!key || !businessEmail) {
     return new Response(
       JSON.stringify({
@@ -62,8 +60,7 @@ export const POST: APIRoute = async ({ request }) => {
       }),
     });
     return new Response("Message sent!", { status: 200 });
-  } catch (err) {
-    // console.log(`failed sending email: ${err as string}`);
+  } catch {
     return new Response(
       JSON.stringify({
         message: "failed sending email, please try again later",

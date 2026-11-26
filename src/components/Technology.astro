@@ -1,39 +1,77 @@
 ---
 const technology = [
   {
-    label: "Application development",
-    items: ["TypeScript", "React", "Node.js", "PostgreSQL", "SQL", "REST APIs", "Go", "Bash", "PowerShell"],
+    label: "Build",
+    items: ["TypeScript", "React", "Node.js", "PostgreSQL", "Go", "REST APIs"],
   },
   {
-    label: "Cloud & automation",
-    items: ["AWS", "Terraform", "Ansible", "Docker", "GitHub Actions", "CI/CD"],
+    label: "Automate",
+    items: [
+      "AWS",
+      "Terraform",
+      "Ansible",
+      "Docker",
+      "GitHub Actions",
+      "CI/CD",
+      "Bash",
+      "PowerShell",
+    ],
   },
   {
-    label: "Systems & networking",
+    label: "Connect",
     items: ["Linux", "Proxmox", "Firewalls", "VPNs", "Reverse proxies"],
   },
   {
-    label: "Endpoint & identity",
-    items: ["Microsoft 365 admin", "Intune device management", "Entra ID admin", "NinjaOne RMM"],
+    label: "Support",
+    items: [
+      "Microsoft 365",
+      "Intune",
+      "Entra ID",
+      "NinjaOne RMM",
+      "ConnectWise",
+    ],
   },
 ];
 ---
 
-<section class="mx-auto w-full max-w-screen-xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-  <header class="mb-8">
-    <p class="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-teal-700 dark:text-teal-300/80">Tools & systems</p>
-    <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">Technology profile</h2>
-    <p class="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">My everyday tools, from applications to infrastructure.</p>
+<section
+  id="about"
+  class="portfolio-shell py-20 sm:py-28 lg:py-36"
+  aria-labelledby="about-title"
+>
+  <p class="portfolio-label">
+    How I work <span class="text-muted-foreground">/ 02</span>
+  </p>
+  <header class="portfolio-heading">
+    <h2 id="about-title" class="portfolio-title">
+      Curious by nature. <span class="block text-muted-foreground"
+        >Practical by design.</span
+      >
+    </h2>
+    <p>
+      From application code to the infrastructure it depends on, I like making
+      the whole system work better.
+    </p>
   </header>
 
-  <div class="grid gap-x-10 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
-    {technology.map((group) => (
-      <div>
-        <h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{group.label}</h3>
-        <ul class="space-y-2 text-sm text-foreground/85">
-          {group.items.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-    ))}
+  <div class="grid grid-cols-2 gap-x-5 gap-y-9 md:grid-cols-4">
+    {
+      technology.map((group, index) => (
+        <div>
+          <h3 class="portfolio-label mb-4 sm:mb-5">
+            <span aria-hidden="true" class="mr-1.5">
+              {String(index + 1).padStart(2, "0")}{" "}
+              <span class="text-muted-foreground">/</span>
+            </span>
+            {group.label}
+          </h3>
+          <ul class="space-y-1.5 text-sm leading-5 text-foreground/80">
+            {group.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </div>
 </section>
