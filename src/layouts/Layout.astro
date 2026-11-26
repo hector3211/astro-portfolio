@@ -1,8 +1,8 @@
 ---
 import "@/styles/globals.css";
 import "@/styles/portfolio.css";
-import NavBar from "@/components/Nav.astro";
-import Footer from "@/components/Footer.astro";
+import "@/styles/editor.css";
+import EditorShell from "@/components/EditorShell.astro";
 import { Toaster } from "@/components/ui/sonner";
 
 export interface Props {
@@ -33,11 +33,12 @@ const pageUrl = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/JetBrainsMono-Regular.otf"
+      as="font"
+      type="font/otf"
+      crossorigin
     />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
@@ -55,12 +56,10 @@ const pageUrl = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
       )
     }
   </head>
-  <body class="portfolio relative flex min-h-svh flex-col">
-    <NavBar />
-    <main class="min-w-0 flex-1">
+  <body class="portfolio">
+    <EditorShell>
       <slot />
-    </main>
-    <Footer />
+    </EditorShell>
     {contactToasts && <Toaster client:load />}
   </body>
 </html>
