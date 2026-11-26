@@ -1,61 +1,26 @@
-# Hector Oropesa Portfolio
+# Hector Oropesa
 
-Personal portfolio site built with Astro, React, and Tailwind CSS.
+I build software and connect the systems behind it. My work spans business applications, cloud infrastructure, and device provisioning. I like taking a process people already rely on and making it easier to run, repeat, and support.
 
-It includes:
+[View my portfolio](https://hectorcodes.dev) · [Read my writing](https://hectorcodes.dev/blog) · [Get in touch](https://hectorcodes.dev/#contact)
 
-- a landing page with a latest-post highlight, projects, and contact info
-- a blog powered by Astro Content Collections
-- a Vercel-ready Astro server build
+## Selected work
 
-## Stack
+- **Enterprise MCP:** Connected AI clients to internal tools through a single interface with employee authentication and authorization.
+- **GraniteSync:** Built a workflow for granite shops to manage jobs, inventory, and fabricator assignments in one place.
+- **Device provisioning:** Automated setup and policy management with Microsoft Intune, NinjaOne RMM, and PowerShell.
 
-- Astro
-- React
-- Tailwind CSS
-- TypeScript
-- Vercel adapter
+## What I write about
 
-## Project Structure
+I write about lessons from the work itself: moving from the AWS console to Terraform, building repeatable CI/CD pipelines, and running a homelab. My posts cover what changed, what broke, and what I’d do differently.
 
-```text
-.
-├── public/
-├── scripts/
-├── src/
-│   ├── components/
-│   ├── content/
-│   │   └── blog/
-│   ├── layouts/
-│   ├── pages/
-│   │   ├── blog/
-│   │   └── index.astro
-│   └── styles/
-├── astro.config.mjs
-├── package.json
-└── tailwind.config.cjs
+## Running the site locally
+
+The site uses Astro, React, and Tailwind CSS. With Bun and Node.js 22.23.4 or newer installed:
+
+```sh
+bun install --frozen-lockfile
+bun run dev
 ```
 
-## Commands
-
-Run commands from the project root.
-
-| Command                   | Action                                        |
-| ------------------------- | --------------------------------------------- |
-| `npm install`             | Install dependencies                          |
-| `npm run dev`             | Start the local dev server                    |
-| `npm run build`           | Build the site for production                 |
-| `npm run preview`         | Preview the production build locally          |
-| `npm run new-post <slug>` | Create a new blog post folder with `index.md` |
-
-## Blog Posts
-
-Blog content lives in `src/content/blog/`.
-
-Each post should use its own folder so the markdown and images stay together:
-
-```text
-src/content/blog/my-post/
-├── index.md
-└── image.png
-```
+Run `bun run build` for a production build. Blog posts live in `src/content/blog/`.
